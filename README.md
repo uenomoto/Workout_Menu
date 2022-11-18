@@ -14,6 +14,7 @@
 <気軽で本名ではなくニックネームで登録できます。別会員どうしでコメントしあったりナイスファイト（いいね！）機能もあってトレーニングが好きになっていくといいですね！>
 
 ## 設計書
+- 実装機能リストURL: https://docs.google.com/spreadsheets/d/1AUAPTN04nns7Bjc515HlTkGqKKKndizYBcRg9PL4jFA/edit#gid=375590402
 <まだ制作中です>
 
 ## 開発環境
