@@ -15,7 +15,9 @@
 
 ## 設計書
 - 実装機能リストURL: https://docs.google.com/spreadsheets/d/1AUAPTN04nns7Bjc515HlTkGqKKKndizYBcRg9PL4jFA/edit#gid=375590402
-<まだ制作中です>
+- ER図URL: https://app.diagrams.net/#G14q6rDYAwDAASZ5QK5UYAL9FmjOA39Slh
+- テーブル定義書: <まだ制作中です>
+- アプリ詳細設計: <まだ制作中です>
 
 ## 開発環境
 - OS：Linux(CentOS)
