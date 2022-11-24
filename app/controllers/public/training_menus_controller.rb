@@ -10,4 +10,12 @@ class Public::TrainingMenusController < ApplicationController
 
   def edit
   end
+  
+  
+  private
+  
+  def training_menu_params
+    params.require(:training_menu).permit(:user_id, :training_name_id, :date, :count, :set, :status, :weight)
+  end
+  
 end
