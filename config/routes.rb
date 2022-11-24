@@ -1,41 +1,50 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'impressions/new'
-    get 'impressions/index'
-    get 'impressions/show'
+  
+  scope module: :public do
+    resources :impressions, only: [:new, :index, :show, :create] do
+      resources :post_comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
+    end
   end
-  namespace :public do
-    get 'training_menus/new'
-    get 'training_menus/index'
-    get 'training_menus/show'
-    get 'training_menus/edit'
+  
+ scope module: :public do
+   resources :training_menus
+   get 'training_menus/check/:id', to: 'training_menus#check',as: 'check'
+   post 'training_menus/complete', to: 'training_menus#complete',as: 'complete'
   end
-  namespace :public do
-    get 'training_names/new'
-    get 'training_names/index'
-    get 'training_names/show'
-    get 'training_names/edit'
+  
+  scope module: :public do
+    resources :training_names, only:[:new, :create, :index, :show, :edit, :update]
   end
-  namespace :public do
-    get 'genres/index'
-    get 'genres/edit'
+  
+  scope module: :public do
+    resources :genres, only: [:index, :create, :edit, :update]
   end
-  namespace :public do
-    get 'users/show'
-    get 'users/edit'
-    get 'users/index'
+  
+  scope module: :public do
+    resources :users, only: [:show, :edit, :update, :index]
+    get 'users/unsubscribe/:id', to: 'users#unsubscribe',as: 'unsubscribe'
+    patch 'users/withdraw/:id', to: 'users#withdraw',as: 'withdraw'
   end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
+  
+  scope module: :public do
+    get root to: 'homes#top'
+    get '/about' => 'homes#about',as: 'about'
+  end
+  
+  namespace :admin do
+    resources :post_comments, only: [:index, :show, :destroy]
+    get 'post_comments/permember/:id',to: 'post_comments#permember',as: 'permember' 
   end
   namespace :admin do
-    get 'post_comments/index'
-    get 'post_comments/show'
+    resources :users, only: [:show]
+    patch 'users/withdraw/:id', to: 'users#withdraw'
   end
+  
   namespace :admin do
-    get 'users/show'
+    get root to: 'homes#top'
   end
+  
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
