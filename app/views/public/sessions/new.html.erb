@@ -1,26 +1,23 @@
-<h2>Log in</h2>
-
+<div class="container">
+  <h1>会員ログイン</h1>
+  
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+
+  <div class="form-group">
+    <%= f.label :"ニックネーム" %>
+    <%= f.text_field :nickname, autofocus: true, placeholder: "ニックネーム" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
+  <div class="form-group">
+    <%= f.label :"パスワード" %>
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+  <div class="sign in">
+    <%= f.submit "ログイン" %>
   </div>
 <% end %>
 
-<%= render "public/shared/links" %>
+<h5>登録がお済みでない方は<span><%= link_to "こちらからお願いします！", new_user_registration_path %></span></h5>
+</div>

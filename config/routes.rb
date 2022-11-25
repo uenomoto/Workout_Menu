@@ -22,7 +22,10 @@ Rails.application.routes.draw do
   end
   
   scope module: :public do
-    resources :users, only: [:show, :edit, :update, :index]
+    get 'users/information/:id', to: 'users#show',as: 'user'
+    get 'users/information/:id/edit', to: 'users#edit',as: 'users_edit'
+    patch 'users/information/:id', to: 'users#update'
+    get 'users/information', to: 'users#index',as: 'users'
     get 'users/unsubscribe/:id', to: 'users#unsubscribe',as: 'unsubscribe'
     patch 'users/withdraw/:id', to: 'users#withdraw',as: 'withdraw'
   end

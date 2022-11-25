@@ -1,29 +1,47 @@
-<h2>Sign up</h2>
-
+<div class="container">
+  <h1>新規会員登録</h1>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
+  
+  <div class="form-group">
+    <%= f.label :"ニックネーム" %>
+    <%= f.text_field :nickname, autofocus: true, placeholder:"ニックネーム" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :"都道府県" %>
+    <%= f.text_field :prefecture, autofocus: true %>県
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :"自己紹介" %>
+    <%= f.text_area :introduction, autofocus: true, placeholder:"トレーニング中に意識していることなどなど・・・" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :"メールアドレス" %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+  <div class="form-group">
+    <%= f.label :"パスワード（６文字以上）" %>
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
+  <div class="form-group">
+    <%= f.label :"パスワード確認" %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  
+  <div class="form-group">
+    <%= f.label :"プロフィール画像" %>
+    <%= f.file_field :profile_image %>
+  </div>
+  <div class="sign up">
+    <%= f.submit "新規登録　する！" %>
   </div>
 <% end %>
 
-<%= render "public/shared/links" %>
+</div>
+
+<h5>既に登録済みの方は<span><%= link_to "こちらからお願いします！", new_user_session_path %></span></h5>
