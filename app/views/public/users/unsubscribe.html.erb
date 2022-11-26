@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="text-center">
+    <h1 class="display-3", style="margin-top:200px; margin-bottom:100px;">本当に退会しますか？</h1>
+    <p class="h3">退会しますと、会員登録情報や<br>
+    これまでのメニューなどが閲覧できなくなります。<br>
+    退会する場合は、退会ボタンを押してください。
+    </p>
+    <div style="margin-top:50px;">
+      <%= link_to "退会しない", user_path(current_user), class: "btn btn-info", style: "margin-right:50px;" %>
+      <%= link_to "退会する", withdraw_path, class: "btn btn-danger" %>
+    </div>
+  </div>
+</div>
