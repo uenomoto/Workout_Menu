@@ -27,6 +27,14 @@ class Public::UsersController < ApplicationController
     end
   end
 
+  def withdraw
+    @user = current_user
+    @user.update(is_deleted: true)
+    reset_session
+    #flash[:notice] = ""
+    redirect_to about_path
+  end
+
   private
 
   def user_params
