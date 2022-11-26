@@ -10,7 +10,81 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <header class="shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-light bg-info">
+
+      <%= link_to root_path do %>
+    <h1 class="text-white px-5", style= "font-family:Corben,cursive;">WorkoutMenu</h1>
+    <% end %>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+    <% if admin_signed_in? %>
+
+    <li class="nav-item">
+      <%= link_to "アバウト", about_path,class: "btn btn-warning" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "コメント一覧", admin_post_comments_path,class: "btn btn-warning" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "ログアウト", destroy_admin_session_path,　method: :delete, class: "btn btn-danger" %>
+    </li>
+
+    <% elsif user_signed_in? %>
+
+    <li class="nav-item">
+      <%= link_to "説明書", about_path, class: "btn btn-warning mx-4" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "マイページ", user_path(current_user.id), class: "btn btn-warning mx-4" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "会員一覧", users_path, class: "btn btn-warning mx-4" %>
+    </li>
+    <li class="nav-item">
+      <div class="dropdown">
+         <button class="btn btn-success mx-4 dropdown-toggle"
+          type="button" id="dropdownMenu1" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          登録一覧
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <%= link_to "メニュー登録", new_training_menu_path, class: "btn btn-primary btn-sm ml-4" %>
+          <div class="dropdown-divider"></div>
+          <%= link_to "トレ名登録", new_training_name_path, class: "btn btn-primary btn-sm ml-4" %>
+          <div class="dropdown-divider"></div>
+          <%= link_to "部位登録", genres_path, class: "btn btn-primary btn-sm ml-4" %>
+        </div>
+    </li>
+    <li class="nav-item">
+      <%=link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-danger mx-4" %>
+    </li>
+
+    <% else %>
+
+    <li class="nav-item">
+      <%= link_to "新規登録", new_user_registration_path, class: "btn btn-success mx-4" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "ログイン", new_user_session_path, class: "btn btn-success mx-4" %>
+    </li>
+
+    <% end %>
+    </nav>
+
+    <p class="text-center text-dark bg-success"><%= notice %></p>
+
+  </header>
+
   <body>
     <%= yield %>
   </body>
+
+  <footer>
+    <div class="text-left h3" style= "font-family:Corben,cursive;">WorkoutMenu</div>
+  </footer>
 </html>
