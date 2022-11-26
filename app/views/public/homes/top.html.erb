@@ -1,2 +1,20 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="jumbotron jumbotron-extend" style="background: url(<%= asset_path "kintore.jpeg" %>) center; background-size: cover;">
+  <div class="container-fluid text-center">
+　  <h1 class="app-name text-warning font-weight-bolder">WorkoutMenu</h1>
+　  <p class="h4 text-warning font-weight-bolder mt-4">
+　    このサイトは日々のトレーニングを管理したり<br>
+　  気軽にトレーニーとのコミュニケーションができる<br>
+　  コミュニティサイトです！
+　  </p>
+　  <%= link_to "メニュー一覧", training_menus_path, class: "btn btn-warning", style: "margin-top: 50px; padding-left: 50px; padding-right:50px;" %>
+　  <div class="row mt-5">
+　    <div class="col-md-2"></div>
+　    <div class="col-md-4">
+　      <%= link_to "部位登録一覧", genres_path, class: "btn btn-success", style: "padding-left: 50px; padding-right:50px;" %>
+　    </div>
+　    <div class="col-md-4">
+　      <%= link_to "トレーニング名一覧", training_names_path, class: "btn btn-info", style: "padding-left: 40px; padding-right: 40px;" %>
+　    </div>
+　  </div>
+  </div>
+</div>
