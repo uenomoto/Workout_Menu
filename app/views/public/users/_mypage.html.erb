@@ -1,0 +1,39 @@
+<div class="row m-5">
+        <div class="col-12 text-center">
+            <h1>マイページ</h1>
+        </div>
+    </div>
+    <div class="row m-2">
+        <div class="col-3">
+            <%= image_tag user.get_profile_image(200,200) %>
+        </div>
+        <div class="col-7">
+            <table class="table table-bordered table-dark">
+                <tr>
+                    <th>ニックネーム</th>
+                    <td><%= user.nickname %></td>
+                </tr>
+                <tr>
+                    <th>都道府県</th>
+                    <td><%= user.prefecture %>県</td>
+                </tr>
+                <tr>
+                    <th>メールアドレス</th>
+                    <td><%= user.email %></td>
+                </tr>
+                <tr>
+                    <th>自己紹介</th>
+                    <td><%= user.introduction %></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row m-5">
+        <div class="col-3">
+            <%= link_to "マイページ編集", users_edit_path, class: "btn btn-success" %>
+        </div>
+        <div class="col-6"></div>
+        <div class="col-3">
+            <%= link_to "メニューを作る", new_training_menu_path, class: "btn btn-warning" %>
+        </div>
+    </div>
