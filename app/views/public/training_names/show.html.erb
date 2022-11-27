@@ -1,2 +1,32 @@
-<h1>Public::TrainingNames#show</h1>
-<p>Find me in app/views/public/training_names/show.html.erb</p>
+<div class="container">
+  <div class="row m-5">
+    <div class="col-md-12 text-center">
+      <h1 class="display-3"><%= @training_name.name %></h1>
+    </div>
+  </div>
+  <div class="row m-5">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <table class="table table-borderless" style="font-size:30px;">
+        <tr>
+          <th>部位</th>
+          <td><%= @training_name.genre.name %></td>
+        </tr>
+        <tr>
+          <th>説明文</th>
+          <td><%= @training_name.introduction %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-2"></div>
+  </div>
+  <div class="row m-5">
+    <div class="col-md-4">
+      <%= link_to "トレ名編集", edit_training_name_path, class: "btn btn-success" %>
+    </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <%= link_to "メニューを作る", new_training_menu_path, class: "btn btn-warning" %>
+    </div>
+  </div>
+</div>
