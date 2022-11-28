@@ -21,16 +21,26 @@ class Public::TrainingMenusController < ApplicationController
 
   def show
     @training_menu = TrainingMenu.find(params[:id])
-    @training_menus = TrainingMenu.where(user:current_user)
+    @training_menus = TrainingMenu.where(user: current_user)
   end
 
   def edit
+    @training_menu = TrainingMenu.find(params[:id])
   end
 
   def update
+    @training_menu = TrainingMenu.find(params[:id])
+    if @training_menu.update(training_menu_params)
+      redirect_to training_menu_path(@training_menu.id)
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @training_menu = TrainingMenu.find(params[:id])
+    @training_menu.destroy
+    redirect_to training_menus_path
   end
 
   def check

@@ -1,2 +1,52 @@
-<h1>Public::TrainingMenus#show</h1>
-<p>Find me in app/views/public/training_menus/show.html.erb</p>
+<div class="container">
+  <div class="row m-5 text-center">
+    <div class="col-md-12">
+      <h1><%= @training_menu.date %>日のトレーニングメニュー</h1>
+    </div>
+  </div>
+  <div class="row m-3">
+    <div class="col-md-12">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>番号</th>
+            <th>名前</th>
+            <th>部位</th>
+            <th>レップ×セット</th>
+            <th>重さ</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @training_menus.each.with_index(1) do |menu,idx| %>
+          <tr>
+            <td><%= idx %></td>
+            <td><%= menu.training_name.name %></td>
+            <td><%= menu.training_name.genre.name %></td>
+            <td><%= menu.count %>×<%= menu.set %></td>
+            <td>
+              <% if menu.status == true %>
+              <p><%= menu.weight %>kg</p>
+              <% else %>
+              <p>自重</p>
+              <% end %>
+            </td>
+            <td><%= link_to "編集", edit_training_menu_path(@training_menu.id), class: "btn btn-success" %></td>
+            <td><%= link_to "削除", training_menu_path(@training_menu.id), method: :delete, "data-confirm" => "削除してもよろしいですか？", class: "btn btn-danger" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row m-5 text-center">
+    <div class="col-md-4">
+      <%= link_to "メニュー追加", new_training_menu_path, class: "btn btn-success" %>
+    </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <%= link_to "メニュー一覧", training_menus_path, class: "btn btn-warning" %>
+    </div>
+  </div>
+</div>
