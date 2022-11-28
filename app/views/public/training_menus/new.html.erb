@@ -1,2 +1,52 @@
-<h1>Public::TrainingMenus#new</h1>
-<p>Find me in app/views/public/training_menus/new.html.erb</p>
+<div class="container">
+  <div class="row m-5">
+    <div class="col-md-12 text-center">
+      <h1>メニュー登録</h1>
+    </div>
+  </div>
+  <div class="row m-3">
+    <div class="col-md-12">
+      <%= form_with model: @training_menu, url: "/training_menus" ,method: :post do |f| %>
+
+
+      <div class="form-group">
+      <%= f.label :"部位" %>
+      <%= f.collection_select :training_name_id, Genre.all, :id, :name, :prompt => "--選択してください--" %>
+      </div>
+      <div class="form-group">
+      <%= f.label :"トレ名" %>
+      <%= f.collection_select :training_name_id, TrainingName.where(user:current_user), :id, :name, :prompt => "--選択してください--" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :"日付" %>
+        <%= f.date_field :date %>
+      </div>
+      <div class="form-group">
+        <%= f.label :"レップ数" %>
+        <%= f.number_field :count, min: 1 %>
+      </div>
+      <div class="form-group">
+        <%= f.label :"セット数" %>
+        <%= f.number_field :set, min: 1 %>
+      </div>
+      <div class="form-group">
+       <div class="radio_button">
+        <%= f.radio_button :status, true, checked: true %>
+        <%= f.label :status, "加重" %>
+        <%= f.radio_button :status, false %>
+        <%= f.label :status, "自重" %>
+       </div>
+      </div>
+      <div class="form-group">
+        <% if @training_menu.status == true %>
+       <%= f.label :"重さ" %>
+       <%=f.number_field :weight, min: 1 %>kg
+       <% end %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "メニューを追加する", class: "btn btn-success" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
