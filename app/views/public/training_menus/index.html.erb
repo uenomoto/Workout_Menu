@@ -1,0 +1,13 @@
+<div class="container">
+  <h1 class="text-center">メニューカレンダー</h1>
+  <%= month_calendar(attribute: :day, events: @training_menus) do |date, training_menus| %>
+  <%= date.day %>
+  <% training_menus.each do |training_menu| %>
+    <div>
+       <%= link_to anywhen_path(date) do %>
+        <%= training_menu.training_name.name %>
+       <% end %>
+    </div>
+   <% end %>
+  <% end %>
+</div>

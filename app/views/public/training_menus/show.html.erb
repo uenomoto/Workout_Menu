@@ -37,7 +37,7 @@
     </div>
   </div>
   <div class="row m-5 text-center">
-    <% if @menu.user_id == current_user %>
+    <% if @menu.user_id == current_user.id %>
     <div class="col-md-4">
       <%= link_to "メニュー編集", edit_training_menu_path(@menu.id), class: "btn btn-success" %>
     </div>

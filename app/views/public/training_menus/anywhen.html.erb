@@ -1,1 +1,50 @@
-<h1>各一日ごとの一覧メニュー</h1>
+<div class="container">
+  <div class="row m-5">
+    <div class="col-md-12">
+      <h1 class="font-weight-bold text-center"><%= @day_params %>日のトレーニングメニュー</h1>
+    </div>
+  </div>
+  <div class="row m-5">
+    <div class="col-md-12">
+      <table class="table table-borderless">
+        <thead class="thead-dark">
+         <tr>
+          <th>番号</th>
+          <th>名前</th>
+          <th>部位</th>
+          <th>レップ×セット</th>
+          <th  colspan="5"></th>
+         </tr>
+        </thead>
+        <tbody>
+          <% @training_menus.each do |menu| %>
+          <% if menu.day == Date.today %>
+          <tr>
+            <td><%= menu.day %></td>
+            <td>
+              <%= link_to training_menu_path(menu.id) do %>
+              <%= menu.training_name.name %>
+              <% end %>
+            </td>
+            <td><%= menu.training_name.genre.name %></td>
+            <td><%= menu.count %>×<%= menu.set %></td>
+            <td>
+              <% if menu.status == true %>
+              <%= menu.weight %>kg
+              <% else %>
+              <p>自重</p>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <%= link_to "開始！", check_path(@day_params), class: "btn btn-success" %>
+    </div>
+  </div>
+</div>

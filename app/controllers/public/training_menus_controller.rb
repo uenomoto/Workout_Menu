@@ -21,6 +21,7 @@ class Public::TrainingMenusController < ApplicationController
 
   def anywhen
     @training_menus = TrainingMenu.where(user:current_user)
+    @day_params = params[:id]
   end
 
   def show
@@ -29,7 +30,7 @@ class Public::TrainingMenusController < ApplicationController
 
   def edit
     @training_menu = TrainingMenu.find(params[:id])
-    if @training_menu.user_id == current_user
+    if @training_menu.user_id == current_user.id
       render :edit
     else
       redirect_to training_menus_path
