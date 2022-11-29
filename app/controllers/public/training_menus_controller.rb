@@ -19,13 +19,21 @@ class Public::TrainingMenusController < ApplicationController
     @training_menus = TrainingMenu.where(user:current_user)
   end
 
+  def anywhen
+    @training_menus = TrainingMenu.where(user:current_user)
+  end
+
   def show
-    @training_menu = TrainingMenu.find(params[:id])
-    @training_menus = TrainingMenu.where(user: current_user)
+    @menu = TrainingMenu.find(params[:id])
   end
 
   def edit
     @training_menu = TrainingMenu.find(params[:id])
+    if @training_menu.user_id == current_user
+      render :edit
+    else
+      redirect_to training_menus_path
+    end
   end
 
   def update
@@ -52,7 +60,7 @@ class Public::TrainingMenusController < ApplicationController
   private
 
   def training_menu_params
-    params.require(:training_menu).permit(:user_id, :training_name_id, :date, :count, :set, :status, :weight)
+    params.require(:training_menu).permit(:user_id, :training_name_id, :day, :count, :set, :status, :weight)
   end
 
 end

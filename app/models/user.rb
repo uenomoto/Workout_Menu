@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :impressions, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :genres, dependent: :destroy
 
   validates :nickname,       uniqueness: true, presence: true
   validates :introduction,   length: { minimum: 5 }
