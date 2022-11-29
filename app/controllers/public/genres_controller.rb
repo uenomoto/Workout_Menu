@@ -2,16 +2,17 @@ class Public::GenresController < ApplicationController
 
 
   def index
-    @genres = Genre.all
+    @genres = Genre.where(user:current_user)
     @genre = Genre.new
   end
 
   def create
     @genre = Genre.new(genre_params)
+    @genre.user_id = current_user.id
     if @genre.save
       redirect_to genres_path
     else
-      @genres = Genre.all
+      @genres = Genre.where(user:current_user)
       render :index
     end
   end

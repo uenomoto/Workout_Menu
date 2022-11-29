@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_28_171906) do
+ActiveRecord::Schema.define(version: 2022_11_29_050832) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2022_11_28_171906) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
   end
 
   create_table "impressions", force: :cascade do |t|
@@ -83,7 +84,7 @@ ActiveRecord::Schema.define(version: 2022_11_28_171906) do
   create_table "training_menus", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "training_name_id", null: false
-    t.date "date", null: false
+    t.date "day", null: false
     t.integer "count", null: false
     t.integer "set", null: false
     t.boolean "status", null: false

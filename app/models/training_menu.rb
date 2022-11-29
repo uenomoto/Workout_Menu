@@ -6,7 +6,7 @@ class TrainingMenu < ApplicationRecord
 
     validates :user_id,          presence: true
     validates :training_name_id, presence: true
-    validates :date,             presence: true
+    validates :day,             presence: true
     validates :count,            numericality: { only_integer: true }
     validates :set,              numericality: { only_integer: true }
 
