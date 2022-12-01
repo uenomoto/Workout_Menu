@@ -22,6 +22,7 @@ class Public::TrainingMenusController < ApplicationController
   def anywhen
     @training_menus = TrainingMenu.where(user:current_user)
     @day_params = params[:id]
+
   end
 
   def show

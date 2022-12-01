@@ -9,7 +9,7 @@
       <table class="table table-borderless">
         <thead class="thead-dark">
          <tr>
-          <th>番号</th>
+          <th>日付</th>
           <th>名前</th>
           <th>部位</th>
           <th>レップ×セット</th>
@@ -18,7 +18,7 @@
         </thead>
         <tbody>
           <% @training_menus.each do |menu| %>
-          <% if menu.day == Date.today %>
+          <% if menu.day == @day_params %>
           <tr>
             <td><%= menu.day %></td>
             <td>
@@ -44,7 +44,7 @@
   </div>
   <div class="row">
     <div class="col-md-12 text-center">
-      <%= link_to "開始！", check_path(@day_params), class: "btn btn-success" %>
+      <%= link_to "開始！", check_path, class: "btn btn-success" %>
     </div>
   </div>
 </div>
