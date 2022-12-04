@@ -15,7 +15,6 @@ class User < ApplicationRecord
   validates :introduction,   length: { minimum: 5 }
   validates :prefecture,     presence: true
   validates :email,          uniqueness: true, presence: true
-  validates :profile_image,          presence: true
 
 
   has_one_attached :profile_image

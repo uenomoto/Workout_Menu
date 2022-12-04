@@ -8,10 +8,10 @@ Rails.application.routes.draw do
   end
 
  scope module: :public do
-   resources :training_menus
+   resources :training_menus, only: [:new, :index, :show, :create, :edit, :update, :destroy]
    get 'training_menus/anywhen/:id', to: 'training_menus#anywhen', as: 'anywhen'
    get 'training_menus/check/:id', to: 'training_menus#check',as: 'check'
-   post 'training_menus/complete', to: 'training_menus#complete',as: 'complete'
+   patch 'training_menus/complete/:id', to: 'training_menus#complete',as: 'complete'
   end
 
   scope module: :public do
