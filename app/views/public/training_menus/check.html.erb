@@ -1,1 +1,51 @@
-<h1>メニューチェック表</h1>
+<div class="container">
+  <div class="row m-5">
+    <div class="col-sm-12">
+      <h1 class="font-weight-bold text-center">メニューチェック表</h1>
+    </div>
+  </div>
+  <div class="row m-5">
+    <div class="col-sm-12">
+      <table class="table table-borderless">
+
+      <thead class="thead-dark">
+        <tr>
+          <th>チェック</th>
+          <th>トレ名</th>
+          <th>部位</th>
+          <th>レップ×セット</th>
+          <th>トレ状態</th>
+        </tr>
+      </thead>
+
+       <tbody>
+         <%= collection_check_boxes(:training_menu, :completion, TrainingMenu.where(user:current_user, date: params[:id]), :id, :training_name) do |menu| %>
+        <tr>
+         <td class="chkbox">
+           <%= menu.label { menu.check_box } %>
+         </td>
+         <td><%= menu.text.name %></td>
+         <td><%= menu.text.genre.name %></td>
+         <td><%= menu.object.count %>×<%= menu.object.set %></td>
+         <td>
+           <% if menu.object.completion == false %>
+           <p>頑張ろう！</p>
+           <% else %>
+           <p>終了！</p>
+           <% end %>
+           </td>
+        </tr>
+        <% end %>
+       </tbody>
+      </table>
+        <div class="row m-3">
+          <div class="col-sm-12 text-center">
+           <%= form_with model: @training_menu, url: complete_path, method: :patch do |f| %>
+
+           <%= f.submit "トレーニング完了", class: "btn btn-success" %>
+           <% end %>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

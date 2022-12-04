@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row m-5">
     <div class="col-md-12">
-      <h1 class="font-weight-bold text-center"><%= @day_params %>日のトレーニングメニュー</h1>
+      <h1 class="font-weight-bold text-center"><%= @training_menu %>のトレーニングメニュー</h1>
     </div>
   </div>
   <div class="row m-5">
@@ -18,9 +18,8 @@
         </thead>
         <tbody>
           <% @training_menus.each do |menu| %>
-          <% if menu.day == @day_params %>
           <tr>
-            <td><%= menu.day %></td>
+            <td><%= menu.date %></td>
             <td>
               <%= link_to training_menu_path(menu.id) do %>
               <%= menu.training_name.name %>
@@ -36,7 +35,6 @@
               <% end %>
             </td>
           </tr>
-          <% end %>
           <% end %>
         </tbody>
       </table>

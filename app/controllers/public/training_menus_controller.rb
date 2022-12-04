@@ -6,7 +6,8 @@ class Public::TrainingMenusController < ApplicationController
   end
 
   def create
-    @training_menu =TrainingMenu.new(training_menu_params)
+   # binding.pry
+    @training_menu = TrainingMenu.new(training_menu_params)
     @training_menu.user_id = current_user.id
     if @training_menu.save
       redirect_to training_menu_path(@training_menu.id)
@@ -20,9 +21,8 @@ class Public::TrainingMenusController < ApplicationController
   end
 
   def anywhen
-    @training_menus = TrainingMenu.where(user:current_user)
-    @day_params = params[:id]
-
+    @training_menus = TrainingMenu.where(user:current_user, date: params[:id])
+    @training_menu = (params[:id])
   end
 
   def show
@@ -57,12 +57,15 @@ class Public::TrainingMenusController < ApplicationController
   end
 
   def complete
+    @training_menu = TrainingMenu.where(user:current_user, date: params[:id])
+    @training_menu.update(completion: true)
+    redirect_to new_impression_path
   end
 
   private
 
   def training_menu_params
-    params.require(:training_menu).permit(:user_id, :training_name_id, :day, :count, :set, :status, :weight)
+    params.require(:training_menu).permit(:user_id, :training_name_id, :date, :count, :set, :status, :weight, :completion)
   end
 
 end

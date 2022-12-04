@@ -1,33 +1,35 @@
 <div class="container">
   <div class="row m-5">
-    <div class="col-md-12 text-center">
+    <div class="col-sm-12 text-center">
       <h1>メニュー登録</h1>
     </div>
   </div>
   <div class="row m-3">
-    <div class="col-md-12">
+    <div class="col-lg-3"></div>
+    <div class="col-sm-12 col-lg-6 text-center">
       <%= form_with model: @training_menu, url: "/training_menus" ,method: :post do |f| %>
+          <%= render 'layouts/error', model: f.object %>
 
 
       <div class="form-group">
       <%= f.label :"部位" %>
-      <%= f.collection_select :training_name_id, Genre.where(user:current_user), :id, :name, :prompt => "--選択してください--" %>
+      <%= f.collection_select :genre_id, Genre.where(user:current_user), :id, :name, :prompt => "--選択してください--", class: "form-control" %>
       </div>
       <div class="form-group">
       <%= f.label :"トレ名" %>
-      <%= f.collection_select :training_name_id, TrainingName.where(user:current_user), :id, :name, :prompt => "--選択してください--" %>
+      <%= f.collection_select :training_name_id, TrainingName.where(user:current_user), :id, :name, :prompt => "--選択してください--", class: "form-control" %>
       </div>
       <div class="form-group">
         <%= f.label :"日付" %>
-        <%= f.date_field :day %>
+        <%= f.date_field :date, class: "form-control" %>
       </div>
       <div class="form-group">
         <%= f.label :"レップ数" %>
-        <%= f.number_field :count, min: 1 %>
+        <%= f.number_field :count, min: 1, class: "form-control" %>
       </div>
       <div class="form-group">
         <%= f.label :"セット数" %>
-        <%= f.number_field :set, min: 1 %>
+        <%= f.number_field :set, min: 1, class: "form-control" %>
       </div>
       <div class="form-group">
        <div class="radio_button">
@@ -43,6 +45,7 @@
        <%=f.number_field :weight, min: 1 %>kg
        <% end %>
       </div>
+
       <div class="form-group">
         <%= f.submit "メニューを追加する", class: "btn btn-success" %>
       </div>

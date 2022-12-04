@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row m-5 text-center">
     <div class="col-md-12">
-      <h1><%= @menu.day %>日の<%= @menu.training_name.name %>詳細</h1>
+      <h1><%= @menu.date %>日の<%= @menu.training_name.name %>詳細</h1>
     </div>
   </div>
   <div class="row m-3">
@@ -9,7 +9,7 @@
       <table class="table table-bordered table-dark">
           <tr>
             <th>日付</th>
-            <td><%= @menu.day %></td>
+            <td><%= @menu.date %></td>
           </tr>
           <tr>
             <th>名前</th>
