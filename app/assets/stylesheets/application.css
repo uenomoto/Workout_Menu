@@ -32,7 +32,21 @@
   .today {
     background: #FFA0A0;
   }
+  .has-events {
+   background: #98fb98;
+ }
   .calendar-heading {
   font-size: 35px;
   text-align: center;
+}
+
+
+/*チェックボックスのサイズ*/
+input[type=checkbox] {
+	transform: scale(2.0);
+}
+
+/*ラジオボタンのサイズ*/
+input[type=radio] {
+	transform: scale(1.5);
 }

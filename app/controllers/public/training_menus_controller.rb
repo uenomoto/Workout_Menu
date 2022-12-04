@@ -6,7 +6,7 @@ class Public::TrainingMenusController < ApplicationController
   end
 
   def create
-    #binding.pry
+   # binding.pry
     @training_menu = TrainingMenu.new(training_menu_params)
     @training_menu.user_id = current_user.id
     if @training_menu.save
@@ -22,6 +22,7 @@ class Public::TrainingMenusController < ApplicationController
 
   def anywhen
     @training_menus = TrainingMenu.where(user:current_user, date: params[:id])
+    @training_menu = (params[:id])
   end
 
   def show
@@ -53,12 +54,11 @@ class Public::TrainingMenusController < ApplicationController
   end
 
   def check
-    @training_menus = TrainingMenu.where(user:current_user)
   end
 
   def complete
+    @training_menu = TrainingMenu.where(user:current_user, date: params[:id])
     @training_menu.update(completion: true)
-    @training_menu.save
     redirect_to new_impression_path
   end
 
