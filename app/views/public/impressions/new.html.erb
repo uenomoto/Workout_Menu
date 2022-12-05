@@ -1,2 +1,23 @@
-<h1>Public::Impressions#new</h1>
-<p>Find me in app/views/public/impressions/new.html.erb</p>
+<div class="container">
+  <div class="row m-5">
+    <div class="col-sm-12">
+      <p class="h3 font-weight-bold text-center">
+        日々のトレーニングお疲れ様です！<br>
+        日々のトレーニングで思ったことや<br>
+        今後やってみたいことなんでもつぶやいてください！<br>
+        <span class="h6 text-danger">※他の方が不快に思う呟きはお控えください</span>
+      </p>
+    </div>
+  </div>
+  <div class="row m-5">
+    <div class="col-sm-12 text-center">
+      <div class="form-area">
+       <%= form_with model: @impression, url: "/impressions", method: :post do |f| %>
+       <%= render 'layouts/error', model: f.object %>
+       <%= f.text_area :text, placeholder: "呟き記入欄" %><br>
+       <%= f.submit "呟き投稿", class: "btn btn-success mt-4" %>
+       <% end %>
+      </div>
+    </div>
+  </div>
+</div>
