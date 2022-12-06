@@ -18,10 +18,14 @@ class Public::ImpressionsController < ApplicationController
   end
 
   def index
-    @impressions = Impression.all.order(created_at: :desc)
+    @impressions = Impression.order(created_at: :desc).page(params[:page]).per(4)
   end
 
   def show
+    @impression = Impression.find(params[:id])
+    @post_comment = PostComment.new
+    # includes(:user)これはネストしたN＋１問題を解決してくれる
+    @post_comments = @impression.post_comments.includes(:user)
   end
 
   def edit

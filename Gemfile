@@ -62,3 +62,6 @@ gem 'rails-i18n'
 gem "simple_calendar", "~> 2.4"
 
 gem "pry-byebug"
+
+gem 'kaminari','~> 1.2.1'
+

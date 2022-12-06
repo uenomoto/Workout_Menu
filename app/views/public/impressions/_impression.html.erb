@@ -13,6 +13,8 @@
              </p>
              <%= link_to "コメントはこちらから", impression_path(impression.id), class: "btn btn-primary"  %>
              <%= link_to "会員情報はこちらから", user_path(impression.user.id), class: "btn btn-warning"  %>
+             投稿日:
+             <%= impression.created_at.strftime('%Y/%m/%d') %>
             </div>
           </div>
          </div>

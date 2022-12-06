@@ -1,2 +1,45 @@
-<h1>Public::Impressions#show</h1>
-<p>Find me in app/views/public/impressions/show.html.erb</p>
+<div class="container">
+  <div class="row m-5">
+    <div class="col-sm-12">
+      <div class="card shadow-lg">
+        <h1 class="card-header text-center"><%= @impression.user.nickname %>さんのつぶやき〜</h1>
+        <div class="card-body">
+          <h3 class="card-text"><%= @impression.text %></h3>
+           <div class="row">
+            <div class="col-sm-4">
+              プロフィール画像
+             <%= image_tag @impression.user.get_profile_image(100,100), class: "rounded-circle" %>
+             </div>
+             <div class="col-sm-8">
+               <h5>全<%= @impression.post_comments.count %>コメント</h5>
+             </div>
+            </div>
+             <div class="row">
+               <div class="col-sm-12">
+                 <h5><span><i class="far fa-comments"></i></span>コメント一覧</h5>
+                 <% @post_comments.each do |c| %>
+                 <table class="table">
+                   <%= image_tag c.user.get_profile_image(50,50), class: "rounded-circle" %>
+                   by:<%= c.user.nickname %>
+                   <%= c.comment %>
+                 <% end %>
+                 </table>
+               </div>
+                 <div class="col-sm-12">
+                   <% if user_signed_in? %>
+                  <div style="margin-top: 100px;">
+                   <%= form_with model: [@impression, @post_comment], method: :post do |f| %>
+                   <%= f.text_area :comment ,placeholder: "コメントする", class: "form-control", rows: 5 %><br>
+                   <%= f.submit "コメントする", class: "btn btn-success float-right" %>
+                   <% end %>
+                  </div>
+                  <% end %>
+                </div>
+             </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+  </div>
+</div>
