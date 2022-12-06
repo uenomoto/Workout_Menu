@@ -1,0 +1,25 @@
+<% impressions.first(4).each do |impression| %>
+      <div class="card mb-3 shadow-lg">
+         <div class="card-body">
+          <h4 class="card-text"><%= impression.text %></h4>
+          <div class="row">
+            <div class="col-sm-3">
+             <%= image_tag impression.user.get_profile_image(100,100), class: "rounded-circle" %>
+            </div>
+            <div class="col-sm-9">
+             <p>ニックネーム：<%= impression.user.nickname %><br>
+             <%= impression.post_comments.count %>コメント |
+             <%= impression.favorites.count %>いいね
+             </p>
+             <%= link_to "コメントはこちらから", impression_path(impression.id), class: "btn btn-primary"  %>
+             <%= link_to "会員情報はこちらから", user_path(impression.user.id), class: "btn btn-warning"  %>
+            <% if current_user.id == impression.user_id %>
+             <%= link_to "呟き削除", impression_path(impression.id), method: :delete, "data-confirm" => "削除してもよろしいですか？",class: "btn btn-danger" %>
+            <% end %>
+             投稿日:
+             <%= impression.created_at.strftime('%Y/%m/%d') %>
+            </div>
+          </div>
+         </div>
+      </div>
+<% end %>

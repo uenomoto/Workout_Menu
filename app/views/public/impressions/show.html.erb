@@ -1,2 +1,53 @@
-<h1>Public::Impressions#show</h1>
-<p>Find me in app/views/public/impressions/show.html.erb</p>
+<div class="container">
+  <div class="row m-5">
+    <div class="col-sm-12">
+      <div class="card shadow-lg">
+        <h1 class="card-header text-center"><%= @impression.user.nickname %>さんのつぶやき〜</h1>
+        <div class="card-body">
+          <h3 class="card-text"><%= @impression.text %></h3>
+           <div class="row">
+            <div class="col-sm-8">
+              <%= @impression.user.nickname %>のプロフィール画像
+             <%= image_tag @impression.user.get_profile_image(100,100), class: "rounded-circle" %>
+             <p class="h2">
+               <%= render "favorites", impression: @impression %> |
+               <%= @impression.favorites.count %>いいね
+             </p>
+             </div>
+             <div class="col-sm-4" style="text-align: center;color: blue;">
+               <h5>全<%= @impression.post_comments.count %>コメント</h5>
+             </div>
+            </div>
+             <div class="row">
+               <div class="col-sm-12">
+                 <h5><span><i class="far fa-comments"></i></span>コメント一覧</h5>
+                 <% @post_comments.each do |c| %>
+                 <table class="table">
+                     <%= image_tag c.user.get_profile_image(50,50), class: "rounded-circle" %>
+                     by:<%= c.user.nickname %>
+                     <%= c.comment %>
+                     <% if user_signed_in? %>
+                     <% if current_user.id == c.user_id %>
+                      <%= link_to "編集", edit_impression_post_comment_path(@impression, c.id), class: "btn btn-primary mr-1" %>
+                      <%= link_to "削除", impression_post_comment_path(@impression, c.id), method: :delete, "data-confirm" => "削除してもよろしいですか？", class: "btn btn-danger" %>
+                     <% end %>
+                     <% end %>
+                     <% end %>
+                 </table>
+               </div>
+                 <div class="col-sm-12">
+                   <% if user_signed_in? %>
+                   <%= form_with model: [@impression, @post_comment], method: :post do |f| %>
+                   <%= f.text_area :comment ,placeholder: "コメントする", class: "form-control", rows: 2 %><br>
+                   <%= f.submit "コメントする", class: "btn btn-success float-right" %>
+                   <% end %>
+                  <% end %>
+                </div>
+             </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+  </div>
+</div>
