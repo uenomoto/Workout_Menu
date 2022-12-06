@@ -29,12 +29,18 @@ class Public::ImpressionsController < ApplicationController
   end
 
   def edit
+    #保留
   end
 
   def update
+    #保留
   end
 
   def destroy
+    @impression = Impression.find(params[:id])
+    @impression.destroy
+    flash[:danger] = "つぶやきを削除しました"
+    redirect_back(fallback_location: root_path)
   end
 
 

@@ -13,6 +13,9 @@
              </p>
              <%= link_to "コメントはこちらから", impression_path(impression.id), class: "btn btn-primary"  %>
              <%= link_to "会員情報はこちらから", user_path(impression.user.id), class: "btn btn-warning"  %>
+            <% if current_user.id == impression.user_id %>
+             <%= link_to "呟き削除", impression_path(impression.id), method: :delete, "data-confirm" => "削除してもよろしいですか？",class: "btn btn-danger" %>
+            <% end %>
              投稿日:
              <%= impression.created_at.strftime('%Y/%m/%d') %>
             </div>

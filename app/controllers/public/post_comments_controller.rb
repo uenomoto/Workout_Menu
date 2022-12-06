@@ -16,13 +16,31 @@ class Public::PostCommentsController < ApplicationController
     end
 
     def edit
-      
+      @impression = Impression.find(params[:impression_id])
+      @post_comment = PostComment.find(params[:id])
+      if @post_comment.user_id == current_user.id
+        render :edit
+      else
+        redirect_to impression_path(@impression)
+      end
     end
 
     def update
+      @impression = Impression.find(params[:impression_id])
+      @post_comment = PostComment.find(params[:id])
+      if @post_comment.update(post_comment_params)
+        redirect_to impression_path(@impression), notice: "コメントを編集しました"
+      else
+        flash.now[:danger] = "編集に失敗しました"
+        render :edit
+      end
     end
 
     def destroy
+      @post_comment = PostComment.find(params[:id])
+      @post_comment.destroy
+      flash[:danger] = "コメントを削除しました"
+      redirect_back(fallback_location: root_path)
     end
 
 
