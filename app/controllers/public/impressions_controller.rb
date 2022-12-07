@@ -29,11 +29,21 @@ class Public::ImpressionsController < ApplicationController
   end
 
   def edit
-    #保留
+    @impression = Impression.find(params[:id])
+    if @impression.user_id == current_user.id
+      render :edit
+    else
+      redirect_to impressions_path
+    end
   end
 
   def update
-    #保留
+    @impression = Impression.find(params[:id])
+    if @impression.update(impression_params)
+    redirect_to impression_path(@impression), notice: "つぶやき編集しました"
+    else
+      render :edit
+    end
   end
 
   def destroy
