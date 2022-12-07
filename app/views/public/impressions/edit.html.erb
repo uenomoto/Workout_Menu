@@ -1,7 +1,10 @@
 <div class="container">
-  <div class="row m-5">
-    <div class="col-sm-12">
-      <%= from_with model: @impression, url: impression_path, method: :patch do |f| %>
+  <div class="row" style="margin-top: 100px;">
+    <div class="col-sm-12 col-lg-2 h5 font-weight-bold">つぶやき編集</div>
+    <div class="col-sm-12 col-lg-7">
+      <%= form_with model: @impression, url: impression_path, method: :patch do |f| %>
+      <%= f.text_field :text, class: "form-control" %>
+      <%= f.submit "編集する", class: "btn btn-success mt-3 float-right" %>
       <% end %>
     </div>
   </div>
