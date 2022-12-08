@@ -1,2 +1,51 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+<div class="container">
+  <div class="row m-5">
+    <div class="col-sm-12">
+      <h1 class="text-center"><%= @user.nickname %>さんの詳細ページ</h1>
+    </div>
+  </div>
+  <div class="row m-5">
+    <div class="col-sm-12 col-lg-3">
+      <%= image_tag @user.get_profile_image(200,200), class: "rounded-circle" %>
+    </div>
+    <div class="col-sm-12 col-lg-9">
+      <table class="table bordered table-dark">
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <th>ニックネーム</th>
+          <td><%= @user.nickname %></td>
+        </tr>
+        <tr>
+          <th>都道府県</th>
+          <td><%= @user.prefecture %></td>
+        </tr>
+        <tr>
+          <th>会員or退会</th>
+          <td>
+            <% if @user.is_deleted == false %>
+            <p class="text-success font-weight-bold">会員</p>
+            <% else %>
+            <p class="text-danger font-weight-bold">退会しました</p>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <%= form_with model: @user, url: admin_path, method: :patch do |f| %>
+            <%= f.radio_button :is_deleted, false %>
+            <%= f.label :"会員" %>
+            <%= f.radio_button :is_deleted, true %>
+            <%= f.label :"退会" %>
+          </th>
+          <td>
+            <%= f.submit "退会ステータス変更", class: "btn btn-success" %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

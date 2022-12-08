@@ -1,1 +1,40 @@
-会員一覧画面
+<div class="container">
+  <div class="row m-3">
+    <div class="col-sm-12 text-center">
+      <h1>会員一覧</h1>
+    </div>
+  </div>
+  <div class="row m-3">
+    <div class="col-sm-12">
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th>会員ID</th>
+            <th>ニックネーム</th>
+            <th>都道府県</th>
+            <th>会員or退会</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <td><%= user.id %></td>
+            <td>
+              <%= link_to admin_user_path(user.id), class: "btn btn-primary" do %>
+              <%= user.nickname %>
+              <% end %>
+            </td>
+            <td><%= user.prefecture %></td>
+            <td><% if user.is_deleted == false %>
+                <p class="text-success font-weight-bold">会員中</p>
+                <% else %>
+                <p class="text-danger font-weight-bold">退会しました</p>
+                <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

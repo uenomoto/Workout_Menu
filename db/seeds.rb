@@ -7,6 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+Admin.create!(
+  password: 'admintest',
+  email: 'admin@admin.com',
+  nickname: 'アドミン'
+  )
+
 User.create!(
   nickname: 'テストちゃん',
   email: 'test@hoge.com',
@@ -14,3 +20,5 @@ User.create!(
   prefecture: '新潟',
   password: 'aaaaaaa'
   )
+
+
