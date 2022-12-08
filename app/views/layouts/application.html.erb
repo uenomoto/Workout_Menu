@@ -32,7 +32,7 @@
       <%= link_to "コメント一覧", admin_post_comments_path,class: "btn btn-warning" %>
     </li>
     <li class="nav-item">
-      <%= link_to "ログアウト", destroy_admin_session_path,　method: :delete, class: "btn btn-danger" %>
+      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-danger" %>
     </li>
 
     <% elsif user_signed_in? %>
