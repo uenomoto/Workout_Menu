@@ -1,7 +1,9 @@
 <div class="container">
   <div class="row m-5">
     <div class="col-sm-12 text-center">
-    <h1>会員様コメント一覧</h1>
+    <h1><%= @user.nickname %>さんのコメント一覧
+     <span class="h5">(全<%= @post_comments.count %>件)</span>
+    </h1>
     </div>
   </div>
   <div class="row m-1">
@@ -10,12 +12,7 @@
       <div class="card-deck">
        <div class="card  text-white bg-dark shadow-lg mt-3">
          <div class="card-body">
-           <p class="card-title text-info">
-             <%= link_to admin_permember_path(post_comment.user_id), class: "btn btn-success" do %>
-             <%= post_comment.user.nickname %>のコメント一覧
-             <% end %>
-           </p>
-           <p>コメント</p>
+           <p class="card-title text-info"><%= post_comment.user.nickname %>のコメント</p>
            <p class="card-text"><%= post_comment.comment %></p>
            <%= link_to "詳細はここ！", admin_post_comment_path(post_comment.id), class: "card-link btn btn-primary" %>
            <div class="pt-2"><%= post_comment.created_at.strftime('%Y/%m/%d') %></div>
