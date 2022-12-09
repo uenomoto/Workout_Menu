@@ -1,2 +1,24 @@
-<h1>Admin::PostComments#index</h1>
-<p>Find me in app/views/admin/post_comments/index.html.erb</p>
+<div class="container">
+  <div class="row m-5">
+    <div class="col-sm-12 text-center">
+    <h1>会員様コメント一覧</h1>
+    </div>
+  </div>
+  <div class="row m-1">
+    <% @post_comments.first(6).each do |post_comment| %>
+    <div class="col-sm-12 col-lg-4">
+      <div class="card-deck">
+       <div class="card  text-white bg-dark mt-3">
+         <div class="card-body">
+           <p class="card-title text-info"><%= post_comment.user.nickname %>のコメント</p>
+           <p class="card-text"><%= post_comment.comment %></p>
+           <%= link_to "詳細はここ！", admin_post_comment_path(post_comment.id), class: "card-link btn btn-primary" %>
+           <div class="pt-2"><%= post_comment.created_at.strftime('%Y/%m/%d') %></div>
+        </div>
+       </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+  <%= paginate @post_comments %>
+</div>
