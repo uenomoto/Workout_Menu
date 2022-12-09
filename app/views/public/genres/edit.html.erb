@@ -1,14 +1,14 @@
 <div class="container">
   <div class="row m-5">
-    <div class="col-md-12 text-center">
+    <div class="col-sm-12 text-center">
       <h1>間違えてしまったらこちらから編集してください</h1>
     </div>
   </div>
   <div class="row m-5">
-    <div class="col-md-12 text-center">
+    <div class="col-sm-12 text-center">
      <%= form_with model: @genre, url: genre_path, method: :patch do |f| %>
      <%= render 'layouts/error', model: f.object %>
-     <%= f.label "編集はこちらから⇨" %>
+     <%= f.label "編集はこちらから" %>
      <%= f.text_field :name %>
      <%= f.submit "編集する", class: "btn btn-success" %>
      <% end %>
