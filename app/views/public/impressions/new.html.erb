@@ -10,12 +10,13 @@
     </div>
   </div>
   <div class="row m-5">
-    <div class="col-sm-12 text-center">
+    <div class="col-lg-3"></div>
+    <div class="col-sm-12 col-lg-6">
       <div class="form-area">
        <%= form_with model: @impression, url: "/impressions", method: :post do |f| %>
        <%= render 'layouts/error', model: f.object %>
-       <%= f.text_area :text, placeholder: "呟き記入欄", class: "form-control" %><br>
-       <%= f.submit "呟き投稿", class: "btn btn-success mt-4" %>
+       <%= f.text_area :text, placeholder: "呟き記入欄", class: "form-control", rows: 5 %><br>
+       <%= f.submit "呟き投稿", class: "btn btn-success float-right col-lg-4 col-md-4" %>
        <% end %>
       </div>
     </div>

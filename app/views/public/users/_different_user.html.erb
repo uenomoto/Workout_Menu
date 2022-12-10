@@ -1,13 +1,13 @@
 <div class="row m-5">
-        <div class="col-md-12 text-center">
+        <div class="col-sm-12 text-center">
             <h1><%= user.nickname %>さんの詳細ページ</h1>
         </div>
     </div>
     <div class="row m-3">
-        <div class="col-md-3">
-            <%= image_tag user.get_profile_image(200,200) %>
+        <div class="col-sm-12 col-lg-3">
+            <%= image_tag user.get_profile_image(200,200), class: "rounded-circle" %>
         </div>
-        <div class="col-md-9">
+        <div class="col-sm-12 col-lg-9">
             <table class="table table-borderless" style="font-size:25px;">
                 <tr>
                     <th>ニックネーム</th>
@@ -34,6 +34,6 @@
             </table>
         </div>
     </div>
-    <div class="col-md-12 text-center">
-        <%= link_to "感想一覧", impressions_path, class: "btn btn-primary px-5" %>
+    <div class="col-sm-12 text-center">
+        <%= link_to "つぶやき一覧", impressions_path, class: "btn btn-primary col-lg-4 col-md-4" %>
     </div>

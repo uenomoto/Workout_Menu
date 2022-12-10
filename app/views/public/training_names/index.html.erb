@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row m-5">
-    <div class="col-md-12 text-center">
+    <div class="col-sm-12 text-center">
       <h1>トレーニング名一覧表</h1>
     </div>
   </div>
   <div class="row m-5">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
+    <div class="col-lg-2"></div>
+    <div class="col-sm-12 col-lg-8">
       <table class="table">
         <thead class="thead-dark">
           <tr>
@@ -20,12 +20,11 @@
           <tr>
             <td><%= training_name.name %></td>
             <td><%= training_name.genre.name %></td>
-            <td><%= link_to "詳細へGO！", training_name_path(training_name.id), class: "btn btn-primary" %></td>
+            <td><%= link_to "詳細へGO!", training_name_path(training_name.id), class: "btn btn-primary col-lg-10" %></td>
           </tr>
           <% end %>
         </tbody>
       </table>
     </div>
-     <div class="col-md-2"></div>
   </div>
 </div>

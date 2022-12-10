@@ -1,25 +1,23 @@
 <div class="container">
   <div class="row m-5">
-    <div class="col-md-12">
+    <div class="col-sm-12">
       <h1 class="font-weight-bold text-center"><%= @training_menu %>のトレーニングメニュー</h1>
     </div>
   </div>
   <div class="row m-5">
-    <div class="col-md-12">
+    <div class="col-sm-12">
       <table class="table table-borderless">
         <thead class="thead-dark">
          <tr>
-          <th>日付</th>
           <th>名前</th>
           <th>部位</th>
           <th>レップ×セット</th>
-          <th  colspan="5"></th>
+          <th>種類</th>
          </tr>
         </thead>
         <tbody>
           <% @training_menus.each do |menu| %>
           <tr>
-            <td><%= menu.date %></td>
             <td>
               <%= link_to training_menu_path(menu.id) do %>
               <%= menu.training_name.name %>
@@ -42,7 +40,7 @@
   </div>
   <div class="row">
     <div class="col-md-12 text-center">
-      <%= link_to "開始！", check_path, class: "btn btn-success" %>
+      <%= link_to "開始！", check_path, class: "btn btn-success col-lg-5 col-md-5" %>
     </div>
   </div>
 </div>
