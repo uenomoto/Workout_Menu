@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row m-5 text-center">
-    <div class="col-md-12">
+    <div class="col-sm-12">
       <h1><%= @menu.date %>日の<%= @menu.training_name.name %>詳細</h1>
     </div>
   </div>
   <div class="row m-3">
-    <div class="col-md-12">
+    <div class="col-sm-12">
       <table class="table table-bordered table-dark">
           <tr>
             <th>日付</th>
@@ -38,12 +38,12 @@
   </div>
   <div class="row m-5 text-center">
     <% if @menu.user_id == current_user.id %>
-    <div class="col-md-4">
-      <%= link_to "メニュー編集", edit_training_menu_path(@menu.id), class: "btn btn-success" %>
+    <div class="col-md-4 col-sm-12">
+      <%= link_to "メニュー編集", edit_training_menu_path(@menu.id), class: "btn btn-success col-lg-10" %>
     </div>
     <div class="col-md-4"></div>
-    <div class="col-md-4">
-      <%= link_to "メニュー削除", training_menu_path(@menu.id), method: :delete, "data-confirm" => "削除してもよろしいですか？", class: "btn btn-danger" %>
+    <div class="col-md-4 col-sm-12">
+      <%= link_to "メニュー削除", training_menu_path(@menu.id), method: :delete, "data-confirm" => "削除してもよろしいですか？", class: "btn btn-danger col-lg-10" %>
     </div>
     <% end %>
   </div>

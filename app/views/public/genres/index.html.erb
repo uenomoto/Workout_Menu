@@ -1,28 +1,24 @@
 <div class="container">
   <div class="row m-5">
-    <div class="col-md-12 text-center">
+    <div class="col-sm-12 text-center">
       <h1>鍛える部位ご自身でカスタマイズ！</h1>
     </div>
   </div>
   <div class="row m-5">
-    <div class="col-md-7">
+    <div class="col-sm-12 col-lg-7">
       <table class="table table-borderless">
-        <% if @genres.name.present? %>
         <% @genres.each do |genre| %>
         <tr>
           <td class="font-weight-bold"><%= genre.name %></td>
-          <td><%= link_to "編集", edit_genre_path(genre.id), class: "btn btn-primary" %></td>
+          <td><%= link_to "編集", edit_genre_path(genre.id), class: "btn btn-primary col-lg-5" %></td>
         </tr>
         <% end %>
       </table>
-      <% else %>
-      <h3 class="text-danger">鍛える部位が登録されていません＞＜</h3>
-      <% end %>
     </div>
-    <div class="col-md-5">
+    <div class="col-sm-12 col-lg-5">
       <%= form_with model: @genre, url: "/genres", method: :post do |f| %>
       <%= render 'layouts/error', model: f.object %>
-      <%= f.label "鍛える部位" %>
+      <%= f.label "鍛える部位", class: "font-weight-bold" %>
       <%= f.text_field :name, placeholder: "例）二頭筋などなど" %>
       <%= f.submit "登録！", class: "btn btn-success" %>
       <% end %>

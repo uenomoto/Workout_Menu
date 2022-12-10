@@ -1,17 +1,17 @@
 <div class="container">
   <div class="row m-3">
-    <div class="col-md-12">
+    <div class="col-sm-12">
       <h1 class="text-center">トレーニー一覧表</h1>
     </div>
   </div>
   <div class="row m-3">
-    <table class="table">
+    <table class="table table-borderless">
       <thead class="thead-dark">
         <tr>
           <th>プロフィール画像</th>
           <th>ニックネーム</th>
-          <th>都道府県</th>
-          <th>感想</th>
+          <th>地域</th>
+          <th>つぶやき</th>
         </tr>
       </thead>
       <tbody>
@@ -19,7 +19,7 @@
         <tr>
           <td>
             <%= link_to user_path(user.id) do %>
-            <%= image_tag user.get_profile_image(100,100) %>
+            <%= image_tag user.get_profile_image(100,100), class: "rounded-circle" %>
             <% end %>
           </td>
           <td><%= user.nickname %></td>

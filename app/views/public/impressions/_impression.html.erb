@@ -13,13 +13,14 @@
              <%= impression.post_comments.count %>コメント |
              <%= impression.favorites.count %>いいね
              </p>
-             <%= link_to "コメントはこちらから", impression_path(impression.id), class: "btn btn-primary"  %>
+             <%= link_to "コメントはこちらから", impression_path(impression.id), class: "btn btn-primary col-lg-4 col-md-7"  %>
             <% if current_user.id == impression.user_id %>
-             <%= link_to "つぶやき編集", edit_impression_path(impression.id), class: "btn btn-warning"  %>
-             <%= link_to "呟き削除", impression_path(impression.id), method: :delete, "data-confirm" => "削除してもよろしいですか？",class: "btn btn-danger" %>
+             <%= link_to "つぶやき編集", edit_impression_path(impression.id), class: "btn btn-warning col-lg-4 col-md-7"  %>
+             <%= link_to "呟き削除", impression_path(impression.id), method: :delete, "data-confirm" => "削除してもよろしいですか？",class: "btn btn-danger col-lg-3 col-md-7" %>
             <% end %>
-             投稿日:
-             <%= impression.created_at.strftime('%Y/%m/%d') %>
+             <div class="font-weight-bold">
+              投稿日:  <%= impression.created_at.strftime('%Y/%m/%d') %>
+             </div>
             </div>
           </div>
          </div>

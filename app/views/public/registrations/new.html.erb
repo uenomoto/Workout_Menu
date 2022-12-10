@@ -1,42 +1,56 @@
 <div class="container">
-  <h1>新規会員登録</h1>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-
-  <div class="form-group">
-    <%= f.label :"ニックネーム" %>
-    <%= f.text_field :nickname, autofocus: true, placeholder:"ニックネーム" %>
+  <div class="row m-3">
+   <div class="col-sm-12 text-center">
+    <h1>新規会員登録</h1>
+   </div>
   </div>
+   <div class="row m-3">
+    <div class="col-lg-3"></div>
+    <div class="col-sm-12 col-lg-6">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-  <div class="form-group">
-    <%= f.label :"都道府県" %>
-    <%= f.text_field :prefecture, autofocus: true %>県
+      <div class="form-group">
+       <%= f.label :"ニックネーム" %>
+       <i class="fas fa-user"></i>
+       <%= f.text_field :nickname, autofocus: true, placeholder:"ニックネーム", class: "form-control" %>
+      </div>
+
+     <div class="form-group">
+      <%= f.label :"お住まいの地域" %>
+      <i class="fas fa-home"></i>
+      <%= f.text_field :prefecture, autofocus: true, class: "form-control" %>
+     </div>
+
+    <div class="form-group">
+      <%= f.label :"自己紹介" %>
+      <i class="fa fa-comment"></i>
+      <%= f.text_area :introduction, autofocus: true, placeholder:"トレーニング中に意識していることなどなど・・・", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :"メールアドレス" %>
+      <i class="fas fa-envelope"></i>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :"パスワード（６文字以上）" %>
+      <i class="fas fa-key"></i>
+      <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :"パスワード確認" %>
+      <i class="fas fa-key"></i>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+    </div>
+
+    <div class="sign up">
+      <%= f.submit "新規登録する！", class: "btn btn-success form-control col-lg-4 float-right" %>
+    </div>
+     <% end %>
+
+     <h5 class="float-right mt-3">既に登録済みの方は<span><%= link_to "こちらからお願いします！", new_user_session_path, class: "btn btn-primary" %></span></h5>
   </div>
-
-  <div class="form-group">
-    <%= f.label :"自己紹介" %>
-    <%= f.text_area :introduction, autofocus: true, placeholder:"トレーニング中に意識していることなどなど・・・" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :"メールアドレス" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :"パスワード（６文字以上）" %>
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :"パスワード確認" %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="sign up">
-    <%= f.submit "新規登録　する！" %>
-  </div>
-<% end %>
-
- <h5>既に登録済みの方は<span><%= link_to "こちらからお願いします！", new_user_session_path %></span></h5>
+ </div>
 </div>

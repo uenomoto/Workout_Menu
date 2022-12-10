@@ -6,7 +6,7 @@
   </div>
   <div class="row m-3">
     <div class="col-lg-3"></div>
-    <div class="col-sm-12 col-lg-6 text-center">
+    <div class="col-sm-12 col-lg-6">
       <%= form_with model: @training_menu, url: "/training_menus" ,method: :post do |f| %>
           <%= render 'layouts/error', model: f.object %>
 
@@ -47,7 +47,7 @@
       </div>
 
       <div class="form-group">
-        <%= f.submit "メニューを追加する", class: "btn btn-success" %>
+        <%= f.submit "メニューを追加する", class: "btn btn-success float-right col-lg-4" %>
       </div>
       <% end %>
     </div>
