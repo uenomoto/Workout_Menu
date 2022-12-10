@@ -27,8 +27,8 @@ Rails.application.routes.draw do
     get 'users/information/:id/edit', to: 'users#edit',as: 'users_edit'
     patch 'users/information/:id', to: 'users#update'
     get 'users/information', to: 'users#index',as: 'users'
-    get 'users/unsubscribe/:id', to: 'users#unsubscribe',as: 'unsubscribe'
-    patch 'users/withdraw/:id', to: 'users#withdraw',as: 'withdraw'
+    get 'users/unsubscribe', to: 'users#unsubscribe',as: 'unsubscribe'
+    patch 'users/withdraw', to: 'users#withdraw',as: 'withdraw'
   end
 
   scope module: :public do
