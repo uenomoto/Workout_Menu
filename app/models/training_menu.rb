@@ -11,4 +11,6 @@ class TrainingMenu < ApplicationRecord
     validates :count,            numericality: { only_integer: true }
     validates :set,              numericality: { only_integer: true }
 
+    enum status: { "自重":0, "加重":1, "有酸素":2 }
+
 end

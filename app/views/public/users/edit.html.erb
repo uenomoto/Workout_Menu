@@ -18,7 +18,7 @@
 
   <div class="form-group">
     <%= f.label :"お住まいの地域" %>
-    <%= f.text_field :prefecture, autofocus: true, class: "form-control" %>
+    <%= f.select :prefecture, User.prefectures.keys, {prompt: '---選択してください---'}, class: 'form-control' %>
   </div>
 
   <div class="form-group">
@@ -33,7 +33,7 @@
 
   <div class="form-group">
     <%= f.label :"プロフィール画像" %>
-    <%= f.file_field :profile_image, accept: "image/*", class: "float-right" %>
+    <%= f.file_field :profile_image, accept: "image/*", class: "form-control" %>
   </div>
   <div class="sign up">
     <%= f.submit "情報変更する", class: "btn btn-success float-right col-lg-3" %>

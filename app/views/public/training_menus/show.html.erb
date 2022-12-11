@@ -24,12 +24,20 @@
               <td><%= @menu.count %>×<%= @menu.set %></td>
             </tr>
             <tr>
-              <th>重さ</th>
-              <td>
-              <% if @menu.status == true %>
-              <p><%= @menu.weight %>kg</p>
+              <th>
+              <% if @menu.status == TrainingMenu.statuses.key(2) %>
+              有酸素
               <% else %>
+              重さ
+              <% end %>
+              </th>
+              <td>
+              <% if @menu.status == TrainingMenu.statuses.key(1) %>
+              <p><%= @menu.weight %>kg</p>
+              <% elsif @menu.status == TrainingMenu.statuses.key(0) %>
               <p>自重</p>
+              <% else %>
+              <p>有酸素</p>
               <% end %>
               </td>
            </tr>

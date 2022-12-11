@@ -3,9 +3,9 @@ class Public::PostCommentsController < ApplicationController
 
     def create
       #binding.pry
-      @impression = Impression.find(params[:impression_id])
+      @tweet = Tweet.find(params[:tweet_id])
       @post_comment = current_user.post_comments.new(post_comment_params)
-      @post_comment.impression_id = @impression.id
+      @post_comment.tweet_id = @tweet.id
       if @post_comment.save
         redirect_to request.referer, notice: "コメント投稿しました"
       else
@@ -16,20 +16,20 @@ class Public::PostCommentsController < ApplicationController
     end
 
     def edit
-      @impression = Impression.find(params[:impression_id])
+      @tweet = Tweet.find(params[:tweet_id])
       @post_comment = PostComment.find(params[:id])
       if @post_comment.user_id == current_user.id
         render :edit
       else
-        redirect_to impression_path(@impression)
+        redirect_to tweet_path(@tweet)
       end
     end
 
     def update
-      @impression = Impression.find(params[:impression_id])
+      @tweet = Tweet.find(params[:tweet_id])
       @post_comment = PostComment.find(params[:id])
       if @post_comment.update(post_comment_params)
-        redirect_to impression_path(@impression), notice: "コメントを編集しました"
+        redirect_to tweet_path(@tweet), notice: "コメントを編集しました"
       else
         flash.now[:danger] = "編集に失敗しました"
         render :edit
@@ -48,7 +48,7 @@ class Public::PostCommentsController < ApplicationController
     private
 
   def post_comment_params
-    params.require(:post_comment).permit(:user_id, :impression_id, :comment)
+    params.require(:post_comment).permit(:user_id, :tweet_id, :comment)
   end
 
 end

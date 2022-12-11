@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_03_085220) do
+ActiveRecord::Schema.define(version: 2022_12_11_101113) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2022_12_03_085220) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "impression_id", null: false
+    t.integer "tweet_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -67,16 +67,9 @@ ActiveRecord::Schema.define(version: 2022_12_03_085220) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "impressions", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.text "text", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "post_comments", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "impression_id", null: false
+    t.integer "tweet_id", null: false
     t.text "comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -88,11 +81,11 @@ ActiveRecord::Schema.define(version: 2022_12_03_085220) do
     t.date "date", null: false
     t.integer "count", null: false
     t.integer "set", null: false
-    t.boolean "status", null: false
+    t.integer "status", null: false
+    t.integer "weight"
+    t.boolean "completion", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "weight"
-    t.boolean "completion", default: false
   end
 
   create_table "training_names", force: :cascade do |t|
@@ -100,6 +93,13 @@ ActiveRecord::Schema.define(version: 2022_12_03_085220) do
     t.integer "user_id", null: false
     t.string "name", null: false
     t.text "introduction", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tweets", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.text "text", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -112,7 +112,7 @@ ActiveRecord::Schema.define(version: 2022_12_03_085220) do
     t.datetime "remember_created_at"
     t.string "nickname", null: false
     t.string "introduction", null: false
-    t.string "prefecture", null: false
+    t.integer "prefecture", null: false
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

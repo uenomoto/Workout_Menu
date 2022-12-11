@@ -13,7 +13,7 @@
     <div class="col-lg-3"></div>
     <div class="col-sm-12 col-lg-6">
       <div class="form-area">
-       <%= form_with model: @impression, url: "/impressions", method: :post do |f| %>
+       <%= form_with model: @tweet, url: tweets_path, method: :post do |f| %>
        <%= render 'layouts/error', model: f.object %>
        <%= f.text_area :text, placeholder: "呟き記入欄", class: "form-control", rows: 5 %><br>
        <%= f.submit "呟き投稿", class: "btn btn-success float-right col-lg-4 col-md-4" %>

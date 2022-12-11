@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   scope module: :public do
-    resources :impressions, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
+    resources :tweets, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
       resources :post_comments, only: [:edit, :update, :create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end

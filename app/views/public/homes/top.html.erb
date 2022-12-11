@@ -6,15 +6,15 @@
 　  気軽にトレーニーとのコミュニケーションができる<br>
 　  コミュニティサイトです！
 　  </p>
-　  <%= link_to "メニューカレンダー", training_menus_path, class: "btn btn-warning", style: "margin-top: 50px; padding-left: 50px; padding-right:50px;" %>
-　  <div class="row mt-5">
-　    <div class="col-md-2"></div>
-　    <div class="col-md-4">
-　      <%= link_to "部位登録一覧", genres_path, class: "btn btn-success", style: "padding-left: 50px; padding-right:50px;" %>
-　    </div>
-　    <div class="col-md-4">
-　      <%= link_to "トレーニング名一覧", training_names_path, class: "btn btn-info", style: "padding-left: 40px; padding-right: 40px;" %>
-　    </div>
+　  <div class="row m-3">
+　    <div class="col-lg-4"><%= link_to "トレーニング名一覧", training_names_path, class: "btn btn-info col-lg-4 col-md-4" %></div>
+　    <div class="col-sm-12 col-lg-3"></div>
+　    <div class="col-sm-12 col-lg-4"><%= link_to "メニューカレンダー", training_menus_path, class: "btn btn-warning" %></div>
+　  </div>
+　  <div class="row m-5">
+　    <div class="col-sm-12 col-lg-4"><%= link_to "つぶやく", new_tweet_path, class: "btn btn-info col-lg-4 col-md-4" %></div>
+　    <div class="col-sm-12 col-lg-3"></div>
+　    <div class="col-sm-12 col-lg-4"><%= link_to "部位登録一覧", genres_path, class: "btn btn-success col-lg-4 col-md-4" %></div>
 　  </div>
   </div>
 </div>
