@@ -17,6 +17,13 @@ class Public::TweetsController < ApplicationController
     end
   end
 
+  # 各会員のつぶやき一覧
+  def permember
+    @user = User.find(params[:id])
+    @tweets = @user.tweets.order(created_at: :desc).page(params[:page]).per(4)
+  end
+
+# 全てのつぶやき一覧
   def index
     @tweets = Tweet.order(created_at: :desc).page(params[:page]).per(4)
   end

@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  
+
   scope module: :public do
     get "search" => "searches#search"
   end
-  
+
   scope module: :public do
+    get 'tweets/permember/:id',to: 'tweets#permember',as: 'tweet_permember'
     resources :tweets, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
       resources :post_comments, only: [:edit, :update, :create, :destroy]
       resource :favorites, only: [:create, :destroy]
