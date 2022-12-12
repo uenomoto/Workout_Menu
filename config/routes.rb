@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-
+  
+  scope module: :public do
+    get "search" => "searches#search"
+  end
+  
   scope module: :public do
     resources :tweets, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
       resources :post_comments, only: [:edit, :update, :create, :destroy]

@@ -10,7 +10,7 @@
               <%= @tweet.user.nickname %>のプロフィール画像
              <%= image_tag @tweet.user.get_profile_image(100,100), class: "rounded-circle" %>
              <p class="h2">
-               <%= render "tweets", tweet: @tweet %> |
+               <%= render "favorites", tweet: @tweet %> |
                <%= @tweet.favorites.count %>いいね
              </p>
              </div>

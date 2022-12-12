@@ -40,4 +40,21 @@ class User < ApplicationRecord
  }
 
 
+# サーチ機能
+    def self.search_for(word,method)
+    return none if word.blank?
+       if method == 'perfect'
+       User.where(nickname: word)
+
+     elsif method == 'forward'
+       User.where('nickname LIKE ?', word + '%')
+
+     elsif method == 'backword'
+       User.where('nickname LIKE ?', '%' + word)
+     else
+       User.where('nickname LIKE ?', '%' + word + '%')
+     end
+    end
+
+
 end

@@ -1,12 +1,13 @@
 <div class="container">
   <div class="row m-3">
     <div class="col-sm-12 text-center">
-      <h1>トレーニー一覧表</h1>
-      <%= render "search" %>
+      <h1>検索結果</h1>
     </div>
   </div>
+  <% if @records.present?%>
   <div class="row m-3">
-    <table class="table table-borderless">
+    <div class="col-sm-12">
+      <table class="table table-borderless">
       <thead class="thead-dark">
         <tr>
           <th>プロフィール画像</th>
@@ -16,7 +17,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @users.first(10).each do |user| %>
+        <% @records.each do |user| %>
         <tr>
           <td>
             <%= link_to user_path(user.id) do %>
@@ -30,5 +31,9 @@
         <% end %>
       </tbody>
     </table>
+    <% else %>
+    <h5 class="text-danger text-center">検索したユーザーはいませんでしたorz</h5>
+    <% end %>
+    </div>
   </div>
 </div>
