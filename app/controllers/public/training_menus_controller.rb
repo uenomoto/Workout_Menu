@@ -62,7 +62,7 @@ class Public::TrainingMenusController < ApplicationController
   def complete
     @training_menu = TrainingMenu.where(user:current_user, date: params[:id])
     @training_menu.update(completion: true)
-    redirect_to new_tweet_path
+    redirect_to root_path, flash: {success: "トレーニングお疲れ様でした！"}
   end
 
   private

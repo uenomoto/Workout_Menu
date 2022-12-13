@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
       flash[:danger]="ログアウトしました"
       new_admin_session_path
       else
-      flash[:info] = "お疲れ様でした！"
+      flash[:info] = "継続して頑張りましょう！"
       about_path
       end
     end
