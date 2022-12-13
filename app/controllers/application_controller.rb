@@ -3,10 +3,10 @@ class ApplicationController < ActionController::Base
 
     def after_sign_in_path_for(resource_or_scope)
       if resource_or_scope.is_a?(Admin)
-      flash[:notice]="ログインしました"
+      flash[:success]="ログインしました"
       admin_root_path
       else
-      flash[:notice]="今日もレッツトレーニング！"
+      flash[:success]="今日もレッツトレーニング！"
       root_path
       end
     end
@@ -14,15 +14,15 @@ class ApplicationController < ActionController::Base
 
     def after_sign_out_path_for(resource_or_scope)
       if resource_or_scope == :admin
-      flash[:notice]="ログアウトしました"
+      flash[:danger]="ログアウトしました"
       new_admin_session_path
       else
-      flash[:notice]="お疲れ様でした！"
+      flash[:info] = "お疲れ様でした！"
       about_path
       end
     end
 
-
+    add_flash_types :success, :info, :warning, :danger
 
     protected
 

@@ -10,8 +10,9 @@ class Public::TrainingMenusController < ApplicationController
     @training_menu = TrainingMenu.new(training_menu_params)
     @training_menu.user_id = current_user.id
     if @training_menu.save
-      redirect_to training_menu_path(@training_menu.id)
+      redirect_to training_menu_path(@training_menu.id), flash: {success: "メニュー作成しました。"}
     else
+      flash.now[:danger] = "メニュー作成失敗しました"
       render :new
     end
   end
@@ -41,8 +42,9 @@ class Public::TrainingMenusController < ApplicationController
   def update
     @training_menu = TrainingMenu.find(params[:id])
     if @training_menu.update(training_menu_params)
-      redirect_to training_menu_path(@training_menu.id)
+      redirect_to training_menu_path(@training_menu.id), flash: {info: "メニュー編集しました。"}
     else
+      flash.now[:danger] = "編集に失敗しました"
       render :edit
     end
   end
@@ -50,6 +52,7 @@ class Public::TrainingMenusController < ApplicationController
   def destroy
     @training_menu = TrainingMenu.find(params[:id])
     @training_menu.destroy
+    flash[:danger] = "メニュー削除しました"
     redirect_to training_menus_path
   end
 
@@ -59,7 +62,7 @@ class Public::TrainingMenusController < ApplicationController
   def complete
     @training_menu = TrainingMenu.where(user:current_user, date: params[:id])
     @training_menu.update(completion: true)
-    redirect_to new_impression_path
+    redirect_to new_tweet_path
   end
 
   private

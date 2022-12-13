@@ -39,7 +39,10 @@
     <% elsif user_signed_in? %>
 
     <li class="nav-item">
-      <%= link_to "説明書", about_path, class: "btn btn-warning mx-4" %>
+      <%= link_to "説明書", about_path, class: "btn btn-primary mx-4" %>
+    </li>
+    <li class="nav-item">
+      <%= link_to "つぶやき一覧", tweets_path, class: "btn btn-primary mx-4" %>
     </li>
     <li class="nav-item">
       <%= link_to "マイページ", user_path(current_user.id), class: "btn btn-warning mx-4" %>
@@ -81,11 +84,33 @@
   </header>
 
   <body>
-    <p class="text-center text-dark bg-success"><%= notice %></p>
+    <%= render 'layouts/flash_message' %>
     <%= yield %>
   </body>
 
-  <footer>
-    <div class="text-left h3" style= "font-family:Corben,cursive;">WorkoutMenu</div>
-  </footer>
+<footer class="footer">
+  <div class="container">
+    <div class="row no-gutters">
+       <div class="col-sm-12 col-md-5">
+        <div class="footer-logo">WorkoutMenu</div>
+       </div>
+       <div class="col-sm-12 col-md-4">
+        <div class="footer-logo2">©2022 motoki ueno</div>
+       </div>
+      <div class="col-sm-12 col-md-3 col-lg-3">
+       <div class="footer-logo3">
+        <ul class="p-0 list-unstyled">
+         <li><a href="#" class="text-dark">お問い合わせ</a></li>
+         <li><a href="#" class="text-dark">利用規約</a></li>
+         <li><a href="#" class="text-dark">運営者情報</a></li>
+         <li><%= link_to "退会する", unsubscribe_path, class: "text-danger" %></li>
+        </ul>
+      </div>
+    </div>
+   </div>
+  </div>
+</footer>
+
+
+
 </html>

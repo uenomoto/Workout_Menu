@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
   scope module: :public do
-    resources :impressions, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
+    get "search" => "searches#search"
+  end
+
+  scope module: :public do
+    get 'tweets/permember/:id',to: 'tweets#permember',as: 'tweet_permember'
+    resources :tweets, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
       resources :post_comments, only: [:edit, :update, :create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
@@ -27,8 +32,8 @@ Rails.application.routes.draw do
     get 'users/information/:id/edit', to: 'users#edit',as: 'users_edit'
     patch 'users/information/:id', to: 'users#update'
     get 'users/information', to: 'users#index',as: 'users'
-    get 'users/unsubscribe/:id', to: 'users#unsubscribe',as: 'unsubscribe'
-    patch 'users/withdraw/:id', to: 'users#withdraw',as: 'withdraw'
+    get 'users/unsubscribe', to: 'users#unsubscribe',as: 'unsubscribe'
+    patch 'users/withdraw', to: 'users#withdraw',as: 'withdraw'
   end
 
   scope module: :public do

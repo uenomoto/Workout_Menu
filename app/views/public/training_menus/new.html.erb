@@ -33,14 +33,16 @@
       </div>
       <div class="form-group">
        <div class="radio_button">
-        <%= f.radio_button :status, true, checked: true %>
+        <%= f.radio_button :status, TrainingMenu.statuses.key(1), checked: true %>
         <%= f.label :status, "加重" %>
-        <%= f.radio_button :status, false %>
+        <%= f.radio_button :status, TrainingMenu.statuses.key(0) %>
         <%= f.label :status, "自重" %>
+        <%= f.radio_button :status, TrainingMenu.statuses.key(2) %>
+        <%= f.label :status, "有酸素" %>
        </div>
       </div>
       <div class="form-group">
-        <% if @training_menu.status == true %>
+        <% if @training_menu.status == 1 %>
        <%= f.label :"重さ" %>
        <%=f.number_field :weight, min: 1 %>kg
        <% end %>

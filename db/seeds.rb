@@ -17,7 +17,7 @@ User.create!(
   nickname: 'テストちゃん',
   email: 'test@hoge.com',
   introduction: 'テストレーニング！！',
-  prefecture: '新潟',
+  prefecture: 30,
   password: 'aaaaaaa'
   )
 
