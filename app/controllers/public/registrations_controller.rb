@@ -52,7 +52,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-      flash[:notice] =  "ようこそ！Workout_menuへ！"
+      flash[:success] =  "ようこそ！Workout_menuへ！"
       user_path(current_user)
   end
 

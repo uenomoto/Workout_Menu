@@ -7,7 +7,7 @@ class Public::PostCommentsController < ApplicationController
       @post_comment = current_user.post_comments.new(post_comment_params)
       @post_comment.tweet_id = @tweet.id
       if @post_comment.save
-        redirect_to request.referer, notice: "コメント投稿しました"
+        redirect_to request.referer, flash: {success: "コメント投稿しました。"}
       else
         flash[:danger] = "投稿に失敗しました"
         # 遷移前のページに戻る↓
@@ -29,7 +29,7 @@ class Public::PostCommentsController < ApplicationController
       @tweet = Tweet.find(params[:tweet_id])
       @post_comment = PostComment.find(params[:id])
       if @post_comment.update(post_comment_params)
-        redirect_to tweet_path(@tweet), notice: "コメントを編集しました"
+        redirect_to tweet_path(@tweet), flash: {info: "コメント編集しました。"}
       else
         flash.now[:danger] = "編集に失敗しました"
         render :edit

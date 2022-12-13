@@ -5,6 +5,7 @@
     </div>
   </div>
   <div class="row m-5">
+   <% if @tweets.present? %>
     <div class="col-sm-12">
      <div class="d-flex flex-column">
        <% @tweets.first(4).each do |tweet| %>
@@ -34,6 +35,9 @@
           </div>
          </div>
       </div>
+      <% end %>
+      <% else %>
+      <h1 class="text-danger text-center">ツイートはありません＞＜</h1>
       <% end %>
      </div>
     </div>

@@ -21,9 +21,9 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      #flash[:notice] =
-    redirect_to user_path(current_user)
+    redirect_to user_path(current_user), flash: {success: "編集しました。"}
     else
+      flash.now[:danger] = "編集失敗しました。"
       render :edit
     end
   end
@@ -32,8 +32,7 @@ class Public::UsersController < ApplicationController
     @user = current_user
     @user.update(is_deleted: true)
     reset_session
-    #flash[:notice] = ""
-    redirect_to about_path
+    redirect_to about_path, flash: {warning: "退会しました。ご利用ありがとうございました。"}
   end
 
   private
