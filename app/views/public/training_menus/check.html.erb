@@ -1,7 +1,15 @@
 <div class="container">
   <div class="row m-5">
     <div class="col-sm-12">
-      <h1 class="font-weight-bold text-center">メニューチェック表</h1>
+       <h1 class="font-weight-bold text-center">メニューチェック表</h1>
+       <div class="col-sm-12 text-center mt-4">
+         <p class="text-warning">インターバルとしてお使いください</p>
+        <input type='text' id='view' readonly>
+        <div class="mt-3">
+          <button id='start'>START</button>
+          <button id='reset'>RESET</button>
+        </div>
+       </div>
     </div>
   </div>
   <div class="row m-5">
@@ -49,3 +57,62 @@
     </div>
   </div>
 </div>
+
+<script>
+'use strict';
+const
+    view     = document.getElementById('view'),
+    startBtn = document.getElementById('start'),
+    resetBtn = document.getElementById('reset');
+
+let startTime = 0;
+
+window.addEventListener('DOMContentLoaded', function() {
+    const e = window.ontouchstart !== undefined ? 'touchstart' : 'mousedown';
+    startBtn.addEventListener(e, clickStart);
+    resetBtn.addEventListener(e, clickReset);
+    view.value = timeFormat(0);
+});
+
+// STARTボタン押下時
+function clickStart() {
+    // 停止状態なら
+    if(startTime <= 0) {
+        // 計測開始
+        startTime += Date.now();
+        timePrint();
+        startBtn.textContent = 'STOP';
+        resetBtn.disabled = true;
+    }
+    // 計測中なら
+    else {
+        // 停止
+        startTime -= Date.now();
+        startBtn.textContent = 'START';
+        resetBtn.disabled = false;
+    }
+}
+
+// RESETボタン押下時
+function clickReset() {
+    // 停止状態なら
+    if(startTime < 0) {
+        // リセット
+        startTime = 0;
+        view.value = timeFormat(0);
+    }
+}
+
+// 時間表示
+function timePrint() {
+    if(startTime > 0) {
+        view.value = timeFormat(Date.now() - startTime);
+        requestAnimationFrame(timePrint);
+    }
+}
+
+// 表示フォーマット
+function timeFormat(t) {
+    return Math.floor(t / 36e5) + new Date(t).toISOString().slice(13, 23);
+}
+</script>
