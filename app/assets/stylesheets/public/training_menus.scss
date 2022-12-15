@@ -3,3 +3,33 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 
+// ストップウォッチ
+#start {
+    width: 48%;
+    height: 50px;
+    max-width: 120px;
+    font-size: 15px;
+    border-radius: 30px;
+    border: 2px #888 solid;
+    background-color: #fff;
+    -webkit-appearance: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+}
+
+#reset {
+    width: 48%;
+    height: 50px;
+    max-width: 120px;
+    font-size: 15px;
+    border-radius: 30px;
+    border: 2px #888 solid;
+    background-color: #fff;
+    -webkit-appearance: none;
+    -webkit-user-select: none;
+    cursor: pointer;
+}
+
+#view {
+  font-size: 22px;
+}
