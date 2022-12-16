@@ -27,16 +27,14 @@
       </thead>
 
        <tbody>
-         <%= collection_check_boxes(:training_menu, :completion, TrainingMenu.where(user:current_user, date: params[:id]), :id, :training_name) do |menu| %>
+         <% @training_menus.each do |menu| %>
         <tr>
-         <td class="chkbox">
-           <%= menu.label { menu.check_box } %>
-         </td>
-         <td><%= menu.text.name %></td>
-         <td><%= menu.text.genre.name %></td>
-         <td><%= menu.object.count %>×<%= menu.object.set %></td>
+         <td><%= check_box :training_menu, :completion, {class: "check_box"}, true, false %></td>
+         <td><%= menu.training_name.name %></td>
+         <td><%= menu.training_name.genre.name %></td>
+         <td><%= menu.count %>×<%= menu.set %></td>
          <td>
-           <% if menu.object.completion == false %>
+           <% if menu.completion == false %>
            <p>頑張ろう！</p>
            <% else %>
            <p>終了！</p>
@@ -44,13 +42,13 @@
            </td>
         </tr>
         <% end %>
-       </tbody>
+        </tbody>
       </table>
         <div class="row m-3">
           <div class="col-sm-12 text-center">
            <%= form_with model: @training_menu, url: complete_path, method: :patch do |f| %>
 
-           <%= f.submit "トレーニング完了", class: "btn btn-success col-lg-6 col-md-6" %>
+           <button type="submit" id="btn" value="完了!!" class="btn btn-success col-lg-6 col-md-6">完了!!</button>
            <% end %>
           </div>
         </div>
@@ -115,4 +113,14 @@ function timePrint() {
 function timeFormat(t) {
     return Math.floor(t / 36e5) + new Date(t).toISOString().slice(13, 23);
 }
+</script>
+
+<script>
+// 全てチェックするとボタンが活性化する
+$(function(){
+$(':checkbox').on('change',function(){
+$('#btn').prop('disabled',$(':checkbox:not(:checked)').length>0);
+}).eq(0).trigger('change');
+
+});
 </script>

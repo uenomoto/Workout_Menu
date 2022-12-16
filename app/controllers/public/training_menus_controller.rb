@@ -57,6 +57,7 @@ class Public::TrainingMenusController < ApplicationController
   end
 
   def check
+    @training_menus = TrainingMenu.where(user:current_user, date: params[:id])
   end
 
   def complete
