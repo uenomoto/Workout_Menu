@@ -3,6 +3,8 @@ class Public::TrainingMenusController < ApplicationController
 
   def new
     @training_menu = TrainingMenu.new
+    @training_names = current_user.training_names
+    @genres = current_user.genres
   end
 
   def create
@@ -31,6 +33,8 @@ class Public::TrainingMenusController < ApplicationController
   end
 
   def edit
+    @training_names = current_user.training_names
+    @genres = current_user.genres
     @training_menu = TrainingMenu.find(params[:id])
     if @training_menu.user_id == current_user.id
       render :edit

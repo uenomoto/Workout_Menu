@@ -8,17 +8,35 @@
     <div class="col-lg-3"></div>
     <div class="col-sm-12 col-lg-6">
       <%= form_with model: @training_menu, url: "/training_menus" ,method: :post do |f| %>
-          <%= render 'layouts/error', model: f.object %>
-
-
       <div class="form-group">
       <%= f.label :"部位" %>
-      <%= f.collection_select :genre_id, Genre.where(user:current_user), :id, :name, {:prompt => "--選択してください--"}, class: "form-control" %>
+      <%= f.collection_select :genre_id, @genres, :id, :name, {include_blank: "お先にこちらを選択", prompt: false}, class: "form-control" %>
       </div>
-      <div class="form-group">
-      <%= f.label :"トレ名" %>
-      <%= f.collection_select :training_name_id, TrainingName.where(user:current_user), :id, :name, {:prompt => "--選択してください--"}, class: "form-control" %>
+
+      <div id="training_name_insert_point"></div>
+
+      <div id="training_name">
+       <div class="form-group">
+        <%= f.label :"トレ名" %>
+        <% if @training_names.blank? %>
+           <%= f.select :training_name_id, [], {include_blank: "部位登録してください"}, class: "form-control" %>
+           <% else %>
+            <%= f.collection_select :training_name_id, @training_names, :id, :name, {include_blank: "---", prompt: false}, class: "form-control" %>
+        <% end %>
+       </div>
       </div>
+<!--  --------- training_nameのtamplateを作成----------------------  -->
+      <% @genres.each do |genre|  %>
+        <template id="training_name_<%= genre.id %>"><!-- このidをもとに呼び出される-->
+         <div id="selected_training_name">
+          <div class="form-group">
+          <%= f.label :"トレ名" %>
+          <%= f.collection_select :training_name_id, genre.training_names, :id, :name, {include_blank: "---", prompt: false}, class: "form-control" %>
+          </div>
+         </div>
+        </template>
+      <% end %>
+
       <div class="form-group">
         <%= f.label :"日付" %>
         <%= f.date_field :date, class: "form-control" %>
@@ -55,3 +73,5 @@
     </div>
   </div>
 </div>
+
+<%= javascript_pack_tag 'category_select.js', 'data-turbolinks-track': 'reload'  %>
