@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 2022_12_11_101113) do
     t.integer "set", null: false
     t.integer "status", null: false
     t.integer "weight"
+    t.integer "distance"
     t.boolean "completion", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

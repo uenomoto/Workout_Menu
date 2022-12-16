@@ -43,7 +43,7 @@
 
 /*チェックボックスのサイズ*/
 input[type=checkbox] {
-	transform: scale(2.0);
+	transform: scale(1.5);
 }
 
 /*ラジオボタンのサイズ*/

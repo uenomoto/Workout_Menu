@@ -11,7 +11,7 @@
          <tr>
           <th>名前</th>
           <th>部位</th>
-          <th>レップ×セット</th>
+          <th>回数×セット</th>
           <th>種類</th>
          </tr>
         </thead>
@@ -26,10 +26,12 @@
             <td><%= menu.training_name.genre.name %></td>
             <td><%= menu.count %>×<%= menu.set %></td>
             <td>
-              <% if menu.status == true %>
+              <% if menu.status == TrainingMenu.statuses.key(1) %>
               <%= menu.weight %>kg
-              <% else %>
+              <% elsif menu.status == TrainingMenu.statuses.key(0)  %>
               <p>自重</p>
+              <% else %>
+              <%= menu.distance %>km
               <% end %>
             </td>
           </tr>

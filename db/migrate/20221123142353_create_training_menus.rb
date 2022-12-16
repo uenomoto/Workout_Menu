@@ -8,6 +8,7 @@ class CreateTrainingMenus < ActiveRecord::Migration[6.1]
       t.integer :set,               null: false
       t.integer :status,            null: false
       t.integer :weight
+      t.integer :distance
       t.boolean :completion,        null: false, default: false
       t.timestamps
     end

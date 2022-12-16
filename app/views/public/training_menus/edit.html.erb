@@ -12,7 +12,7 @@
 
       <div class="form-group">
       <%= f.label :"部位" %>
-      <%= f.collection_select :genre_id, @genres, :id, :name, {prompt: "先にこちらを編集"}, class: "form-control" %>
+      <%= f.collection_select :genre_id, @genres, :id, :name, {prompt: false}, class: "form-control" %>
       </div>
 
       <div id="training_name_insert_point"></div>
@@ -44,7 +44,7 @@
         <%= f.date_field :date, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= f.label :"レップ数" %>
+        <%= f.label :"回数" %>
         <%= f.number_field :count, min: 1, class: "form-control" %>
       </div>
       <div class="form-group">
@@ -53,19 +53,25 @@
       </div>
       <div class="form-group">
        <div class="radio_button">
-        <%= f.radio_button :status, TrainingMenu.statuses.key(1) %>
-        <%= f.label :status, "加重" %>
-        <%= f.radio_button :status, TrainingMenu.statuses.key(0) %>
+        <%= f.radio_button :status, TrainingMenu.statuses.key(0), onchange: "myfunc(this.value)", checked: true %>
         <%= f.label :status, "自重" %>
-        <%= f.radio_button :status, TrainingMenu.statuses.key(2) %>
+        <%= f.radio_button :status, TrainingMenu.statuses.key(1), onchange: "myfunc(this.value)" %>
+        <%= f.label :status, "加重" %>
+        <%= f.radio_button :status, TrainingMenu.statuses.key(2),onchange: "myfunc(this.value)" %>
         <%= f.label :status, "有酸素" %>
        </div>
       </div>
       <div class="form-group">
-        <% if @training_menu.status == 1 %>
-       <%= f.label :"重さ" %>
-       <%=f.number_field :weight, min: 1 %>kg
-       <% end %>
+        <div id="hidden1">
+         <%= f.label :"重さ" %>
+         <%=f.number_field :weight, min: 1, class: "form-control" %>kg
+        </div>
+      </div>
+      <div class="form-group">
+        <div id="hidden2">
+          <%= f.label :"距離" %>
+          <%=f.number_field :distance, min: 1, class: "form-control" %>km
+        </div>
       </div>
       <div class="form-group">
         <%= f.submit "メニューを編集する", class: "btn btn-success float-right col-lg-5" %>
@@ -74,5 +80,29 @@
     </div>
   </div>
 </div>
+
+<script>
+  document.getElementById("hidden1").style.display ="none";
+  document.getElementById("hidden2").style.display ="none";
+
+  function myfunc(value) {
+  var check1 = document.getElementById("training_menu_status_加重").checked;
+  var check2 = document.getElementById("training_menu_status_有酸素").checked;
+  var hidden1 = document.getElementById("hidden1");
+  var hidden2 = document.getElementById("hidden2");
+  if(check1 == true){
+     hidden1.style.display ="block";
+     }
+  else{
+    hidden1.style.display ="none";
+  }
+  if(check2 == true){
+    hidden2.style.display ="block";
+     }
+  else{
+    hidden2.style.display ="none";
+  }
+}
+</script>
 
 <%= javascript_pack_tag 'category_select.js', 'data-turbolinks-track': 'reload'  %>
