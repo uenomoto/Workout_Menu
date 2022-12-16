@@ -3,6 +3,8 @@ class Public::TrainingMenusController < ApplicationController
 
   def new
     @training_menu = TrainingMenu.new
+    @training_names = current_user.training_names
+    @genres = current_user.genres
   end
 
   def create
@@ -31,6 +33,8 @@ class Public::TrainingMenusController < ApplicationController
   end
 
   def edit
+    @training_names = current_user.training_names
+    @genres = current_user.genres
     @training_menu = TrainingMenu.find(params[:id])
     if @training_menu.user_id == current_user.id
       render :edit
@@ -57,6 +61,7 @@ class Public::TrainingMenusController < ApplicationController
   end
 
   def check
+    @training_menus = TrainingMenu.where(user:current_user, date: params[:id])
   end
 
   def complete
@@ -68,7 +73,7 @@ class Public::TrainingMenusController < ApplicationController
   private
 
   def training_menu_params
-    params.require(:training_menu).permit(:user_id, :training_name_id, :date, :count, :set, :status, :weight, :completion)
+    params.require(:training_menu).permit(:user_id, :training_name_id, :date, :count, :set, :status, :weight, :distance, :completion)
   end
 
 end

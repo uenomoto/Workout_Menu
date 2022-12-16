@@ -18,7 +18,9 @@
    <div class="form-group">
      <%= f.label :"パスワード" %>
      <i class="fas fa-lock"></i>
-     <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+     <%= f.password_field :password, autocomplete: "current-password", class: "form-control mb-2", id: "see" %>
+     <input type="checkbox" onChange="document.getElementById('see').type = (this.checked) ? 'text' : 'password';">
+     パスワードを表示する
    </div>
 
 
