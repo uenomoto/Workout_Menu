@@ -77,7 +77,9 @@
     <li class="nav-item">
       <%= link_to "ログイン", new_user_session_path, class: "btn btn-success mx-4" %>
     </li>
-
+    <li class="nav-item">
+      <%= link_to "ゲストログイン(閲覧用)", users_guest_sign_in_path, class: "btn btn-success mx-4", method: :post %>
+    </li>
     <% end %>
     </nav>
 
@@ -103,7 +105,9 @@
          <li><a href="#" class="text-dark">お問い合わせ</a></li>
          <li><a href="#" class="text-dark">利用規約</a></li>
          <li><a href="#" class="text-dark">運営者情報</a></li>
+         <% if user_signed_in? && nickname(current_user) != "guestuser" %>
          <li><%= link_to "退会する", unsubscribe_path, class: "text-danger" %></li>
+         <% end %>
         </ul>
       </div>
     </div>
@@ -113,7 +117,7 @@
 
 <script>
   $(function(){
-    $(".alert").fadeOut(5000);
+    $(".alert").fadeOut(7000);
   });
 </script>
 

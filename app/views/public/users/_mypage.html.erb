@@ -29,9 +29,11 @@
         </div>
     </div>
     <div class="row m-5">
+        <% if user.nickname != "guestuser" %>
         <div class="col-md-4 col-sm-12 text-center">
             <%= link_to "マイページ編集", users_edit_path, class: "btn btn-success col-lg-6" %>
         </div>
+        <% end %>
         <div class="col-md-4 col-sm-12 text-center">
             <%= link_to "自分のつぶやき", tweet_permember_path(current_user), class: "btn btn-info col-lg-6" %>
         </div>
