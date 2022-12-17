@@ -1,19 +1,28 @@
 /*ここに独自のCSSを記述する*/
 
 .jumbotron-extend {
-  height: 100vh;
+  height: 70vh;
   min-height: 300px;
-  color: #fff;
   font-family: 'Playfair Display', serif;
 }
 
 .app-name {
-  font-size: 50px;
+  font-size: 100px;
   margin-top:50px;
 }
 
-.jumbotron-field {
-  height: 100vh;
+.jumbotron-fluid {
+  height: 90vh;
   width: 100%;
   min-height: 300px;
+}
+
+/*アバウトのタイトる*/
+.title-top{
+  font-family: 'Playfair Display', serif;
+}
+
+nav {
+  background-color: rgba(0,0,0,0.5);
+  width: 100%;
 }

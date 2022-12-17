@@ -16,6 +16,14 @@
  */
 
 
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+  }
+
+
 /*カレンダーのCSS*/
  .simple-calendar day {
    background: #fff9ee;
