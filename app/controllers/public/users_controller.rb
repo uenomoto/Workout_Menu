@@ -8,7 +8,7 @@ class Public::UsersController < ApplicationController
   end
 
   def index
-    @users = User.all.order(created_at: :desc)
+    @users = User.where(is_deleted: false).order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def edit

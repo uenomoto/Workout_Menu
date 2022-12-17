@@ -13,12 +13,10 @@
   </head>
 
   <header class="shadow-sm">
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-
+    <nav class="navbar navbar-expand-lg navbar-light">
       <%= link_to root_path do %>
     <h1 class="text-white px-5", style= "font-family:Corben,cursive;">WorkoutMenu</h1>
     <% end %>
-
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -37,10 +35,8 @@
     </li>
 
     <% elsif user_signed_in? %>
+   <p class="h5 text-light">ようこそ！<%= nickname(current_user) %>さん！</p>
 
-    <li class="nav-item">
-      <%= link_to "説明書", about_path, class: "btn btn-primary mx-4" %>
-    </li>
     <li class="nav-item">
       <%= link_to "つぶやき一覧", tweets_path, class: "btn btn-primary mx-4" %>
     </li>
@@ -64,6 +60,7 @@
           <div class="dropdown-divider"></div>
           <%= link_to "部位登録", genres_path, class: "btn btn-primary btn-sm ml-4" %>
         </div>
+        </div>
     </li>
     <li class="nav-item">
       <%=link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-danger mx-4" %>
@@ -82,7 +79,8 @@
     </li>
     <% end %>
     </nav>
-
+   </div>
+   </div>
   </header>
 
   <body>
@@ -112,7 +110,6 @@
       </div>
     </div>
    </div>
-  </div>
 </footer>
 
 <script>
