@@ -17,7 +17,6 @@
       <%= link_to root_path do %>
     <h1 class="text-white px-5", style= "font-family:Corben,cursive;">WorkoutMenu</h1>
     <% end %>
-
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -36,10 +35,8 @@
     </li>
 
     <% elsif user_signed_in? %>
+   <p class="h5 text-light">ようこそ！<%= nickname(current_user) %>さん！</p>
 
-    <li class="nav-item">
-      <%= link_to "説明書", about_path, class: "btn btn-primary mx-4" %>
-    </li>
     <li class="nav-item">
       <%= link_to "つぶやき一覧", tweets_path, class: "btn btn-primary mx-4" %>
     </li>

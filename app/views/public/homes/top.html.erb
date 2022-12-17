@@ -8,72 +8,38 @@
 　  </p>
 　</div>
 </div>
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12">
-      <p class="h3 border-bottom border-primary" style="padding:5px;">各一覧ページ</p>
-    </div>
-  </div>
-   <div class="card-deck">
-     <div class="col-sm-12 col-lg-3">
-        <div class="card shadow-lg mb-3">
-          <%= link_to training_names_path, class: "text-dark" do %>
-          <img class="card-img-top" src="https://images.unsplash.com/photo-1638536532686-d610adfc8e5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-          alt="トレ名" style="height: 200px;">
-          <div class="card-body">
-            <div class="card-title">トレーニング名一覧</div>
-            <div class="card-text">
-             こちらからご自身でトレーニング名を<br>
-             カスタマイズできます。
-            </div>
-          </div>
-          <% end %>
-         </div>
+  <div class="container">
+    <%= render "each_item" %>
+    <%= render "each_item2" %>
+   <div class="container">
+    <div class="row">
+     <div class="col-sm-12">
+      <p class="h3 border-bottom border-primary" style="padding:5px;">WorkoutMenuとは？</p>
+      <div class="bg-dark">
+       <h3 class="m-5 text-light font-weight-bold">
+        このアプリはトレーニングのメニューを作るアプリです<br>
+        全てご自身でカスタマイズできます<br>
+        鍛える部位、トレーニング名もご自身で決めれます。<br>
+        決め終わりましたらそこからメニューを組み立て日付を決めます。<br>
+        チェックを入れながら淡々とこなしていき<span class="text-danger">達成感</span>を味わいます<br>
+        ツイート機能もあるので気軽にコミュニケーションも取れます<br>
+        トレーニングは軽くこなすだけでも十分効果を実感できます！<br>
+        <span class="text-danger">未来への健康投資です！</span>皆さんも一緒に楽しくトレーニングやりましょう！
+       </h3>
       </div>
-      <div class="col-sm-12 col-lg-3">
-        <div class="card shadow-lg mb-3">
-          <%= link_to training_menus_path, class: "text-dark" do %>
-          <img class="card-img-top" src="https://images.unsplash.com/photo-1506784365847-bbad939e9335?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1468&q=80"
-          alt="トレ名" style="height: 200px;">
-          <div class="card-body">
-            <div class="card-title">メニューカレンダー</div>
-            <div class="card-text">
-             こちらから月のカレンダーが見れて<br>
-             予定がわかります。
-            </div>
-          </div>
-          <% end %>
-         </div>
-      </div>
-      <div class="col-sm-12 col-lg-3">
-        <div class="card shadow-lg mb-3">
-          <%= link_to new_tweet_path, class: "text-dark" do %>
-          <img class="card-img-top" src="https://images.unsplash.com/photo-1463003160077-801f9fd8d095?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-          alt="トレ名" style="height: 200px;">
-          <div class="card-body">
-            <div class="card-title">つぶやく</div>
-            <div class="card-text">
-             こちらからつぶいて<br>
-             コミュニケーションが<br>取れます。
-            </div>
-          </div>
-          <% end %>
-         </div>
-      </div>
-      <div class="col-sm-12 col-lg-3">
-        <div class="card shadow-lg mb-3">
-          <%= link_to training_names_path, class: "text-dark" do %>
-          <img class="card-img-top" src="https://images.unsplash.com/photo-1559116315-702b0b4774ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=683&q=80"
-          alt="トレ名" style="height: 200px;">
-          <div class="card-body">
-            <div class="card-title">部位一覧</div>
-            <div class="card-text">
-             こちらからご自身で鍛える部位を<br>
-             カスタマイズできます。
-            </div>
-          </div>
-          <% end %>
-         </div>
-      </div>
+      <p  class="btn btn-success float-right" id="page-top">🔼　一番上へ</p>
      </div>
-</div>
+    </div>
+   </div>
+  </div>
+
+  <script>
+    $(document).on('turbolinks:load', function() {
+    $('#page-top').on('click',function(event){
+    $('body, html').animate({
+      scrollTop:0
+    }, 900);
+    event.preventDefault();
+    });
+  });
+  </script>
