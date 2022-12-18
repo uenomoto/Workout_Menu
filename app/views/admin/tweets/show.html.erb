@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row m-5">
+    <%= render 'tweet', tweet: @tweet %>
+  </div>
+  <div class="row m-5">
+    <div class="col-sm-12">
+      通報者のニックネーム :
+      <% @tweet.reports.last(10).each do |report| %>
+      <%= link_to report.user.nickname, admin_user_path(report.user_id) %> |
+      <% end %>
+    </div>
+  </div>
+</div>

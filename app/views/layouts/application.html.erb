@@ -12,6 +12,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
+<% unless current_page?(about_path) %>
   <header class="shadow-sm">
     <nav class="navbar navbar-expand-lg navbar-light">
       <%= link_to root_path do %>
@@ -25,10 +26,10 @@
     <% if admin_signed_in? %>
 
     <li class="nav-item">
-      <%= link_to "アバウト", about_path,class: "btn btn-warning" %>
+      <%= link_to "会員一覧", admin_root_path,class: "btn btn-warning mr-2" %>
     </li>
     <li class="nav-item">
-      <%= link_to "コメント一覧", admin_post_comments_path,class: "btn btn-warning" %>
+      <%= link_to "ツイート一覧", admin_tweets_path,class: "btn btn-warning mr-2" %>
     </li>
     <li class="nav-item">
       <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-danger" %>
@@ -82,6 +83,7 @@
    </div>
    </div>
   </header>
+  <% end %>
 
   <body>
     <%= render 'layouts/flash_message' %>
