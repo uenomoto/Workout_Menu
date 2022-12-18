@@ -32,7 +32,7 @@ class Admin::TweetsController < ApplicationController
 
 
   private
-
+# 保存するわけでもないしいらないかも？
   def tweet_params
     params.require(:tweet).permit(:user_id, :tweet_id, :comment)
   end
