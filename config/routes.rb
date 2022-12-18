@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :tweets, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
       resources :post_comments, only: [:edit, :update, :create, :destroy]
       resource :favorites, only: [:create, :destroy]
+      resource :reports, only: [:create]
     end
   end
 
@@ -42,8 +43,8 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :post_comments, only: [:index, :show, :destroy]
-    get 'post_comments/permember/:id',to: 'post_comments#permember',as: 'permember'
+    resources :tweets, only: [:index, :show, :destroy]
+    get 'tweets/permember/:id',to: 'tweets#permember',as: 'permember'
   end
   namespace :admin do
     resources :users, only: [:show]
@@ -62,7 +63,7 @@ Rails.application.routes.draw do
     sessions: "public/sessions",
     registrations: "public/registrations"
   }
-  
+
   # ゲストログイン
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'

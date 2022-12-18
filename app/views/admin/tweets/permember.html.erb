@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row m-5">
+    <div class="col-sm-12 text-center">
+    <h1><%= @user.nickname %>さんのツイート一覧
+     <span class="h5">(全<%= @tweets.count %>件)</span>
+    </h1>
+    </div>
+  </div>
+  <%= render 'tweets', tweets: @tweets %>
+  <%= paginate @tweets %>
+</div>

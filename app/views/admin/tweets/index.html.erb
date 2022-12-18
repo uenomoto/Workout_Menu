@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row m-5">
+    <div class="col-sm-12 text-center">
+    <h1>会員様ツイート一覧</h1>
+      <%= link_to "通報ありのツイートを多い順で表示", admin_tweets_path(order: :desc) %>｜
+      <%= link_to "通報ありのツイートを少ない順で表示", admin_tweets_path(order: :asc) %>｜
+      <%= link_to "ツイートすべてを表示", admin_tweets_path %>
+    </div>
+  </div>
+  <div class="row m-3">
+    <div class="col-sm-12">
+     <%= render 'tweets', tweets: @tweets %>
+    </div>
+  </div>
+  <%= paginate @tweets %>
+</div>

@@ -33,6 +33,14 @@
           </td>
         </tr>
         <tr>
+          <th>ツイート一覧</th>
+          <td><%= link_to "#{@user.nickname}のツイート一覧", admin_permember_path(@user), class: "btn btn-primary" %></td>
+        </tr>
+        <tr>
+          <th>通報したツイート</th>
+          <td><%= @user.reports.count %>件</td>
+        </tr>
+        <tr>
           <th>
             <%= form_with model: @user, url: admin_path, method: :patch do |f| %>
             <%= f.radio_button :is_deleted, false %>

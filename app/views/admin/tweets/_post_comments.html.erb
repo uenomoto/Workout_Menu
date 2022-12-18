@@ -1,10 +1,4 @@
-<div class="container">
-  <div class="row m-5">
-    <div class="col-sm-12 text-center">
-    <h1>会員様コメント一覧</h1>
-    </div>
-  </div>
-  <div class="row m-1">
+<div class="row m-1">
     <% @post_comments.first(6).each do |post_comment| %>
     <div class="col-sm-12 col-lg-4">
       <div class="card-deck">
@@ -25,5 +19,3 @@
     </div>
   <% end %>
   </div>
-  <%= paginate @post_comments %>
-</div>
