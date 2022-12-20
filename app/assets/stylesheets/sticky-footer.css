@@ -1,14 +1,14 @@
 /*フッター固定*/
 
-
 html {
   position: relative;
   min-height: 100%;
 }
 body {
-  margin-bottom: 120px;
+  padding-bottom: 120px;
 }
-.footer {
+
+footer {
   position: absolute;
   bottom: 0;
   width: 100%;

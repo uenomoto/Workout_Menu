@@ -65,7 +65,7 @@ const
 
 let startTime = 0;
 
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('turbolinks:load', function() {
     const e = window.ontouchstart !== undefined ? 'touchstart' : 'mousedown';
     startBtn.addEventListener(e, clickStart);
     resetBtn.addEventListener(e, clickReset);

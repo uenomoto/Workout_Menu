@@ -12,107 +12,20 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
-<% unless current_page?(about_path) %>
-  <header class="shadow-sm">
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <%= link_to root_path do %>
-    <h1 class="text-white px-5", style= "font-family:Corben,cursive;">WorkoutMenu</h1>
-    <% end %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-    <% if admin_signed_in? %>
 
-    <li class="nav-item">
-      <%= link_to "会員一覧", admin_root_path,class: "btn btn-warning mr-2" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "ツイート一覧", admin_tweets_path,class: "btn btn-warning mr-2" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-danger" %>
-    </li>
-
-    <% elsif user_signed_in? %>
-   <p class="h5 text-light">ようこそ！<%= nickname(current_user) %>さん！</p>
-
-    <li class="nav-item">
-      <%= link_to "つぶやき一覧", tweets_path, class: "btn btn-primary mx-4" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "マイページ", user_path(current_user.id), class: "btn btn-warning mx-4" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "会員一覧", users_path, class: "btn btn-warning mx-4" %>
-    </li>
-    <li class="nav-item">
-      <div class="dropdown">
-         <button class="btn btn-success mx-4 dropdown-toggle"
-          type="button" id="dropdownMenu1" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          登録一覧
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <%= link_to "メニュー登録", new_training_menu_path, class: "btn btn-primary btn-sm ml-4" %>
-          <div class="dropdown-divider"></div>
-          <%= link_to "トレ名登録", new_training_name_path, class: "btn btn-primary btn-sm ml-4" %>
-          <div class="dropdown-divider"></div>
-          <%= link_to "部位登録", genres_path, class: "btn btn-primary btn-sm ml-4" %>
-        </div>
-        </div>
-    </li>
-    <li class="nav-item">
-      <%=link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-danger mx-4" %>
-    </li>
-
-    <% else %>
-
-    <li class="nav-item">
-      <%= link_to "新規登録", new_user_registration_path, class: "btn btn-success mx-4" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "ログイン", new_user_session_path, class: "btn btn-success mx-4" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "ゲストログイン(閲覧用)", users_guest_sign_in_path, class: "btn btn-success mx-4", method: :post %>
-    </li>
-    <% end %>
-    </nav>
-   </div>
-   </div>
-  </header>
-  <% end %>
-
-  <body>
-    <%= render 'layouts/flash_message' %>
+<body>
+   <% unless current_page?(about_path) %>
+    <%= render 'layouts/header' %>
+   <% end %>
+   
+  <%= render 'layouts/flash_message' %>
     <%= yield %>
-  </body>
+    
+   <% unless current_page?(about_path) %>
+    <%= render 'layouts/footer' %>
+   <% end %>
+</body>
 
-<footer class="footer">
-  <div class="container">
-    <div class="row no-gutters">
-       <div class="col-sm-12 col-md-5">
-        <div class="footer-logo">WorkoutMenu</div>
-       </div>
-       <div class="col-sm-12 col-md-4">
-        <div class="footer-logo2">©2022 motoki ueno</div>
-       </div>
-      <div class="col-sm-12 col-md-3 col-lg-3">
-       <div class="footer-logo3">
-        <ul class="p-0 list-unstyled">
-         <li><a href="#" class="text-dark">お問い合わせ</a></li>
-         <li><a href="#" class="text-dark">利用規約</a></li>
-         <li><a href="#" class="text-dark">運営者情報</a></li>
-         <% if user_signed_in? && nickname(current_user) != "guestuser" %>
-         <li><%= link_to "退会する", unsubscribe_path, class: "text-danger" %></li>
-         <% end %>
-        </ul>
-      </div>
-    </div>
-   </div>
-</footer>
 
 <script>
   $(function(){

@@ -12,7 +12,7 @@
 }
 
 .jumbotron-fluid {
-  height: 90vh;
+  height: 100vh;
   width: 100%;
   min-height: 300px;
 }
@@ -23,6 +23,15 @@
 }
 
 nav {
-  background-color: rgba(0,0,0,0.5);
+  background-color: #626262;
   width: 100%;
+}
+
+/*Font Awesomeの色を変更*/
+.size {
+  color: #a4969b;
+}
+/*ボタンが浮き上がる*/
+.btn:hover {
+  transform: translateY(-5px);
 }
