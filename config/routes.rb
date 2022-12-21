@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
 
+  devise_for :users, skip: [:passwords], controllers: {
+    sessions: "public/sessions",
+    registrations: "public/registrations"
+  }
+
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
+    sessions: "admin/sessions"
+  }
+
   scope module: :public do
     get "search" => "searches#search"
   end
@@ -28,14 +37,19 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
   end
 
+
+
   scope module: :public do
-    get 'users/information/:id', to: 'users#show',as: 'user'
-    get 'users/information/:id/edit', to: 'users#edit',as: 'users_edit'
-    patch 'users/information/:id', to: 'users#update'
-    get 'users/information', to: 'users#index',as: 'users'
     get 'users/unsubscribe', to: 'users#unsubscribe',as: 'unsubscribe'
     patch 'users/withdraw', to: 'users#withdraw',as: 'withdraw'
+    resources :users, only: [:index, :show, :edit, :update,] do
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
+    end
   end
+
+
 
   scope module: :public do
     get root to: 'homes#top'
@@ -55,14 +69,7 @@ Rails.application.routes.draw do
     get root to: 'homes#top'
   end
 
-  devise_for :admin, skip: [:registrations, :passwords], controllers: {
-    sessions: "admin/sessions"
-  }
 
-  devise_for :users, skip: [:passwords], controllers: {
-    sessions: "public/sessions",
-    registrations: "public/registrations"
-  }
 
   # ゲストログイン
   devise_scope :user do

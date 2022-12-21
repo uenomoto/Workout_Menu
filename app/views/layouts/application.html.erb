@@ -17,10 +17,10 @@
    <% unless current_page?(about_path) %>
     <%= render 'layouts/header' %>
    <% end %>
-   
+
   <%= render 'layouts/flash_message' %>
     <%= yield %>
-    
+
    <% unless current_page?(about_path) %>
     <%= render 'layouts/footer' %>
    <% end %>
@@ -29,7 +29,7 @@
 
 <script>
   $(function(){
-    $(".alert").fadeOut(7000);
+    $(".alert").fadeOut(4000);
   });
 </script>
 

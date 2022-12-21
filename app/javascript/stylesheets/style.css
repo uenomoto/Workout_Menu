@@ -31,7 +31,3 @@ nav {
 .size {
   color: #a4969b;
 }
-/*ボタンが浮き上がる*/
-.btn:hover {
-  transform: translateY(-5px);
-}
