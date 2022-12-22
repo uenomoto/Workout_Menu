@@ -1,6 +1,6 @@
 <div class="jumbotron jumbotron-extend" style="background: url(<%= asset_path "kintore.jpeg" %>) center; background-size: cover;">
   <div class="container text-center">
-　  <h1 class="app-name text-primary font-weight-bolder">WorkoutMenu</h1>
+    <h1 class="app-name text-primary font-weight-bolder">WorkoutMenu</h1>
 　  <p class="h2 text-warning font-weight-bolder mt-4">
 　    このサイトは日々のトレーニングを管理したり<br>
 　  気軽にトレーニーとのコミュニケーションができる<br>
@@ -27,6 +27,9 @@
         <span class="text-danger">未来への健康投資です！</span>皆さんも一緒に楽しくトレーニングやりましょう！
        </h3>
       </div>
+      <%= link_to "https://twitter.com/share?url=#{ request.url }", target: '_blank' do %>
+       <i class="fab fa-twitter" style='color: #3399FF;'></i>PFをシェア！
+      <% end %>
       <p  class="btn btn-success float-right" id="page-top">🔼　一番上へ</p>
      </div>
     </div>

@@ -49,9 +49,14 @@
                    <% end %>
                   <% end %>
                 </div>
-             </div>
-            </div>
-          </div>
+               <div class="tweet_share">
+                  <%= link_to "https://twitter.com/share?url=#{ request.url }&text=【tweet】%0a%0a#{ @tweet.text }", target: '_blank' do %>
+                   <i class="fab fa-twitter"></i>つぶやきをシェア
+                  <% end %>
+              </div>
+           </div>
         </div>
       </div>
-     </div>
+    </div>
+  </div>
+</div>
