@@ -64,5 +64,29 @@ class User < ApplicationRecord
        user.nickname = "guestuser"
      end
     end
+    # フォロー関係
+    # 自分がフォローされる
+    # foreign_key（FK）には、@user.reverse_of_relationshipsとした際に@user.idがfollowed_idを指定
+    has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+    # 自分がフォローする
+    has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+    
+    # 自分をフォローしている人の一覧
+    has_many :followers, through: :reverse_of_relationships, source: :follower
+    # 自分がフォローしている人の一覧
+    has_many :followings, through: :relationships, source: :followed
+    
+    # フォロー・フォロワー関連のメソッド
+    def follow(user_id)
+     relationships.create(followed_id: user_id)
+    end
+    # フォロー解除
+    def unfollow(user_id)
+     relationships.find_by(followed_id: user_id).destroy
+    end
+    # フォローしてる人含む？
+    def following?(user)
+     followings.include?(user)
+    end
 
 end
