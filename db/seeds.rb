@@ -16,7 +16,7 @@ Admin.create!(
 User.create!(
   nickname: 'トレーニー1',
   email: 'test@hoge.com',
-  introduction: 'テストレーニング！！、腕専門員',
+  introduction: 'テストレーニング！！腕専門員',
   prefecture: 30,
   password: 'aaaaaaa'
   )
@@ -62,7 +62,7 @@ TrainingName.create!(
 User.create!(
   nickname: 'トレーニー2',
   email: 'test2@hoge.com',
-  introduction: '筋肉を喜ばせるぞ！！、肩まわり専門員',
+  introduction: '筋肉を喜ばせるぞ！！肩まわり専門員',
   prefecture: 22,
   password: 'aaaaaaa'
   )
@@ -108,7 +108,7 @@ TrainingName.create!(
 User.create!(
   nickname: 'トレーニー3',
   email: 'test3@hoge.com',
-  introduction: '筋肉痛が起きて嬉しい＾＾、胸トレ専門員',
+  introduction: '筋肉痛が起きて嬉しい＾＾胸トレ専門員',
   prefecture: 20,
   password: 'aaaaaaa'
   )

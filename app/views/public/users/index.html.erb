@@ -6,29 +6,6 @@
     </div>
   </div>
   <div class="row m-3">
-    <table class="table table-borderless">
-      <thead class="thead-dark">
-        <tr>
-          <th>プロフィール画像</th>
-          <th>ニックネーム</th>
-          <th>地域</th>
-          <th>つぶやき</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.first(10).each do |user| %>
-        <tr>
-          <td>
-            <%= link_to user_path(user.id) do %>
-            <%= image_tag user.get_profile_image(100,100), class: "rounded-circle" %>
-            <% end %>
-          </td>
-          <td><%= user.nickname %></td>
-          <td><%= user.prefecture %></td>
-          <td><%= user.tweets.count %>件</td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <%= render 'index', users: @users %>
   </div>
 </div>

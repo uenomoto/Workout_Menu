@@ -66,7 +66,7 @@ class User < ApplicationRecord
     end
     # フォロー関係
     # 自分がフォローされる
-    # foreign_key（FK）には、@user.reverse_of_relationshipsとした際に@user.idがfollowed_idを指定します。
+    # foreign_key（FK）には、@user.reverse_of_relationshipsとした際に@user.idがfollowed_idを指定
     has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
     # 自分がフォローする
     has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
