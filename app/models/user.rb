@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
 
   has_one_attached :profile_image
-
+# 画像のメソッド
  def get_profile_image(width, height)
   unless profile_image.attached?
     file_path = Rails.root.join('app/assets/images/no_image.jpeg')
@@ -70,12 +70,12 @@ class User < ApplicationRecord
     has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
     # 自分がフォローする
     has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-    
+
     # 自分をフォローしている人の一覧
     has_many :followers, through: :reverse_of_relationships, source: :follower
     # 自分がフォローしている人の一覧
     has_many :followings, through: :relationships, source: :followed
-    
+
     # フォロー・フォロワー関連のメソッド
     def follow(user_id)
      relationships.create(followed_id: user_id)
@@ -87,6 +87,24 @@ class User < ApplicationRecord
     # フォローしてる人含む？
     def following?(user)
      followings.include?(user)
+    end
+
+    # 通知関係
+    # 自分からの通知
+    has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+    # 相手からの通知
+    has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+
+    # フォローした時の通知の作成メソッド
+    def create_notification_follow!(current_user, visited_id)
+       temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, visited_id, 'follow'])
+       if temp.blank?
+         notification = current_user.active_notifications.new(
+          visited_id: visited_id,
+          action: 'follow'
+          )
+        notification.save if notification.valid?
+       end
     end
 
 end

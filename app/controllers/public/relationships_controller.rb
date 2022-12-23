@@ -4,6 +4,8 @@ class Public::RelationshipsController < ApplicationController
 # フォロー機能を作成・保存
   def create
     current_user.follow(params[:user_id])
+    @user = current_user
+    @user.create_notification_follow!(current_user, params[:user_id])
     redirect_to request.referer
   end
 # フォローを削除、メソッドはuserモデルで記述

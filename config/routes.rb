@@ -37,8 +37,6 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
   end
 
-
-
   scope module: :public do
     get 'users/unsubscribe', to: 'users#unsubscribe',as: 'unsubscribe'
     patch 'users/withdraw', to: 'users#withdraw',as: 'withdraw'
@@ -49,7 +47,10 @@ Rails.application.routes.draw do
     end
   end
 
-
+  scope module: :public do
+    resources :notifications, only: [:index]
+    delete 'notifications/destroy_all', to: 'notifications#destroy_all'
+  end
 
   scope module: :public do
     get root to: 'homes#top'
