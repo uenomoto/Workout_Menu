@@ -1,0 +1,56 @@
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+  <div class="col-md-6 my-auto">
+    <div class="form-inline">
+      <span>
+        <%= link_to user_path(visitor) do %>
+          <%= image_tag visitor.get_profile_image(30,30), class: "rounded-circle" %>
+            <strong><%= visitor.nickname %></strong>
+          <%= 'さんが' %>
+        <% end %>
+      </span>
+    </div>
+  </div>
+      <% case notification.action %>
+      <% when 'follow' then %>
+        <div class="col-md-6"><%= "あなたをフォローしました" %></div>
+      <% when 'favorite' then %>
+        <div class="col-md-6">
+          <%= link_to tweet_path(notification.tweet) do %>
+          <p>あなたのつぶやき</p>
+          <% end %>
+        </div>
+        <div class="col-md-6"><%= "にいいねしました" %></div>
+      <% when 'post_comment' then %>
+
+        <% if notification.tweet.user_id == visited.id %>
+          <div class="col-md-6">
+            <%= link_to tweet_path(notification.tweet) do %>
+            <p>あなたのつぶやき</p>
+            <% end %>
+          </div>
+        <% else %>
+          <span>
+            <div class="col-md-6">
+              <%= link_to tweet_path(notification.tweet) do %>
+                <%= image_tag visitor.get_profile_image(30,30), class: "rounded-circle" %>
+                <strong><%= notification.tweet.user.nickname + 'さんの投稿' %></strong>
+              <% end %>
+            </div>
+
+        <% end %>
+            <div class="col-md-6 mt-1"><%= "にコメントしました" %></div>
+          </span>
+
+        <div class="col-md-6">
+          <p class="text-muted mb-0">
+            <%= PostComment.find_by(id: notification.post_comment_id)&.comment %>
+          </p>
+        </div>
+      <% end %>
+      <div class="col-md-6 col-lg-12">
+        <div class="small text-muted text-right">
+          <%= time_ago_in_words(notification.created_at).upcase %>
+        </div>
+      </div>
+<hr>

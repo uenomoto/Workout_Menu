@@ -1,0 +1,15 @@
+<div class="container">
+ <h3 class="text-center m-3">通知記録</h3>
+   <%= link_to notifications_destroy_all_path, method: :delete, "data-confirm" => "通知全削除してもよろしいですか？" do %>
+    <i class="fas fa-trash" style="color: black;"></i>
+    <h7 style="color: black;">全削除</h7>
+   <% end %>
+<hr>
+ <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
+ <% if notifications.exists? %>
+ <%= render notifications %>
+ <%= paginate notifications %>
+ <% else %>
+ <h4 class="text-center text-danger">通知はありません</h4>
+ <% end %>
+</div>
