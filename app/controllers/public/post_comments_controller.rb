@@ -7,6 +7,7 @@ class Public::PostCommentsController < ApplicationController
       @post_comment = current_user.post_comments.new(post_comment_params)
       @post_comment.tweet_id = @tweet.id
       if @post_comment.save
+        @tweet.create_notification_post_comment!(current_user, @post_comment.id)
         redirect_to request.referer, flash: {success: "コメント投稿しました。"}
       else
         flash[:danger] = "投稿に失敗しました"
