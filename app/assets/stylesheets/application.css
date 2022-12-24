@@ -63,3 +63,74 @@ input[type=radio] {
   font-size: 15px;
   color: #3399FF
 }
+
+@media screen and (max-width: 480px) {
+img { max-width: 100%; }
+body {width: 100%;}
+
+.footer {
+  flex-wrap: nowrap;
+}
+.footer-logo {
+  font-size: 20px;
+}
+.footer-logo3 li {
+  font-size: 7px;
+}
+.app-name{
+  font-size: 35px;
+}
+.app-text {
+  margin-top: 70px;
+}
+small {
+  font-size: 12px;
+}
+.word {
+  font-size: 14px;
+}
+h4 {
+  font-size: 15px;
+}
+h3 {
+  font-size: 20px;
+}
+h2 {
+  font-size: 22px;
+}
+h1 {
+  font-size: 20px;
+}
+tr {
+  font-size: 10px;
+}
+.btn {
+  margin-top: 5px;
+}
+.tweet_new {
+  font-size: 15px;
+}
+
+.genre_edit {
+  font-size: 15px;
+}
+.image {
+  display: none;
+}
+.calendar-heading {
+  font-size: 20px;
+}
+.calendar {
+  font-size: 7px;
+}
+}
+
+@media screen and (max-width: 1024px) {
+.footer {
+  flex-wrap: nowrap;
+}
+h1 {
+  font-size: 20px;
+}
+}
+

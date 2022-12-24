@@ -1,4 +1,4 @@
-<div class="row m-3">
+<div class="row mt-3">
   <div class="col-sm-12 text-center">
    <h1><%= user.nickname %>さんの詳細ページ</h1>
   </div>
@@ -17,7 +17,7 @@
   </div>
 </div>
 
- <div class="row m-3">
+ <div class="row mt-3">
   <div class="col-sm-12 col-lg-3">
    <%= image_tag user.get_profile_image(200,200), class: "rounded-circle" %>
   </div>
@@ -46,7 +46,7 @@
  <div class="col-sm-12 col-lg-6 col-md-6">
   <%= link_to "つぶやき一覧", tweet_permember_path(user), class: "btn btn-primary col-lg-6" %>
  </div>
- <div class="col-sm-12 col-lg-6 col-md-6">
+ <div class="col-sm-12 col-lg-6 col-md-6 mb-3">
    <% if current_user.following?(@user) %>
    <%= link_to "フォロー解除", user_relationships_path(user_id: @user.id), method: :delete, class: "btn btn-danger col-lg-6" %>
    <% else %>

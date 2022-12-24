@@ -1,10 +1,10 @@
-<div class="container">
-  <div class="row m-5">
+<div class="container mt-2">
+  <div class="row">
     <div class="col-sm-12">
       <div class="card shadow-lg">
         <h1 class="card-header text-center">
-          <%= image_tag @tweet.user.get_profile_image(100,100), class: "rounded-circle float-left" %>
-          <%= @tweet.user.nickname %>さんのつぶやき
+          <%= image_tag @tweet.user.get_profile_image(50,50), class: "rounded-circle float-left" %>
+          <%= @tweet.user.nickname %>さんの呟き
           <% if @tweet.user_id != current_user.id %>
             <% if @tweet.reported_by?(current_user) %>
             <%= link_to 'ツイートを通報する', tweet_reports_path(@tweet), method: :post, class: "btn btn-danger btn-sm float-right", data: { confirm: "不適切なツイートとして通報しますか？" } %>
