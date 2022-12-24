@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :training_names, only:[:new, :create, :index, :show, :edit, :update]
+    resources :training_names, only:[:create, :index, :show, :edit, :update]
   end
 
   scope module: :public do

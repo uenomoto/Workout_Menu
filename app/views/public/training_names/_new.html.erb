@@ -1,13 +1,7 @@
-<div class="container">
-  <div class="row m-5">
-    <div class="col-sm-12 text-center">
-     <h1>トレーニング名を登録してください</h1>
-    </div>
-  </div>
-  <div class="row m-2">
-    <div class="col-lg-3"></div>
-    <div class="col-sm-12 col-lg-7">
+    
+    
 
+    <div class="col-sm-12 col-lg-4">
       <%= form_with model: @training_name, url: "/training_names", method: :post do |f| %>
       <%= render 'layouts/error', model: f.object %>
 
@@ -32,5 +26,3 @@
   <% end %>
 
     </div>
-  </div>
-</div>

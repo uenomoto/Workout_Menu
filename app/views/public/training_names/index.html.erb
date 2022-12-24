@@ -1,11 +1,10 @@
 <div class="container">
   <div class="row m-5">
     <div class="col-sm-12 text-center">
-      <h1>トレーニング名一覧表</h1>
+      <h3>トレーニング名一覧表と登録</h3>
     </div>
   </div>
   <div class="row m-5">
-    <div class="col-lg-2"></div>
     <div class="col-sm-12 col-lg-8">
       <table class="table">
         <thead class="thead-dark">
@@ -25,6 +24,8 @@
           <% end %>
         </tbody>
       </table>
+      <%= paginate @training_names %>
     </div>
+    <%= render 'new', training_name: @training_name %>
   </div>
 </div>
