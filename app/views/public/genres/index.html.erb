@@ -10,7 +10,7 @@
         <% @genres.each do |genre| %>
         <tr>
           <td class="font-weight-bold"><%= genre.name %></td>
-          <td><%= link_to "編集", edit_genre_path(genre.id), class: "btn btn-primary col-lg-5" %></td>
+          <td><%= link_to "編集", edit_genre_path(genre.id), class: "btn btn-info col-lg-5" %></td>
         </tr>
         <% end %>
       </table>

@@ -1,0 +1,109 @@
+<div class="container">
+  <div class="row m-4 mb-5">
+    <div class="col-sm-12 text-center">
+     <h2 style="font-family: impact;">WorkoutMenuの使い方</h2>
+    </div>
+  </div>
+  <div class="row m-2">
+    <div class="col-sm-12 col-md-6">
+      <h4>まずはどんなアプリなのか、何を目的にして<br>このアプリを制作したのか書かせてください</h4>
+      <hr>
+      <p class="font-weight-bold">このアプリはトレーニングの計画を簡単に作ることのできるアプリです
+      つぶやきなどのコミュニケーション機能もあります。<br>
+      一人でトレーニングしたいけど成果を人に共有したい！<br>
+      何をすればいいのか忘れちゃった。。。<br>
+      やったことを見える化して整理したい！<br>重さなどどのぐらい伸びたか確認したい！<br>
+      <span class="text-danger">※グラフ機能はまだ作っておりません今後アップデートする予定です</span><br>
+      などなど自分が経験したことを元に改善<br>できればいいなと思いこのアプリを制作しました。
+      </p>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <%= image_tag 'hiyo.png', size: '300x250' %>
+    </div>
+  </div>
+  <div class="row m-2">
+    <div class="col-sm-12 col-md-6">
+      <%= image_tag 'usa.png', size: '300x250' %>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <h4>1: 部位の登録をします。</h4>
+      <hr>
+      <p class="font-weight-bold">何故一人一人別の会員ごとに分けるかというと<br>
+      鍛える部位の言い方や、人によっては同じ名前だけど<br>
+      意識してる場所が違うなど、必ずここを鍛えてる！！<br>
+      とは言えないので自分自身でカスタマイズできるようにしました。
+      </p>
+      <% if user_signed_in? %>
+      <%= link_to '詳細はここ！', genres_path, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row m-2">
+    <div class="col-sm-12 col-md-6">
+      <h4>2: 名前を登録します。</h4>
+      <hr>
+      <p class="font-weight-bold">こちらも部位と同じで人それぞれの<br>
+      言い方があると思いますので個々で名前を記入し<br>
+      決めていただけたらなと思います。
+      </p>
+      <% if user_signed_in? %>
+      <%= link_to '詳細はここ！', training_names_path, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <%= image_tag 'hiyo.png', size: '300x250' %>
+    </div>
+  </div>
+  <div class="row m-2">
+    <div class="col-sm-12 col-md-6">
+      <%= image_tag 'usa.png', size: '300x250' %>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <h4>3: メニューを決めます！</h4>
+      <hr>
+      <p class="font-weight-bold">ここでようやく一日のメニューを決めます！<br>
+      登録画面から従って記入してください<br>
+      おそらく記入欄はこれで十分だと思います<br>
+      登録が終わりましたら、カレンダー画面に入っていただき<br>
+      今日の日付をタッチし確認していただきます。<br>
+      開始ボタンを押してトレーニングをこなしていきます。<br>
+      終わったトレーニングからチェックして<br>
+      全てチェックしたら完了ボタンが押せる仕組みとなっています！
+      </p>
+      <% if user_signed_in? %>
+      <%= link_to '詳細はここ！', new_training_menu_path, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row m-2">
+    <div class="col-sm-12 col-md-6">
+      <h4>4: つぶやき（感想など）機能もぜひ！</h4>
+      <hr>
+      <p class="font-weight-bold">よくあるお馴染みのつぶやき機能です！！<br>
+      ここに日常のトレーニングに関する思ったことなど<br>
+      つぶやいちゃってください！！<br>
+      ナイスファイト（いいね！）もあるので<br>
+      どぅんどぅん押しちゃってください！！<br>
+      因みに通報機能も作ってみました。<br>
+      トレーニーに悪い人はいないと信じてます。。<br>
+      </p>
+      <% if user_signed_in? %>
+      <%= link_to '詳細はここ！', new_tweet_path, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+    <div class="col-sm-12 col-md-6">
+      <%= image_tag 'hiyo.png', size: '300x250' %>
+    </div>
+  </div>
+  <div class="row m-2">
+    <div class="col-sm-12 text-center">
+      <h4>最後に一言！</h4>
+      <hr>
+      <p class="font-weight-bold">このWEBアプリはエンジニアには全く関係ない仕事をしながら<br>
+      学習を始めて３ヶ月の初学者が作ったアプリです。<br>
+      ここにはこの機能あったらいいなとか<br>
+      このリンク先作った方ががいいよとかありましたら<br>
+      ご教授よろしくお願いしますm(〜〜)m</p>
+    </div>
+  </div>
+</div>

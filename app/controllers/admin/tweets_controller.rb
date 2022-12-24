@@ -21,7 +21,7 @@ class Admin::TweetsController < ApplicationController
 
   def permember
     @user = User.find(params[:id])
-    @tweets = @user.tweets.order(created_at: :desc).page(params[:page]).per(6)
+    @tweets = @user.tweets.order(created_at: :desc).page(params[:page]).per(10)
   end
 
   def destroy

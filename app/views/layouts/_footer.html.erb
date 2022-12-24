@@ -12,7 +12,7 @@
         <ul class="p-0 list-unstyled">
          <li><a href="#" class="text-dark">お問い合わせ</a></li>
          <li><a href="#" class="text-dark">利用規約</a></li>
-         <li><a href="#" class="text-dark">運営者情報</a></li>
+         <li><a href="#" class="text-dark">プライバシーポリシー</a></li>
          <% if user_signed_in? && nickname(current_user) != "guestuser" %>
          <li><%= link_to "退会する", unsubscribe_path, class: "text-danger" %></li>
          <% end %>

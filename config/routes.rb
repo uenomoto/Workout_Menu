@@ -52,9 +52,11 @@ Rails.application.routes.draw do
     delete 'notifications/destroy_all', to: 'notifications#destroy_all'
   end
 
+
   scope module: :public do
     get root to: 'homes#top'
     get '/about' => 'homes#about',as: 'about'
+    get '/guide', to: 'homes#guide'
   end
 
   namespace :admin do

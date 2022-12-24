@@ -81,6 +81,8 @@
   </div>
 </div>
 
+<%= javascript_pack_tag 'category_select.js', 'data-turbolinks-track': 'reload'  %>
+
 <script>
 // ラジオボタンが加重だったら重さ、有酸素だったら距離フォームを出す。
   document.getElementById("hidden1").style.display ="none";
@@ -105,6 +107,3 @@
   }
 }
 </script>
-
-
-<%= javascript_pack_tag 'category_select.js', 'data-turbolinks-track': 'reload'  %>

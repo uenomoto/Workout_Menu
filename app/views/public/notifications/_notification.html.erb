@@ -33,8 +33,8 @@
           <span>
             <div class="col-md-6">
               <%= link_to tweet_path(notification.tweet) do %>
-                <%= image_tag visitor.get_profile_image(30,30), class: "rounded-circle" %>
-                <strong><%= notification.tweet.user.nickname + 'さんの投稿' %></strong>
+                <%= image_tag notification.tweet.user.get_profile_image(30,30), class: "rounded-circle" %>
+                <strong><%= notification.tweet.user.nickname + 'さんのつぶやき' %></strong>
               <% end %>
             </div>
 

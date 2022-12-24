@@ -1,28 +1,24 @@
-    
-    
+<div class="col-sm-12 col-lg-4">
+   <%= form_with model: @training_name, url: "/training_names", method: :post do |f| %>
+   <%= render 'layouts/error', model: f.object %>
 
-    <div class="col-sm-12 col-lg-4">
-      <%= form_with model: @training_name, url: "/training_names", method: :post do |f| %>
-      <%= render 'layouts/error', model: f.object %>
+   <div class="form-group">
+     <%= f.label :"トレーニング名" %>
+     <%= f.text_field :name, autofocus: true, class: "form-control" %>
+   </div>
 
-  <div class="form-group">
-    <%= f.label :"トレーニング名" %>
-    <%= f.text_field :name, autofocus: true, class: "form-control" %>
-  </div>
+   <div class="form-group">
+     <%= f.label :"部位" %>
+     <%= f.collection_select :genre_id, Genre.where(user:current_user), :id, :name, {:prompt => "--選択してください--"}, class: "form-control" %>
+   </div>
 
-  <div class="form-group">
-    <%= f.label :"部位" %>
-    <%= f.collection_select :genre_id, Genre.where(user:current_user), :id, :name, {:prompt => "--選択してください--"}, class: "form-control" %>
-  </div>
+   <div class="form-group">
+     <%= f.label :"説明文" %>
+     <%= f.text_area :introduction, autofocus: true, placeholder: "例）意識しながら注意するところなど", class: "form-control" %>
+   </div>
 
-  <div class="form-group">
-    <%= f.label :"説明文" %>
-    <%= f.text_area :introduction, autofocus: true, placeholder: "例）意識しながら注意するところなど", class: "form-control" %>
-  </div>
-
-  <div class="submit">
-    <%= f.submit "登録する", class: "btn btn-success float-right col-lg-4" %>
-  </div>
-  <% end %>
-
+    <div class="submit">
+      <%= f.submit "登録する", class: "btn btn-success float-right col-lg-4" %>
     </div>
+   <% end %>
+</div>
