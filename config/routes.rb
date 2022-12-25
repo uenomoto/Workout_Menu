@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :training_names, only:[:new, :create, :index, :show, :edit, :update]
+    resources :training_names, only:[:create, :index, :show, :edit, :update]
   end
 
   scope module: :public do
@@ -52,9 +52,11 @@ Rails.application.routes.draw do
     delete 'notifications/destroy_all', to: 'notifications#destroy_all'
   end
 
+
   scope module: :public do
     get root to: 'homes#top'
-    get '/about' => 'homes#about',as: 'about'
+    get '/main' => 'homes#about',as: 'main'
+    get '/guide', to: 'homes#guide'
   end
 
   namespace :admin do

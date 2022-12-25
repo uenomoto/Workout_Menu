@@ -1,23 +1,22 @@
 class Public::TrainingNamesController < ApplicationController
 
-
-  def new
-   @training_name = TrainingName.new
-  end
+before_action :authenticate_user!
 
   def create
    @training_name = TrainingName.new(training_name_params)
    @training_name.user_id = current_user.id
    if @training_name.save
-    redirect_to training_name_path(@training_name.id), flash: {success: "名前作成しました。"}
+    redirect_to training_names_path, flash: {success: "名前作成しました。"}
    else
     flash.now[:danger] = "失敗しました"
-    render :new
+    @training_names = TrainingName.where(user:current_user).page(params[:page]).per(7)
+    render :index
    end
   end
 
   def index
-   @training_names = TrainingName.where(user:current_user)
+   @training_name = TrainingName.new
+   @training_names = TrainingName.where(user:current_user).page(params[:page]).per(7)
   end
 
   def show

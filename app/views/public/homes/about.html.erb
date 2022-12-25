@@ -1,26 +1,43 @@
-<div class="jumbotron jumbotron-fluid" style="background: url(<%= asset_path "jimu.jpeg" %>) center; background-size: cover;">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-12 col-lg-7">
-         <div class="d-lg-flex d-md-flex d-sm-flex-none align-items-lg-center justify-content-lg-center" style="height:400px;">
-          <h1 class="display-3 title title-top text-danger">Welcome!<br> WorkoutMenu!!</h1>
-         </div>
-         <div class="row">
-           <div class="col-lg-5 col-md-10 col-sm-10 mb-3">
-            <%= link_to "ログイン", new_user_session_path, class: "btn btn-success col-md-12" %>
-           </div>
-           <div class="col-lg-5 col-md-10 col-sm-10 mb-3">
-            <%= link_to "サインアップ", new_user_registration_path, class: "btn btn-info col-md-12" %>
-           </div>
-          </div>
-         <div class="row">
-           <div class="col-lg-5 col-sm-10 mt-lg-3 offset-lg-3">
-            <%= link_to 'ゲストログイン(閲覧用)', users_guest_sign_in_path, method: :post, class: "btn btn-secondary btn-block col-md-12" %>
-          </div>
-         </div>
-       </div>
-      </div>
-      <div class="col-lg-5"></div>
-    </div>
-  </div>
+<div style="background: url(<%= asset_path "jimu2.jpg" %>) left; background-size: cover;" class="jumbotron jumbotron-extend">
+  <div class="container text-center">
+    <h1 class="app-name text-danger font-weight-bolder">WorkoutMenu</h1>
+　  <h1 class="app-text text-primary font-weight-bolder">
+　    このサイトは日々のトレーニングを管理したり<br>
+　  気軽にトレーニーとのコミュニケーションができる<br>
+　  コミュニティサイトです！
+　  </h1>
+　</div>
 </div>
+  <div class="container">
+    <%= render "each_item" %>
+    <%= render "each_item2" %>
+   <div class="container">
+    <div class="row">
+     <div class="col-sm-12">
+      <p class="h3 border-bottom border-primary" style="padding:5px;">開発者から一言</p>
+      <div>
+       <h3 class="word m-5 font-weight-bold">
+         別にムキムキにならなくてもいいのです<br>
+        トレーニングは軽くこなすだけでも十分効果を実感できます！<br>
+        <span class="text-danger">未来への健康投資です！</span>皆さんも一緒に楽しくトレーニングやりましょう！
+       </h3>
+      </div>
+      <%= link_to "https://twitter.com/share?url=#{ request.url }", target: '_blank' do %>
+       <i class="fab fa-twitter" style='color: #3399FF;'></i>PFをシェア！
+      <% end %>
+      <p class="btn btn-success btn-sm float-right" id="page-top">🔼　一番上へ</p>
+     </div>
+    </div>
+   </div>
+  </div>
+
+<script>
+  $(document).on('turbolinks:load', function() {
+  $('#page-top').on('click',function(event){
+  $('body, html').animate({
+    scrollTop:0
+  }, 900);
+  event.preventDefault();
+  });
+});
+</script>

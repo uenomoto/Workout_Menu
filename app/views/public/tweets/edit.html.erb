@@ -5,7 +5,7 @@
       <%= form_with model: @tweet, url: tweet_path, method: :patch do |f| %>
       <%= f.label :"つぶやき編集", class: "h3" %>
       <%= f.text_field :text, class: "form-control" %>
-      <%= f.submit "編集する", class: "btn btn-success col-lg-4 col-md-4 float-right mt-3" %>
+      <%= f.submit "編集する", class: "btn btn-info col-lg-4 col-md-4 float-right mt-3" %>
       <% end %>
     </div>
   </div>

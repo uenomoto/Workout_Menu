@@ -1,17 +1,21 @@
 <div class="container">
-  <h1 class="text-center text-success m-3">メニューカレンダー</h1>
+  <h1 class="text-center text-success mt-3">メニューカレンダー</h1>
 
 
   <%= month_calendar(attribute: :date, events: @training_menus) do |date, training_menus| %>
 
   <%= date.day %>
-
   <% training_menus.each do |training_menu| %>
-    <div>
+    <div class="calendar">
+      <% if training_menu.completion == false %>
        <%= link_to anywhen_path(date) do %>
-        <%= training_menu.training_name.name %>
+       <%= training_menus.count %>種目
+       <% end %>
+       <% else %>
+       完了！
        <% end %>
     </div>
    <% end %>
+
   <% end %>
 </div>

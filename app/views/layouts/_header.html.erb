@@ -1,9 +1,6 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light">
-      <%= image_tag('logo.png') %>
-      <%= link_to root_path do %>
-      <h1 class="text-dark", style= "font-family: Arial Black;">Workout<br>Menu</h1>
-    <% end %>
+      <%= render 'layouts/logo' %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -29,21 +26,7 @@
     </li>
 
    <li class="nav-item">
-      <div class="dropdown">
-        <i class="fa fa-dumbbell fa-2x size"></i>
-         <button class="btn btn-outline-light mr-3 dropdown-toggle"
-          type="button" id="dropdownMenu1" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          登録一覧
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-          <%= link_to "メニュー登録", new_training_menu_path, class: "text-dark ml-1" %>
-          <div class="dropdown-divider"></div>
-          <%= link_to "トレ名登録", new_training_name_path, class: "text-dark ml-1" %>
-          <div class="dropdown-divider"></div>
-          <%= link_to "部位登録", genres_path, class: "text-dark ml-1" %>
-        </div>
-        </div>
+      <i class="fa fa-dumbbell fa-2x size"></i><%= link_to "メニュー登録", new_training_menu_path, class: "h5 text-light mr-3" %>
     </li>
 
     <li class="nav-item">

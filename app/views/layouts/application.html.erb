@@ -14,14 +14,14 @@
 
 
 <body>
-   <% unless current_page?(about_path) %>
+   <% unless current_page?(root_path) %>
     <%= render 'layouts/header' %>
    <% end %>
 
-  <%= render 'layouts/flash_message' %>
+    <%= render 'layouts/flash_message' %>
     <%= yield %>
 
-   <% unless current_page?(about_path) %>
+   <% unless current_page?(root_path) %>
     <%= render 'layouts/footer' %>
    <% end %>
 </body>

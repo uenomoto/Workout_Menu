@@ -1,5 +1,6 @@
 class Public::TrainingMenusController < ApplicationController
 
+before_action :authenticate_user!
 
   def new
     @training_menu = TrainingMenu.new

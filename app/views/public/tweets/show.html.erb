@@ -1,10 +1,10 @@
-<div class="container">
-  <div class="row m-5">
+<div class="container mt-2">
+  <div class="row">
     <div class="col-sm-12">
       <div class="card shadow-lg">
         <h1 class="card-header text-center">
-          <%= image_tag @tweet.user.get_profile_image(100,100), class: "rounded-circle float-left" %>
-          <%= @tweet.user.nickname %>さんのつぶやき〜
+          <%= image_tag @tweet.user.get_profile_image(50,50), class: "rounded-circle float-left" %>
+          <%= @tweet.user.nickname %>さんの呟き
           <% if @tweet.user_id != current_user.id %>
             <% if @tweet.reported_by?(current_user) %>
             <%= link_to 'ツイートを通報する', tweet_reports_path(@tweet), method: :post, class: "btn btn-danger btn-sm float-right", data: { confirm: "不適切なツイートとして通報しますか？" } %>
@@ -24,39 +24,10 @@
                <h5>全<%= @tweet.post_comments.count %>コメント</h5>
              </div>
             </div>
-             <div class="row">
-               <div class="col-sm-12">
-                 <h5><span class="h2"><i class="far fa-comments"></i></span>コメント一覧</h5>
-                 <% @post_comments.each do |c| %>
-                 <table class="table">
-                     <%= image_tag c.user.get_profile_image(50,50), class: "rounded-circle" %>
-                     by:<%= c.user.nickname %>
-                     <%= c.comment %>
-                     <% if user_signed_in? %>
-                     <% if current_user.id == c.user_id %>
-                      <%= link_to "編集", edit_tweet_post_comment_path(@tweet, c.id), class: "btn btn-primary mr-1" %>
-                      <%= link_to "削除", tweet_post_comment_path(@tweet, c.id), method: :delete, "data-confirm" => "削除してもよろしいですか？", class: "btn btn-danger" %>
-                     <% end %>
-                     <% end %>
-                     <% end %>
-                 </table>
-               </div>
-                 <div class="col-sm-12">
-                   <% if user_signed_in? %>
-                   <%= form_with model: [@tweet, @post_comment], method: :post do |f| %>
-                   <%= f.text_area :comment ,placeholder: "コメントする", class: "form-control", rows: 2 %><br>
-                   <%= f.submit "コメントする", class: "btn btn-success float-right" %>
-                   <% end %>
-                  <% end %>
-                </div>
-               <div class="tweet_share">
-                  <%= link_to "https://twitter.com/share?url=#{ request.url }&text=【tweet】%0a%0a#{ @tweet.text }", target: '_blank' do %>
-                   <i class="fab fa-twitter"></i>つぶやきをシェア
-                  <% end %>
-              </div>
+            <%= render 'post_comments', post_comments: @post_comments %>
            </div>
         </div>
       </div>
-    </div>
   </div>
 </div>
+
