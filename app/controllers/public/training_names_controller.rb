@@ -1,6 +1,6 @@
 class Public::TrainingNamesController < ApplicationController
 
-
+before_action :authenticate_user!
 
   def create
    @training_name = TrainingName.new(training_name_params)

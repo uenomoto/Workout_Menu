@@ -1,5 +1,6 @@
 class Admin::TweetsController < ApplicationController
 
+before_action :authenticate_admin!
 
   def index
     # 通報があったツイートだけを多い順で並べる

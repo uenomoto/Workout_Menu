@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
       admin_root_path
       else
       flash[:success]="今日もレッツトレーニング！"
-      root_path
+      main_path
       end
     end
 
@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
       new_admin_session_path
       else
       flash[:info] = "継続して頑張りましょう！"
-      about_path
+      root_path
       end
     end
 
