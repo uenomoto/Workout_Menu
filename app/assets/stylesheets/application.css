@@ -23,16 +23,35 @@
    box-sizing: border-box;
   }
 
+/*全体の背景色*/
+body {
+  background:radial-gradient(#fff, #878c8f);
+  height: 100%;
+}
 
 /*カレンダーのCSS*/
  .simple-calendar day {
-   background: #fff9ee;
+   background: #ffffff;
  }
   .wday-0 {
     background: #ffeaea;
     color: #ff505c;
   }
-
+  .wday-1 {
+    background: #ffffff;
+  }
+  .wday-2 {
+    background: #fff;
+  }
+  .wday-3 {
+    background: #fff;
+  }
+  .wday-4 {
+    background: #fff;
+  }
+  .wday-5 {
+    background: #fff;
+  }
   .wday-6 {
     background: #d4ebff;
     color: #5984dc;
@@ -58,16 +77,57 @@ input[type=checkbox] {
 input[type=radio] {
 	transform: scale(1.5);
 }
-
+/*シェアボタン*/
 .tweet_share {
   font-size: 15px;
   color: #3399FF
 }
 
-@media screen and (max-width: 480px) {
+/*ボタン押すと本当に押したようになるCSS*/
+.btn {
+  border-bottom: solid 4px #627295;
+}
+.btn:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);/*影を小さく*/
+  border-bottom: none;
+}
+
+
+/*タブレッドレスポンシブ*/
+@media screen and (max-width: 1024px) {
+.footer {
+  flex-wrap: nowrap;
+}
+.app-name {
+  font-size: 50px;
+}
+.app-text {
+  font-size: 30px;
+}
+h4 {
+  font-size: 15px;
+}
+h3 {
+  font-size: 20px;
+}
+h2 {
+  font-size: 20px;
+}
+h1 {
+  font-size: 20px;
+}
+}
+
+/*スマホレスポンシブ*/
+@media screen and (max-width: 425px) {
 img { max-width: 100%; }
 body {width: 100%;}
 
+.title-top {
+  font-size: 40px;
+}
 .footer {
   flex-wrap: nowrap;
 }
@@ -78,10 +138,11 @@ body {width: 100%;}
   font-size: 7px;
 }
 .app-name{
-  font-size: 35px;
+  font-size: 30px;
 }
 .app-text {
   margin-top: 70px;
+  font-size: 20px;
 }
 small {
   font-size: 12px;
@@ -96,7 +157,7 @@ h3 {
   font-size: 20px;
 }
 h2 {
-  font-size: 22px;
+  font-size: 20px;
 }
 h1 {
   font-size: 20px;
@@ -125,12 +186,25 @@ tr {
 }
 }
 
-@media screen and (max-width: 1024px) {
-.footer {
-  flex-wrap: nowrap;
-}
+/*一番小さいサイズのレスポンシブ*/
+@media screen and (max-width: 320px) {
+
 h1 {
-  font-size: 20px;
+  font-size: 15px;
+  }
+h4 {
+  font-size: 10px;
+}
+h3 {
+  font-size: 12px;
+}
+h2 {
+  font-size: 13px;
+}
+
+.app-text {
+  margin-top: 70px;
+  font-size: 15px;
 }
 }
 

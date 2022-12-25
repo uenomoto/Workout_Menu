@@ -1,14 +1,22 @@
 /*ここに独自のCSSを記述する*/
 
+/*トップページのCSS*/
 .jumbotron-extend {
   height: 70vh;
   min-height: 300px;
   font-family: 'Playfair Display', serif;
 }
 
+
 .app-name {
   font-size: 100px;
   margin-top:50px;
+  text-shadow: 0 0 10px #FFF;
+
+}
+.app-text {
+  text-shadow: 0 0 10px #FFF;
+
 }
 
 .jumbotron-fluid {
@@ -20,6 +28,7 @@
 /*アバウトのタイトル*/
 .title-top{
   font-family: 'Playfair Display', serif;
+  font-size: 6rem;
 }
 
 nav {
