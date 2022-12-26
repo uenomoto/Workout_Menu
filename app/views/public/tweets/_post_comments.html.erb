@@ -5,14 +5,16 @@
    <table class="table">
     <%= image_tag c.user.get_profile_image(50,50), class: "rounded-circle" %>
     by:<%= c.user.nickname %>
-    <%= c.comment %>
+       <%= c.comment %>
+       <div class="border-bottom border-dark pb-3"></div>
     <% if user_signed_in? %>
      <% if current_user.id == c.user_id %>
       <%= link_to "編集", edit_tweet_post_comment_path(@tweet, c.id), class: "btn btn-info mr-1" %>
       <%= link_to "削除", tweet_post_comment_path(@tweet, c.id), method: :delete, "data-confirm" => "削除してもよろしいですか？", class: "btn btn-danger" %>
+      <hr>
     <% end %>
    <% end %>
-  <% end %>
+   <% end %>
    </table>
   </div>
   <div class="col-sm-12">
