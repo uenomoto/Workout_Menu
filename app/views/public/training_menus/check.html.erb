@@ -21,7 +21,7 @@
           <th>チェック</th>
           <th>トレ名</th>
           <th>部位</th>
-          <th>レップ×セット</th>
+          <th>数×セット</th>
           <th>トレ状態</th>
         </tr>
       </thead>
@@ -44,7 +44,7 @@
         <% end %>
         </tbody>
       </table>
-        <div class="row m-3">
+        <div class="row my-3">
           <div class="col-sm-12 text-center">
            <%= form_with model: @training_menu, url: complete_path, method: :patch do |f| %>
 

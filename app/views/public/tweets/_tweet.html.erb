@@ -1,7 +1,7 @@
 <% tweets.first(4).each do |tweet| %>
       <div class="card mb-3 shadow-lg">
          <div class="card-body">
-          <h4 class="card-text"><%= tweet.text %></h4>
+          <h2 class="card-text"><%= tweet.text %></h2>
           <div class="row">
             <div class="col-sm-3">
              <%= link_to user_path(tweet.user.id) do %>

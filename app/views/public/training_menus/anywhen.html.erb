@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="row m-3">
+  <div class="row my-5">
     <div class="col-sm-12">
-      <h1 class="font-weight-bold text-center"><%= @training_menu_day %>メニュー</h1>
+      <h1 class="font-weight-bold text-center"><%= @training_menu_day %>のトレメニュー</h1>
     </div>
   </div>
   <div class="row">
@@ -11,7 +11,7 @@
          <tr>
           <th>名前</th>
           <th>部位</th>
-          <th>数xset</th>
+          <th>数xセット</th>
           <th>種類</th>
          </tr>
         </thead>
@@ -42,7 +42,7 @@
   </div>
   <div class="row">
     <div class="col-md-12 text-center">
-      <%= link_to "開始！", check_path, class: "btn btn-success col-lg-5 col-md-5" %>
+      <%= link_to "開始！", check_path, class: "btn btn-success btn-sm col-lg-5 col-md-5" %>
     </div>
   </div>
 </div>

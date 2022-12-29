@@ -93,6 +93,9 @@ input[type=radio] {
   border-bottom: none;
 }
 
+.pagination {
+  justify-content: center;
+}
 
 /*ノートパソコンレスポンシブ*/
 @media screen and (max-width: 1024px) {
@@ -105,6 +108,9 @@ input[type=radio] {
 .app-text {
   font-size: 30px;
 }
+.attention {
+  font-size: 4.5rem;
+}
 h4 {
   font-size: 15px;
 }
@@ -112,10 +118,10 @@ h3 {
   font-size: 20px;
 }
 h2 {
-  font-size: 20px;
+  font-size: 30px;
 }
 h1 {
-  font-size: 35px;
+  font-size: 40px;
 }
 }
 
@@ -129,10 +135,16 @@ h3 {
   font-size: 20px;
 }
 h2 {
-  font-size: 20px;
+  font-size: 25px;
 }
 h1 {
   font-size: 30px;
+}
+.btn {
+  margin-top: 5px;
+}
+.attention {
+  font-size: 4rem;
 }
 }
 
@@ -182,6 +194,9 @@ h1 {
 tr {
   font-size: 10px;
 }
+.attention {
+  font-size: 1.5rem;
+}
 .btn {
   margin-top: 5px;
 }
@@ -206,11 +221,9 @@ tr {
 /*一番小さいサイズのレスポンシブ*/
 @media screen and (max-width: 320px) {
 
-h1 {
-  font-size: 15px;
-  }
+
 h4 {
-  font-size: 10px;
+  font-size: 12px;
 }
 h3 {
   font-size: 12px;
@@ -218,6 +231,9 @@ h3 {
 h2 {
   font-size: 13px;
 }
+h1 {
+  font-size: 15px;
+  }
 
 .app-text {
   margin-top: 70px;
