@@ -1,4 +1,4 @@
-<div class="container mt-2">
+<div class="container mt-2 mb-4">
   <div class="row">
     <div class="col-sm-12">
       <div class="card shadow-lg">
@@ -12,16 +12,16 @@
           <% end %>
         </h1>
         <div class="card-body">
-          <h3 class="card-text text-center"><%= @tweet.text %></h3>
+          <h1 class="card-text text-center"><%= @tweet.text %></h1>
            <div class="row">
             <div class="col-sm-8">
-             <p class="h2">
+             <h2>
                <%= render "favorites", tweet: @tweet %> |
                <%= @tweet.favorites.count %>いいね
-             </p>
+             </h2>
              </div>
              <div class="col-sm-4" style="text-align: center;color: blue;">
-               <h5>全<%= @tweet.post_comments.count %>コメント</h5>
+               <h2>全<%= @tweet.post_comments.count %>コメント</h2>
              </div>
             </div>
             <%= render 'post_comments', post_comments: @post_comments %>

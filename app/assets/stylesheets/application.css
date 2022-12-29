@@ -16,7 +16,6 @@
  */
 
 
-
 * {
    margin: 0;
    padding: 0;
@@ -95,7 +94,7 @@ input[type=radio] {
 }
 
 
-/*タブレッドレスポンシブ*/
+/*ノートパソコンレスポンシブ*/
 @media screen and (max-width: 1024px) {
 .footer {
   flex-wrap: nowrap;
@@ -116,9 +115,27 @@ h2 {
   font-size: 20px;
 }
 h1 {
+  font-size: 35px;
+}
+}
+
+/*タブレットレスポンシブ*/
+@media screen and (max-width: 768px) {
+
+h4 {
+  font-size: 15px;
+}
+h3 {
   font-size: 20px;
 }
+h2 {
+  font-size: 20px;
 }
+h1 {
+  font-size: 30px;
+}
+}
+
 
 /*スマホレスポンシブ*/
 @media screen and (max-width: 425px) {
@@ -207,4 +224,3 @@ h2 {
   font-size: 15px;
 }
 }
-

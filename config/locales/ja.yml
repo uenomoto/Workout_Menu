@@ -7,6 +7,6 @@ ja:
     pagination:
       first: "一番最初へ"
       last: "ラスト"
-      previous: "＜前へ"
-      next: "次へ＞"
+      previous: "&lsaquo; 前へ"
+      next: "次へ &rsaquo;"
       truncate: "&hellip;"

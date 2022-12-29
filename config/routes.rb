@@ -55,7 +55,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     get root to: 'homes#top'
-    get '/main' => 'homes#about',as: 'main'
+    get '/main' => 'homes#main',as: 'main'
     get '/guide', to: 'homes#guide'
   end
 

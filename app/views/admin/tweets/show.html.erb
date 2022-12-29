@@ -1,8 +1,8 @@
 <div class="container">
-  <div class="row m-5">
+  <div class="row my-5">
     <%= render 'tweet', tweet: @tweet %>
   </div>
-  <div class="row m-5">
+  <div class="row my-5">
     <div class="col-sm-12">
       通報者のニックネーム :
       <% @tweet.reports.last(10).each do |report| %>

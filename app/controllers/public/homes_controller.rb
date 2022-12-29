@@ -5,7 +5,7 @@ class Public::HomesController < ApplicationController
   def top
   end
 
-  def about
+  def main
   end
 
   def guide

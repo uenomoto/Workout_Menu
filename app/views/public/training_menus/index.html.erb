@@ -12,7 +12,7 @@
        <%= training_menus.count %>種目
        <% end %>
        <% else %>
-       完了！
+       <%= link_to "済", anywhen_path(date) %>
        <% end %>
     </div>
    <% end %>

@@ -1,12 +1,12 @@
 <div class="container">
-  <div class="row m-5">
+  <div class="row my-5">
     <div class="col-sm-12">
       <h1 class="text-center"><%= @user.nickname %>さんの詳細ページ</h1>
     </div>
   </div>
-  <div class="row m-5">
+  <div class="row">
     <div class="col-sm-12 col-lg-3">
-      <%= image_tag @user.get_profile_image(200,200), class: "rounded-circle" %>
+      <%= image_tag @user.get_profile_image(150,150), class: "rounded-circle" %>
     </div>
     <div class="col-sm-12 col-lg-9">
       <table class="table bordered table-dark">
@@ -34,7 +34,7 @@
         </tr>
         <tr>
           <th>ツイート一覧</th>
-          <td><%= link_to "#{@user.nickname}のツイート一覧", admin_permember_path(@user), class: "btn btn-primary" %></td>
+          <td><%= link_to "#{@user.nickname}のツイート一覧", admin_permember_path(@user), class: "btn btn-primary btn-sm" %></td>
         </tr>
         <tr>
           <th>通報したツイート</th>
@@ -44,12 +44,12 @@
           <th>
             <%= form_with model: @user, url: admin_path, method: :patch do |f| %>
             <%= f.radio_button :is_deleted, false %>
-            <%= f.label :"会員" %>
+            <%= f.label :"会員" %><br>
             <%= f.radio_button :is_deleted, true %>
             <%= f.label :"退会" %>
           </th>
           <td>
-            <%= f.submit "退会ステータス変更", class: "btn btn-success" %>
+            <%= f.submit "退会ステータス変更", class: "btn btn-success btn-sm" %>
             <% end %>
           </td>
         </tr>

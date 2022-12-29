@@ -1,6 +1,7 @@
 class Public::TrainingMenusController < ApplicationController
 
 before_action :authenticate_user!
+before_action :current_user?, only: [:edit, :destroy]
 
   def new
     @training_menu = TrainingMenu.new
@@ -26,7 +27,7 @@ before_action :authenticate_user!
 
   def anywhen
     @training_menus = TrainingMenu.where(user:current_user, date: params[:id])
-    @training_menu = (params[:id])
+    @training_menu_day = (params[:id])
   end
 
   def show
@@ -37,11 +38,12 @@ before_action :authenticate_user!
     @training_names = current_user.training_names
     @genres = current_user.genres
     @training_menu = TrainingMenu.find(params[:id])
-    if @training_menu.user_id == current_user.id
+      if @training_menu.completion == false
       render :edit
-    else
+      else
+      flash[:warning] = "完了したメニューは編集できません"
       redirect_to training_menus_path
-    end
+      end
   end
 
   def update
@@ -68,13 +70,20 @@ before_action :authenticate_user!
   def complete
     @training_menu = TrainingMenu.where(user:current_user, date: params[:id])
     @training_menu.update(completion: true)
-    redirect_to root_path, flash: {success: "トレーニングお疲れ様でした！"}
+    redirect_to main_path, flash: {success: "トレーニングお疲れ様でした！"}
   end
 
   private
 
   def training_menu_params
     params.require(:training_menu).permit(:user_id, :training_name_id, :date, :count, :set, :status, :weight, :distance, :completion)
+  end
+
+  def current_user?
+    @training_menu = TrainingMenu.find(params[:id])
+    if @training_menu.user_id != current_user.id
+      redirect_to main_path, flash: {danger: 'ご本人様ではないので編集できません。'}
+    end
   end
 
 end
