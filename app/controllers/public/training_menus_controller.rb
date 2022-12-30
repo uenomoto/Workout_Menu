@@ -10,13 +10,15 @@ before_action :current_user?, only: [:edit, :destroy]
   end
 
   def create
-   # binding.pry
+    # binding.pry
     @training_menu = TrainingMenu.new(training_menu_params)
     @training_menu.user_id = current_user.id
     if @training_menu.save
       redirect_to training_menu_path(@training_menu.id), flash: {success: "メニュー作成しました。"}
     else
       flash.now[:danger] = "メニュー作成失敗しました"
+      @training_names = current_user.training_names
+      @genres = current_user.genres
       render :new
     end
   end
@@ -76,7 +78,7 @@ before_action :current_user?, only: [:edit, :destroy]
   private
 
   def training_menu_params
-    params.require(:training_menu).permit(:user_id, :training_name_id, :date, :count, :set, :status, :weight, :distance, :completion)
+    params.require(:training_menu).permit(:user_id, :training_name_id, :genre_id, :date, :count, :set, :status, :weight, :distance, :completion)
   end
 
   def current_user?
