@@ -41,9 +41,16 @@
     <li class="nav-item">
       <i class="fa fa-users fa-2x size"></i><%= link_to "会員一覧", users_path, class: "h5 text-light mr-3" %>
     </li>
+    <% if current_user.nickname == "guestuser" %>
+    <li class="nav-item">
+      <i class="fa fa-sign-out-alt fa-2x size"></i><%=link_to "ログアウト", users_guest_sign_out_path, method: :delete,
+      data: { confirm: "ゲスト会員はログアウトすると全てのデーターは削除されます。\nログアウトしますか？" }, class: "h5 text-light" %>
+    </li>
+    <% else %>
     <li class="nav-item">
       <i class="fa fa-sign-out-alt fa-2x size"></i><%=link_to "ログアウト", destroy_user_session_path, method: :delete, class: "h5 text-light" %>
     </li>
+    <% end %>
 
     <% else %>
 

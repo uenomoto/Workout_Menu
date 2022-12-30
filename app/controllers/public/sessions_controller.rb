@@ -27,6 +27,7 @@ class Public::SessionsController < Devise::SessionsController
     if @user
       #取得したアカウントのパスと入力されたパスが一致しているかつ退会フラグがtrueだったらサインアップ画面へ
       if (@user.valid_password?(params[:user][:password]) && (@user.is_deleted == true))
+        flash[:danger] = "退会済みの会員様です。"
         redirect_to new_user_registration_path
       end
     end

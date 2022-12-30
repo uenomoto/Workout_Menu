@@ -29,7 +29,7 @@ class Public::UsersController < ApplicationController
       render :edit
     end
   end
-
+# 理論削除
   def withdraw
     @user = current_user
     @user.update(is_deleted: true)
