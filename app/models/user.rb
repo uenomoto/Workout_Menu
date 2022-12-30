@@ -64,7 +64,7 @@ class User < ApplicationRecord
        user.nickname = "guestuser"
      end
     end
-    
+
     # フォロー関係
     # 自分がフォローされる
     # foreign_key（FK）には、@user.reverse_of_relationshipsとした際に@user.idがfollowed_idを指定

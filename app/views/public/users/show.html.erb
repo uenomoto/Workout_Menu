@@ -1,11 +1,16 @@
 <div class="container">
-     <% if @user == current_user %>
+  <% if @user == current_user %>
 
-     <%= render "mypage", user: @user %>
+    <%= render "mypage", user: @user %>
 
     <% else %>
 
-    <%= render "different_user", user: @user %>
-
-    <% end %>
+       <% if @user.is_deleted == false %>
+         <%= render "different_user", user: @user %>
+       <% else %>
+       <div class="my-5 col-sm-12 text-center">
+         <h1 class="text-danger">こちらは退会されたユーザーです。</h1>
+       </div>
+       <% end %>
+  <% end %>
 </div>
