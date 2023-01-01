@@ -10,25 +10,25 @@
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
       <div class="form-group">
-       <%= f.label :"ニックネーム" %>
+       <%= f.label :"ニックネーム（必須）" %>
        <i class="fas fa-user"></i>
        <%= f.text_field :nickname, autofocus: true, placeholder:"ニックネーム", class: "form-control" %>
       </div>
 
      <div class="form-group">
-      <%= f.label :"お住まいの地域" %>
+      <%= f.label :"お住まいの地域（必須）" %>
       <i class="fas fa-home"></i>
       <%= f.select :prefecture, User.prefectures.keys, {prompt: '---選択してください---'}, class: 'form-control' %>
      </div>
 
     <div class="form-group">
-      <%= f.label :"自己紹介" %>
+      <%= f.label :"自己紹介（５文字以上）" %>
       <i class="fa fa-comment"></i>
       <%= f.text_area :introduction, autofocus: true, placeholder:"トレーニング中に意識していることなどなど・・・", class: "form-control" %>
     </div>
 
     <div class="form-group">
-      <%= f.label :"メールアドレス" %>
+      <%= f.label :"メールアドレス（必須）" %>
       <i class="fas fa-envelope"></i>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
     </div>

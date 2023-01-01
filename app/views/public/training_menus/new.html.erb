@@ -9,7 +9,7 @@
     <div class="col-sm-12 col-lg-6">
       <%= form_with model: @training_menu, url: "/training_menus" ,method: :post do |f| %>
       <div class="form-group">
-      <%= f.label :"部位" %>
+      <%= f.label :"部位(必須)" %>
       <%= f.collection_select :genre_id, @genres, :id, :name, {include_blank: "お先にこちらを選択", prompt: false}, class: "form-control" %>
       </div>
 
@@ -17,7 +17,7 @@
 
       <div id="training_name">
        <div class="form-group">
-        <%= f.label :"トレ名" %>
+        <%= f.label :"トレ名(必須)" %>
         <% if @training_names.blank? %>
            <%= f.select :training_name_id, [], {include_blank: "部位登録してください"}, class: "form-control" %>
            <% else %>
@@ -30,7 +30,7 @@
         <template id="training_name_<%= genre.id %>"><!-- このidをもとに呼び出される-->
          <div id="selected_training_name">
           <div class="form-group">
-          <%= f.label :"トレ名" %>
+          <%= f.label :"トレ名(必須)" %>
           <%= f.collection_select :training_name_id, genre.training_names, :id, :name, {include_blank: "---", prompt: false}, class: "form-control" %>
           </div>
          </div>
@@ -38,15 +38,15 @@
       <% end %>
 
       <div class="form-group">
-        <%= f.label :"日付" %>
+        <%= f.label :"日付(必須)" %>
         <%= f.date_field :date, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= f.label :"回数" %>
+        <%= f.label :"回数or周回(必須)" %>
         <%= f.number_field :count, min: 1, class: "form-control" %>
       </div>
       <div class="form-group">
-        <%= f.label :"セット数" %>
+        <%= f.label :"セット数orインターバル(必須)" %>
         <%= f.number_field :set, min: 1, class: "form-control" %>
       </div>
       <div class="form-group">
@@ -79,6 +79,7 @@
       <% end %>
     </div>
   </div>
+  <h5 class="text-center mt-5">部位登録お済みでない方は<span><%= link_to "こちらからお願いします！", genres_path, class: "btn btn-primary btn-sm" %></span></h5>
 </div>
 
 <%= javascript_pack_tag 'category_select.js', 'data-turbolinks-track': 'reload'  %>

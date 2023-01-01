@@ -33,6 +33,13 @@ before_action :authenticate_user!
     end
   end
 
+  def destroy
+    @genre = Genre.find(params[:id])
+    @genre.destroy
+    flash[:danger] = "#{ @genre.name }を削除しました"
+    redirect_to genres_path
+  end
+
 
   private
 

@@ -3,17 +3,17 @@
    <%= render 'layouts/error', model: f.object %>
 
    <div class="form-group">
-     <%= f.label :"トレーニング名" %>
+     <%= f.label :"トレーニング名（必須）" %>
      <%= f.text_field :name, autofocus: true, class: "form-control" %>
    </div>
 
    <div class="form-group">
-     <%= f.label :"部位" %>
+     <%= f.label :"部位（必須）" %>
      <%= f.collection_select :genre_id, Genre.where(user:current_user), :id, :name, {:prompt => "--選択してください--"}, class: "form-control" %>
    </div>
 
    <div class="form-group">
-     <%= f.label :"説明文" %>
+     <%= f.label :"説明文（必須）" %>
      <%= f.text_area :introduction, autofocus: true, placeholder: "例）意識しながら注意するところなど", class: "form-control" %>
    </div>
 
@@ -21,4 +21,5 @@
       <%= f.submit "登録する", class: "btn btn-success btn-sm float-right col-lg-4 col-sm-7" %>
     </div>
    <% end %>
+   <h5 class="float-right mt-5">部位登録お済みでない方は<span><%= link_to "こちらからお願いします！", genres_path, class: "btn btn-primary btn-sm" %></span></h5>
 </div>

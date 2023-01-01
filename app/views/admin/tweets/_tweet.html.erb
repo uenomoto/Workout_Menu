@@ -10,13 +10,10 @@
     <br>
     <div class="row">
      <div class="col-sm-12 col-md-6 text-center text-danger">通報された数 : <%= tweet.reports.count %></div>
-     <div class="col-sm-12 col-md-6 text-center text-primary">
-      <h5>全<%= tweet.post_comments.count %>コメント</h5>
-     </div>
     </div>
     <div class="row m-3">
       <div class="col-sm-12">
-        <h5><span class="h2"><i class="far fa-comments"></i></span>コメント一覧</h5>
+        <h5><span class="h2"><i class="far fa-comments"></i></span>全<%= tweet.post_comments.count %>コメント</h5>
         <% @post_comments.each do |c| %>
         <table class="table">
            <%= image_tag c.user.get_profile_image(50,50), class: "rounded-circle" %>

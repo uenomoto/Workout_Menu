@@ -3,7 +3,7 @@
     <%= render 'tweet', tweet: @tweet %>
   </div>
   <div class="row my-5">
-    <div class="col-sm-12">
+    <div class="col-sm-12 text-center">
       通報者のニックネーム :
       <% @tweet.reports.last(10).each do |report| %>
       <%= link_to report.user.nickname, admin_user_path(report.user_id) %> |

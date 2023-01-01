@@ -54,6 +54,8 @@ before_action :current_user?, only: [:edit, :destroy]
       redirect_to training_menu_path(@training_menu.id), flash: {info: "メニュー編集しました。"}
     else
       flash.now[:danger] = "編集に失敗しました"
+      @training_names = current_user.training_names
+      @genres = current_user.genres
       render :edit
     end
   end

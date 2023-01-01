@@ -10,13 +10,13 @@
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
    <div class="form-group">
-     <%= f.label :"ニックネーム" %>
+     <%= f.label :"ニックネーム（必須）" %>
      <i class="fas fa-user"></i>
      <%= f.text_field :nickname, autofocus: true, placeholder: "ニックネーム", class: "form-control" %>
    </div>
 
    <div class="form-group">
-     <%= f.label :"パスワード" %>
+     <%= f.label :"パスワード（必須）" %>
      <i class="fas fa-lock"></i>
      <%= f.password_field :password, autocomplete: "current-password", class: "form-control mb-2", id: "see" %>
      <input type="checkbox" onChange="document.getElementById('see').type = (this.checked) ? 'text' : 'password';">

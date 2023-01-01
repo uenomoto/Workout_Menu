@@ -37,6 +37,13 @@ before_action :authenticate_user!
    end
   end
 
+  def destroy
+   @training_name = TrainingName.find(params[:id])
+   @training_name.destroy
+   flash[:danger] = "#{ @training_name.name }を削除しました"
+   redirect_to training_names_path
+  end
+
 
   private
 
