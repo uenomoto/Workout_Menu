@@ -12,13 +12,51 @@
   <div class="row mt-5">
     <div class="col-lg-3"></div>
     <div class="col-sm-12 col-lg-6">
-      <div class="form-area">
+      <div id="tweetForm">
        <%= form_with model: @tweet, url: tweets_path, method: :post do |f| %>
-       <%= render 'layouts/error', model: f.object %>
-       <%= f.text_area :text, placeholder: "呟き記入欄", class: "form-control", rows: 5 %><br>
-       <%= f.submit "呟き投稿", class: "btn btn-success float-right col-lg-4 col-md-4" %>
+       <div class="form-group" id="tweetText">
+         <div>
+          <%= f.text_area :text, placeholder: "呟き記入欄", class: "form-control", rows: 5 %>
+         </div>
+       </div>
+        <%= f.submit "呟き投稿", class: "btn btn-success float-right mt-1 col-lg-4 col-md-4", id: "tweetSubmit" %>
+       </div>
        <% end %>
-      </div>
     </div>
   </div>
 </div>
+
+<script>
+  var tweetForm =document.querySelector("#tweetForm");
+  var tweetTextField = document.querySelector("#tweetText");
+  var tweettext = document.querySelector("#tweet_text");
+  var tweetSubmitBtn = document.querySelector("#tweetSubmit");
+  var textPara = document.createElement('p');
+
+  var activeTweet;
+
+  tweetSubmitBtn.disabled = true; // デフォルトでSubmitボタンを無効化
+  tweetForm.addEventListener('input', ()=>{
+    if(activeTweet === true){
+      tweetSubmitBtn.disabled = false;
+    }else{
+      tweetSubmitBtn.disabled = true;
+    }
+  });
+
+  tweettext.addEventListener('input', ()=>{
+    if(tweettext.value === ""){ // 入力フォームが空の場合
+      textPara.textContent = "つぶやきを入力してください";
+      textPara.style.color = "red";
+      tweettext.parentElement.style.border = "2px solid red";
+      activeTweet = false;
+      }else{ // バリデーションチェック完了時（OK時）の処理
+      tweettext.parentElement.style.border = "2px solid lightgreen";
+      textPara.textContent = "OK!";
+      textPara.style.color = "green";
+      activeTweet = true;
+    }
+    // ：nickname用のバリデーションエラーメッセージを表示
+    tweetTextField.appendChild(textPara);
+  });
+</script>

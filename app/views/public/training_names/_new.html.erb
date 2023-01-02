@@ -1,25 +1,33 @@
 <div class="col-sm-12 col-lg-4">
+  <div id="training_name_form">
    <%= form_with model: @training_name, url: "/training_names", method: :post do |f| %>
    <%= render 'layouts/error', model: f.object %>
 
-   <div class="form-group">
+   <div class="form-group" id="trainingName">
      <%= f.label :"トレーニング名（必須）" %>
-     <%= f.text_field :name, autofocus: true, class: "form-control" %>
+     <div>
+      <%= f.text_field :name, autofocus: true, class: "form-control" %>
+     </div>
    </div>
 
-   <div class="form-group">
+   <div class="form-group" id="trainingGenre">
      <%= f.label :"部位（必須）" %>
-     <%= f.collection_select :genre_id, Genre.where(user:current_user), :id, :name, {:prompt => "--選択してください--"}, class: "form-control" %>
+     <div>
+      <%= f.collection_select :genre_id, Genre.where(user:current_user), :id, :name, {:prompt => "--選択してください--"}, class: "form-control" %>
+     </div>
    </div>
 
    <div class="form-group">
-     <%= f.label :"説明文（必須）" %>
+     <%= f.label :"説明文" %>
      <%= f.text_area :introduction, autofocus: true, placeholder: "例）意識しながら注意するところなど", class: "form-control" %>
    </div>
 
     <div class="submit">
-      <%= f.submit "登録する", class: "btn btn-success btn-sm float-right col-lg-4 col-sm-7" %>
+      <%= f.submit "登録する", class: "btn btn-success btn-sm float-right col-lg-4 col-sm-7", id: "trainingSubmit" %>
     </div>
+  </div>
    <% end %>
    <h5 class="float-right mt-5">部位登録お済みでない方は<span><%= link_to "こちらからお願いします！", genres_path, class: "btn btn-primary btn-sm" %></span></h5>
 </div>
+
+<%= javascript_pack_tag 'training_name_form.js', 'data-turbolinks-track': 'reload'  %>

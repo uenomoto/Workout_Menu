@@ -7,28 +7,104 @@
   <div class="row m-3">
     <div class="col-lg-3"></div>
     <div class="col-sm-12 col-lg-6">
+   <div id="userform">
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-   <div class="form-group">
+   <div class="form-group" id="userNickname">
      <%= f.label :"ニックネーム（必須）" %>
      <i class="fas fa-user"></i>
-     <%= f.text_field :nickname, autofocus: true, placeholder: "ニックネーム", class: "form-control" %>
+     <div>
+      <%= f.text_field :nickname, autofocus: true, placeholder: "ニックネーム", class: "form-control" %>
+     </div>
    </div>
 
-   <div class="form-group">
+   <div class="form-group" id="userPassword">
      <%= f.label :"パスワード（必須）" %>
      <i class="fas fa-lock"></i>
-     <%= f.password_field :password, autocomplete: "current-password", class: "form-control mb-2", id: "see" %>
-     <input type="checkbox" onChange="document.getElementById('see').type = (this.checked) ? 'text' : 'password';">
-     パスワードを表示する
+     <div>
+      <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+     </div>
    </div>
 
 
    <div class="sign in">
-     <%= f.submit "ログイン", class: "btn btn-success form-control col-lg-4 col-md-5 float-right" %>
+     <%= f.submit "ログイン", class: "btn btn-success form-control col-lg-4 col-md-5 float-right", id: "userSubmit" %>
    </div>
+  </div>
      <% end %>
     <h5 class="float-right mt-3">登録がお済みでない方は<span><%= link_to "こちらからお願いします！", new_user_registration_path, class: "btn btn-primary" %></span></h5>
   </div>
  </div>
 </div>
+
+<script>
+  var userForm =document.querySelector("#userform");
+
+  var userNameField = document.querySelector("#userNickname");
+  var userPasswordField = document.querySelector("#userPassword");
+
+  var userName = document.querySelector("#user_nickname");
+  var userPassword = document.querySelector("#user_password");
+
+  var userSubmitBtn = document.querySelector("#userSubmit");
+  var namePara = document.createElement('p');
+  var passwordPara = document.createElement('p');
+
+  var activeName;
+  var activePassword;
+
+  userSubmitBtn.disabled = true; // デフォルトでSubmitボタンを無効化
+  userForm.addEventListener('input', ()=>{
+    if(activeName === true && activePassword === true){
+      userSubmitBtn.disabled = false;
+    }else{
+      userSubmitBtn.disabled = true;
+    }
+  });
+
+  userName.addEventListener('input', ()=>{
+    if(userName.value === ""){ // 入力フォームが空の場合
+      namePara.textContent = "ニックネームを入力してください";
+      namePara.style.color = "red";
+      userName.parentElement.style.border = "2px solid red";
+      activeName = false;
+      }else{ // バリデーションチェック完了時（OK時）の処理
+      userName.parentElement.style.border = "2px solid lightgreen";
+      namePara.textContent = "OK!";
+      namePara.style.color = "green";
+      activeName = true;
+    }
+    // ：nickname用のバリデーションエラーメッセージを表示
+    userNameField.appendChild(namePara);
+  });
+
+  userPassword.addEventListener('input', ()=>{
+    var passwordRegex = /^([a-zA-Z0-9]{6,})$/; // 半角英数字6文字以上を表す正規表現
+
+    // パスワード(:password)がpasswordRegexの正規表現パターンに一致しない時の処理
+    if(!passwordRegex.test(userPassword.value)){
+      if(userPassword.value === ""){ // 入力フォーム(userPassword)が空の場合
+        passwordPara.textContent = "パスワードを入力してください";
+        passwordPara.style.color = "red";
+        userPassword.parentElement.style.border = "2px solid red";
+        activePassword = false;
+      }else{ // 入力した値が1文字以上6文字未満である場合
+        passwordPara.textContent = "6文字以上の半角英数字を入力してください";
+        passwordPara.style.color = "red";
+        userPassword.parentElement.style.border = "2px solid red";
+        activePassword = false;
+      }
+    }
+    // パスワード(:password)がpasswordRegexの正規表現パターンに一致した時の処理
+    else{
+      if(userPassword.value === userPassword.value){ // パスワードOKの場合
+        passwordPara.textContent = "OK!";
+        passwordPara.style.color = "green";
+        userPassword.parentElement.style.border = "2px solid lightgreen";
+        activePassword = true;
+      }
+    }
+
+    userPasswordField.appendChild(passwordPara);
+  });
+</script>
