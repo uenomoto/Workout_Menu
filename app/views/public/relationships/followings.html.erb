@@ -4,11 +4,9 @@
   </div>
   <div class="row my-2">
     <% if @users.exists? %>
-    <%= render 'public/users/index', users: @users %>
-     <% else %>
-       <div class="col-sm-12 offset-1 text-center">
-         <h1 class="text-primary">フォローしてみよう！</h1>
-       </div>
-  </div>
+     <%= render 'public/users/index', users: @users %>
+    <% else %>
+      <h1 class="text-primary mt-5">フォローしてみよう！</h1>
     <% end %>
+  </div>
 </div>

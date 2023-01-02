@@ -1,6 +1,7 @@
 class Public::TrainingNamesController < ApplicationController
 
 before_action :authenticate_user!
+before_action :current_user?, only: [:show, :edit, :destroy]
 
   def create
    @training_name = TrainingName.new(training_name_params)
@@ -49,6 +50,13 @@ before_action :authenticate_user!
 
   def training_name_params
     params.require(:training_name).permit(:genre_id, :user_id, :name, :introduction)
+  end
+
+  def current_user?
+    @training_name = TrainingName.find(params[:id])
+    if @training_name.user_id != current_user.id
+      redirect_to main_path, flash: {danger: 'ご本人様ではないので編集できません。'}
+    end
   end
 
 end

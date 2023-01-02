@@ -4,9 +4,9 @@
   <% post_comments.each do |c| %>
    <table class="table">
     <div class="border-bottom border-dark pb-3 mb-2">
-    <%= image_tag c.user.get_profile_image(50,50), class: "rounded-circle" %>
+    <%= image_tag c.user.get_profile_image(50,50), class: "rounded-circle" %><br>
     by:<%= c.user.nickname %><br>
-       <%= c.comment %><br>
+       <h2><%= c.comment %></h2><br>
     <% if user_signed_in? %>
      <% if current_user.id == c.user_id %>
       <%= link_to "編集", edit_tweet_post_comment_path(@tweet, c.id), class: "text-info" %>
@@ -23,7 +23,7 @@
    <% if user_signed_in? %>
    <%= form_with model: [@tweet, @post_comment], method: :post do |f| %>
    <%= f.text_area :comment ,placeholder: "コメントする", class: "form-control", rows: 2 %><br>
-   <%= f.submit "コメントする", class: "btn btn-success float-right" %>
+   <%= f.submit "コメントする", class: "btn btn-success btn-sm float-right" %>
    <% end %>
   <% end %>
   </div>
