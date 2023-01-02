@@ -36,3 +36,7 @@
 .size {
   color: #a4969b;
 }
+/*ハンバーガーの中のFont Awesomeの色を変更*/
+.md-size {
+  color: bisque;
+}

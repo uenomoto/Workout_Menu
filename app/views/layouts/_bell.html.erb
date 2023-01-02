@@ -1,9 +1,9 @@
 <%= link_to notifications_path do %>
-   <div class="position-relative">
+   <div id="bell">
     <% if unchecked_notifications.any? %>
-        <i class="fas fa-bell fa-2x" style="color: orange;"></i><p class="text-light">通知あり</p>
+        <i class="fas fa-bell fa-2x" style="color: orange;"></i>
     <% else %>
-        <i class="fas fa-bell fa-2x" style="color: #a4969b;"></i><p class="text-light">通知なし</p>
+        <i class="fas fa-bell fa-2x" style="color: #a4969b;"></i>
     <% end %>
    </div>
 <% end %>

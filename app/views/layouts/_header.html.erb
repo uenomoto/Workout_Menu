@@ -75,59 +75,59 @@
     <% if admin_signed_in? %>
 
     <li class="nav-item">
-      <i class="fa fa-address-book fa-2x size"></i><%= link_to "会員一覧", admin_root_path,class: "h5 text-light mr-3" %>
+      <i class="fa fa-address-book fa-2x md-size"></i><%= link_to "会員一覧", admin_root_path,class: "h5 text-light" %>
     </li>
     <li class="nav-item">
-      <i class="fa fa-comment fa-2x size"></i><%= link_to "ツイート一覧", admin_tweets_path,class: "h5 text-light mr-3" %>
+      <i class="fa fa-comment fa-2x md-size"></i><%= link_to "ツイート一覧", admin_tweets_path,class: "h5 text-light" %>
     </li>
     <li class="nav-item">
-      <i class="fa fa-sign-out-alt fa-2x size"></i><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "h5 text-light mr-3" %>
+      <i class="fa fa-sign-out-alt fa-2x md-size"></i><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "h5 text-light" %>
     </li>
 
     <% elsif user_signed_in? %>
-   <p class="h5 text-dark font-weight-bold mr-3">ようこそ！<%= nickname(current_user) %>さん！</p>
+   <h3 class="text-light font-weight-bold">ようこそ！<%= nickname(current_user) %>さん</h3>
 
     <li class="nav-item">
       <%= render 'layouts/bell' %>
     </li>
 
    <li class="nav-item">
-      <i class="fa fa-dumbbell fa-2x size"></i><%= link_to "メニュー登録", new_training_menu_path, class: "h5 text-light mr-3" %>
+      <i class="fa fa-dumbbell fa-2x md-size"></i><%= link_to "メニュー登録", new_training_menu_path, class: "h5 text-light" %>
     </li>
 
     <li class="nav-item">
-      <i class="fa fa-calendar fa-2x size"></i><%= link_to "メニューカレンダー", training_menus_path, class: "h5 text-light mr-3" %>
+      <i class="fa fa-calendar fa-2x md-size"></i><%= link_to "メニューカレンダー", training_menus_path, class: "h5 text-light" %>
     </li>
     <li class="nav-item">
-      <i class="fa fa-comment fa-2x size"></i><%= link_to "つぶやき一覧", tweets_path, class: "h5 text-light mr-3" %>
+      <i class="fa fa-comment fa-2x md-size"></i><%= link_to "つぶやき一覧", tweets_path, class: "h5 text-light" %>
     </li>
     <li class="nav-item">
-      <i class="fa fa-user fa-2x size"></i><%= link_to "マイページ", user_path(current_user.id), class: "h5 text-light mr-3" %>
+      <i class="fa fa-user fa-2x md-size"></i><%= link_to "マイページ", user_path(current_user.id), class: "h5 text-light" %>
     </li>
     <li class="nav-item">
-      <i class="fa fa-users fa-2x size"></i><%= link_to "会員一覧", users_path, class: "h5 text-light mr-3" %>
+      <i class="fa fa-users fa-2x md-size"></i><%= link_to "会員一覧", users_path, class: "h5 text-light" %>
     </li>
     <% if current_user.nickname == "guestuser" %>
     <li class="nav-item">
-      <i class="fa fa-sign-out-alt fa-2x size"></i><%=link_to "ログアウト", users_guest_sign_out_path, method: :delete,
+      <i class="fa fa-sign-out-alt fa-2x md-size"></i><%=link_to "ログアウト", users_guest_sign_out_path, method: :delete,
       data: { confirm: "ゲスト会員はログアウトすると全てのデーターは削除されます。\nログアウトしますか？" }, class: "h5 text-light" %>
     </li>
     <% else %>
     <li class="nav-item">
-      <i class="fa fa-sign-out-alt fa-2x size"></i><%=link_to "ログアウト", destroy_user_session_path, method: :delete, class: "h5 text-light" %>
+      <i class="fa fa-sign-out-alt fa-2x md-size"></i><%=link_to "ログアウト", destroy_user_session_path, method: :delete, class: "h5 text-light" %>
     </li>
     <% end %>
 
     <% else %>
 
     <li class="nav-item">
-      <i class="fa fa-user-plus fa-2x size"></i><%= link_to "新規登録", new_user_registration_path, class: "h5 text-light mr-3" %>
+      <i class="fa fa-user-plus fa-2x md-size"></i><%= link_to "新規登録", new_user_registration_path, class: "h5 text-light" %>
     </li>
     <li class="nav-item">
-      <i class="fa fa-lock fa-2x size"></i><%= link_to "ログイン", new_user_session_path, class: "h5 text-light mr-3" %>
+      <i class="fa fa-lock fa-2x md-size"></i><%= link_to "ログイン", new_user_session_path, class: "h5 text-light" %>
     </li>
     <li class="nav-item">
-      <i class="fa fa-lock fa-2x size"></i><%= link_to "ゲストログイン(閲覧用)", users_guest_sign_in_path, class: "h5 text-light", method: :post %>
+      <i class="fa fa-lock fa-2x md-size"></i><%= link_to "ゲストログイン(閲覧用)", users_guest_sign_in_path, class: "h5 text-light", method: :post %>
     </li>
     <% end %>
     </ul>
