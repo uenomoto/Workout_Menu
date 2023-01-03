@@ -1,11 +1,11 @@
 class Public::HomesController < ApplicationController
 
-  before_action :authenticate_user!, only: [:about]
+  before_action :authenticate_user!, only: [:main]
 
   def top
   end
 
-  def about
+  def main
   end
 
   def guide

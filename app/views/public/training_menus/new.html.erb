@@ -1,27 +1,30 @@
 <div class="container">
-  <div class="row m-3">
+  <div class="row my-3">
     <div class="col-sm-12 text-center">
       <h1>メニュー登録</h1>
     </div>
   </div>
-  <div class="row m-3">
+  <div class="row my-3">
     <div class="col-lg-3"></div>
     <div class="col-sm-12 col-lg-6">
+     <div id="menuForm">
       <%= form_with model: @training_menu, url: "/training_menus" ,method: :post do |f| %>
-      <div class="form-group">
-      <%= f.label :"部位" %>
-      <%= f.collection_select :genre_id, @genres, :id, :name, {include_blank: "お先にこちらを選択", prompt: false}, class: "form-control" %>
+      <div class="form-group" id="menuGenre">
+      <%= f.label :"部位(必須)" %>
+       <div>
+        <%= f.collection_select :genre_id, @genres, :id, :name, {include_blank: "お先にこちらを選択", prompt: false}, class: "form-control" %>
+       </div>
       </div>
 
       <div id="training_name_insert_point"></div>
 
-      <div id="training_name">
-       <div class="form-group">
-        <%= f.label :"トレ名" %>
+     <div id="training_name">
+       <div class="form-group" id="menuName">
+        <%= f.label :"トレ名(必須)" %>
         <% if @training_names.blank? %>
-           <%= f.select :training_name_id, [], {include_blank: "部位登録してください"}, class: "form-control" %>
+            <%= f.select :training_name_id, [], {include_blank: "トレ名を登録してください"}, class: "form-control" %>
            <% else %>
-            <%= f.collection_select :training_name_id, @training_names, :id, :name, {include_blank: "---", prompt: false}, class: "form-control" %>
+             <%= f.select :training_name_id,[], {include_blank: "すみません、ページ更新してください", prompt: false}, class: "form-control" %>
         <% end %>
        </div>
       </div>
@@ -29,25 +32,31 @@
       <% @genres.each do |genre|  %>
         <template id="training_name_<%= genre.id %>"><!-- このidをもとに呼び出される-->
          <div id="selected_training_name">
-          <div class="form-group">
-          <%= f.label :"トレ名" %>
+          <div class="form-group" id="menuName">
+          <%= f.label :"トレ名(必須)" %>
           <%= f.collection_select :training_name_id, genre.training_names, :id, :name, {include_blank: "---", prompt: false}, class: "form-control" %>
           </div>
          </div>
         </template>
       <% end %>
 
-      <div class="form-group">
-        <%= f.label :"日付" %>
-        <%= f.date_field :date, class: "form-control" %>
+      <div class="form-group" id="menuDate">
+        <%= f.label :"日付(必須)" %>
+        <div>
+         <%= f.date_field :date, class: "form-control" %>
+        </div>
       </div>
-      <div class="form-group">
-        <%= f.label :"回数" %>
-        <%= f.number_field :count, min: 1, class: "form-control" %>
+      <div class="form-group" id="menuCount">
+        <%= f.label :"回数or周回(必須)" %>
+        <div>
+         <%= f.number_field :count, min: 1, class: "form-control" %>
+        </div>
       </div>
-      <div class="form-group">
-        <%= f.label :"セット数" %>
-        <%= f.number_field :set, min: 1, class: "form-control" %>
+      <div class="form-group" id="menuSet">
+        <%= f.label :"セット数orインターバル(必須)" %>
+        <div>
+         <%= f.number_field :set, min: 1, class: "form-control" %>
+        </div>
       </div>
       <div class="form-group">
        <div class="radio_button">
@@ -74,14 +83,18 @@
       </div>
 
       <div class="form-group">
-        <%= f.submit "メニューを追加する", class: "btn btn-success float-right col-lg-8" %>
+        <%= f.submit "メニューを追加する", class: "btn btn-success btn-sm float-right col-lg-8 col-sm-8", id: "menuSubmit" %>
       </div>
+     </div>
       <% end %>
     </div>
   </div>
+  <h5 class="text-center mt-5">部位登録お済みでない方は<span><%= link_to "こちらからお願いします！", genres_path, class: "btn btn-primary btn-sm" %></span></h5>
+  <h5 class="text-center mt-1">トレ名登録お済みでない方は<span><%= link_to "こちらからお願いします！", training_names_path, class: "btn btn-primary btn-sm" %></span></h5>
 </div>
 
 <%= javascript_pack_tag 'category_select.js', 'data-turbolinks-track': 'reload'  %>
+<%= javascript_pack_tag 'menu_form.js', 'data-turbolinks-track': 'reload'  %>
 
 <script>
 // ラジオボタンが加重だったら重さ、有酸素だったら距離フォームを出す。

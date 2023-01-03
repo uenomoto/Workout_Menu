@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :ensure_guest_user, only: [:edit]
+  before_action :ensure_guest_user, only: [:edit, :withdraw]
 
   def show
     @user = User.find(params[:id])
@@ -29,12 +29,12 @@ class Public::UsersController < ApplicationController
       render :edit
     end
   end
-
+# 理論削除
   def withdraw
     @user = current_user
     @user.update(is_deleted: true)
     reset_session
-    redirect_to about_path, flash: {warning: "退会しました。ご利用ありがとうございました。"}
+    redirect_to root_path, flash: {warning: "退会しました。ご利用ありがとうございました。"}
   end
 
   private
@@ -44,9 +44,9 @@ class Public::UsersController < ApplicationController
   end
 
   def ensure_guest_user
-    @user = User.find(params[:id])
-    if @user.nickname == "guestuser"
-      redirect_to user_path(current_user), flash: {danger: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'}
+    @user = current_user
+    if (@user.nickname == "guestuser") && (@user.email == "guest@example.com")
+      redirect_to user_path(current_user), flash: {danger: 'ゲストユーザーはプロフィール編集画面へ遷移できません。or退会できません。'}
     end
   end
 

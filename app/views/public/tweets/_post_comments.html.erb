@@ -1,27 +1,29 @@
 <div class="row">
   <div class="col-sm-12">
-   <h5><span class="h2"><i class="far fa-comments"></i></span>コメント一覧</h5>
-    <% post_comments.each do |c| %>
+   <h1><i class="far fa-comments"></i>全<%= @tweet.post_comments.count %>コメント</h1>
+  <% post_comments.each do |c| %>
    <table class="table">
-    <%= image_tag c.user.get_profile_image(50,50), class: "rounded-circle" %>
-    by:<%= c.user.nickname %>
-       <%= c.comment %>
-       <div class="border-bottom border-dark pb-3"></div>
+    <div class="border-bottom border-dark pb-3 mb-2">
+    <%= image_tag c.user.get_profile_image(50,50), class: "rounded-circle" %><br>
+    by:<%= c.user.nickname %><br>
+       <h2><%= c.comment %></h2><br>
     <% if user_signed_in? %>
      <% if current_user.id == c.user_id %>
-      <%= link_to "編集", edit_tweet_post_comment_path(@tweet, c.id), class: "btn btn-info mr-1" %>
-      <%= link_to "削除", tweet_post_comment_path(@tweet, c.id), method: :delete, "data-confirm" => "削除してもよろしいですか？", class: "btn btn-danger" %>
-      <hr>
+      <%= link_to "編集", edit_tweet_post_comment_path(@tweet, c.id), class: "text-info" %>
+      <%= link_to tweet_post_comment_path(@tweet, c.id), method: :delete, "data-confirm" => "削除してもよろしいですか？" do %>
+      <i class="fas fa-trash" style="color: black;"></i>
+      <% end %>
+    </div>
     <% end %>
    <% end %>
-   <% end %>
+  <% end %>
    </table>
   </div>
   <div class="col-sm-12">
    <% if user_signed_in? %>
    <%= form_with model: [@tweet, @post_comment], method: :post do |f| %>
    <%= f.text_area :comment ,placeholder: "コメントする", class: "form-control", rows: 2 %><br>
-   <%= f.submit "コメントする", class: "btn btn-success float-right" %>
+   <%= f.submit "コメントする", class: "btn btn-success btn-sm float-right" %>
    <% end %>
   <% end %>
   </div>

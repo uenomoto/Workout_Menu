@@ -31,12 +31,12 @@
   font-size: 6rem;
 }
 
-nav {
-  background-color: #626262;
-  width: 100%;
-}
 
 /*Font Awesomeの色を変更*/
 .size {
   color: #a4969b;
+}
+/*ハンバーガーの中のFont Awesomeの色を変更*/
+.md-size {
+  color: bisque;
 }

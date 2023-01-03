@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="text-center text-success mt-3">メニューカレンダー</h1>
+  <h1 class="text-center text-success my-4">メニューカレンダー</h1>
 
 
   <%= month_calendar(attribute: :date, events: @training_menus) do |date, training_menus| %>
@@ -12,7 +12,7 @@
        <%= training_menus.count %>種目
        <% end %>
        <% else %>
-       完了！
+       <%= link_to "済", anywhen_path(date) %>
        <% end %>
     </div>
    <% end %>

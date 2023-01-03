@@ -1,12 +1,11 @@
 <div class="container">
-  <div class="row m-5">
-    <div class="col-lg-3"></div>
-    <div class="col-sm-12 col-lg-6">
+  <div class="row mt-5">
+    <div class="col-sm-12">
       <%= form_with model: [@tweet, @post_comment], method: :patch do |f| %>
-
+       <%= render 'layouts/error', model: f.object %>
        <div class="form-group">
-        <%= f.label :"コメント編集", class: "h3" %></br>
-        <%= f.text_field :comment, class: "form-control" %>
+        <h2><%= f.label :"コメント編集"%></h2>
+        <%= f.text_area :comment, class: "form-control", rows: 3 %>
         <%= f.submit "編集する", class: "btn btn-info float-right col-lg-4 col-md-4 mt-3" %>
         <% end %>
        </div>

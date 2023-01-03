@@ -1,6 +1,7 @@
 class Public::GenresController < ApplicationController
 
 before_action :authenticate_user!
+before_action :current_user?, only: [:edit, :destroy]
 
   def index
     @genres = Genre.where(user:current_user)
@@ -33,11 +34,25 @@ before_action :authenticate_user!
     end
   end
 
+  def destroy
+    @genre = Genre.find(params[:id])
+    @genre.destroy
+    flash[:danger] = "#{ @genre.name }を削除しました"
+    redirect_to genres_path
+  end
+
 
   private
 
   def genre_params
     params.require(:genre).permit(:name, :user_id)
+  end
+
+  def current_user?
+    @genre = Genre.find(params[:id])
+    if @genre.user_id != current_user.id
+      redirect_to main_path, flash: {danger: 'ご本人様ではないので編集できません。'}
+    end
   end
 
 end

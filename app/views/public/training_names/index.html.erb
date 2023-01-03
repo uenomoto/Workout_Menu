@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="row mt-2">
+  <div class="row mt-4">
     <div class="col-sm-12 text-center">
-      <h3>トレーニング名一覧表と登録</h3>
+      <h1>トレーニング名一覧表と登録</h1>
     </div>
   </div>
   <div class="row mt-3 mb-3">
@@ -19,7 +19,7 @@
           <tr>
             <td><%= training_name.name %></td>
             <td><%= training_name.genre.name %></td>
-            <td><%= link_to "詳細", training_name_path(training_name.id), class: "btn btn-primary col-lg-10" %></td>
+            <td><%= link_to "詳細", training_name_path(training_name.id), class: "btn btn-primary btn-sm col-lg-10" %></td>
           </tr>
           <% end %>
         </tbody>

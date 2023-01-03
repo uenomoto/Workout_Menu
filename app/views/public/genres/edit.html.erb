@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row m-5">
+  <div class="row my-5">
     <div class="col-sm-12 text-center">
       <h1 class="genre_edit">間違えてしまったら<br>こちらから編集してください</h1>
     </div>
@@ -11,7 +11,7 @@
      <%= render 'layouts/error', model: f.object %>
      <%= f.label "編集はこちらから↓" %>
      <%= f.text_field :name, class: "form-control" %>
-     <%= f.submit "編集する", class: "btn btn-info mt-3 float-right col-lg-4" %>
+     <%= f.submit "編集する", class: "btn btn-info mt-3 float-right btn-sm col-lg-4 col-sm-5" %>
      <% end %>
     </div>
   </div>

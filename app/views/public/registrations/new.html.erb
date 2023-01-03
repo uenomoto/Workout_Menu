@@ -7,48 +7,63 @@
    <div class="row m-3">
     <div class="col-lg-3"></div>
     <div class="col-sm-12 col-lg-6">
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
-      <div class="form-group">
-       <%= f.label :"ニックネーム" %>
+      <div id="userForm">
+       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render 'layouts/error', model: f.object %>
+      <div class="form-group", id="userNickname">
+       <%= f.label :"ニックネーム（必須）" %>
        <i class="fas fa-user"></i>
-       <%= f.text_field :nickname, autofocus: true, placeholder:"ニックネーム", class: "form-control" %>
+       <div>
+        <%= f.text_field :nickname, autofocus: true, placeholder:"ニックネーム", class: "form-control" %>
+       </div>
       </div>
 
-     <div class="form-group">
-      <%= f.label :"お住まいの地域" %>
+     <div class="form-group", id="userPrefecture">
+      <%= f.label :"お住まいの地域（必須）" %>
       <i class="fas fa-home"></i>
+      <div>
       <%= f.select :prefecture, User.prefectures.keys, {prompt: '---選択してください---'}, class: 'form-control' %>
+      </div>
      </div>
 
-    <div class="form-group">
-      <%= f.label :"自己紹介" %>
+    <div class="form-group" id="userIntroduction">
+      <%= f.label :"自己紹介（５文字以上）" %>
       <i class="fa fa-comment"></i>
+      <div>
       <%= f.text_area :introduction, autofocus: true, placeholder:"トレーニング中に意識していることなどなど・・・", class: "form-control" %>
+      </div>
     </div>
 
-    <div class="form-group">
-      <%= f.label :"メールアドレス" %>
+    <div class="form-group" id="userEmail">
+      <%= f.label :"メールアドレス（必須）" %>
       <i class="fas fa-envelope"></i>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+      <div>
+       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+      </div>
     </div>
 
-    <div class="form-group">
+   <div id="userPasswordGroup">
+    <div class="form-group" id="userPassword">
       <%= f.label :"パスワード（６文字以上）" %>
       <i class="fas fa-key"></i>
-      <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+      <div>
+       <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+      </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" id="userPasswordConfirmation">
       <%= f.label :"パスワード確認" %>
       <i class="fas fa-key"></i>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control mb-2", id: "see" %>
-      <input type="checkbox" onChange="document.getElementById('see').type = (this.checked) ? 'text' : 'password';">
-     パスワードを表示する
-    </div>
+      <div>
+       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+      </div>
+     </div>
+   </div>
 
-    <div class="sign up">
-      <%= f.submit "新規登録する！", class: "btn btn-success form-control col-lg-4 float-right" %>
+     <div class="sign up">
+      <%= f.submit "新規登録する！", class: "btn btn-success form-control col-md-5 col-lg-4 float-right", id: "userSubmit" %>
+     </div>
     </div>
      <% end %>
 
@@ -56,3 +71,5 @@
   </div>
  </div>
 </div>
+
+<%= javascript_pack_tag 'user_form.js', 'data-turbolinks-track': 'reload'  %>

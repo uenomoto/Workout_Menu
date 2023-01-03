@@ -30,11 +30,11 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :training_names, only:[:create, :index, :show, :edit, :update]
+    resources :training_names, only:[:create, :index, :show, :edit, :update, :destroy]
   end
 
   scope module: :public do
-    resources :genres, only: [:index, :create, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update, :destroy]
   end
 
   scope module: :public do
@@ -55,7 +55,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     get root to: 'homes#top'
-    get '/main' => 'homes#about',as: 'main'
+    get '/main' => 'homes#main',as: 'main'
     get '/guide', to: 'homes#guide'
   end
 
@@ -77,6 +77,7 @@ Rails.application.routes.draw do
   # ゲストログイン
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+    delete 'users/guest_sign_out', to: 'users/sessions#destory'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

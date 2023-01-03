@@ -2,19 +2,19 @@
 
   <%= image_tag('logo.png') %>
   <%= link_to main_path do %>
-  <h1 class="text-dark", style= "font-family: Arial Black;">WorkoutMenu</h1>
+  <h1 class="text-dark", id="text-logo" style= "font-family: Arial Black;">WorkoutMenu</h1>
   <% end %>
 
   <% elsif admin_signed_in? %>
    <%= image_tag('logo.png') %>
    <%= link_to admin_root_path do %>
-   <h1 class="text-dark", style= "font-family: Arial Black;">WorkoutMenu</h1>
+   <h1 class="text-dark", id="text-logo" style= "font-family: Arial Black;">WorkoutMenu</h1>
    <% end %>
 
    <% else %>
     <%= image_tag('logo.png') %>
     <%= link_to root_path do %>
-    <h1 class="text-dark", style= "font-family: Arial Black;">WorkoutMenu</h1>
+    <h1 class="text-dark", id="text-logo" style= "font-family: Arial Black;">WorkoutMenu</h1>
     <% end %>
 
 <% end %>

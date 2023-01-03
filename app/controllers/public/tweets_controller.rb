@@ -1,6 +1,7 @@
 class Public::TweetsController < ApplicationController
 
 before_action :authenticate_user!
+before_action :current_user?, only: [:edit, :destroy]
 
   def new
     # 空のimpressionインスタンスを生成
@@ -39,11 +40,6 @@ before_action :authenticate_user!
 
   def edit
     @tweet = Tweet.find(params[:id])
-    if @tweet.user_id == current_user.id
-      render :edit
-    else
-      redirect_to tweets_path
-    end
   end
 
   def update
@@ -68,6 +64,13 @@ before_action :authenticate_user!
 
   def tweet_params
     params.require(:tweet).permit(:user_id, :text)
+  end
+
+  def current_user?
+    @tweet = Tweet.find(params[:id])
+    if @tweet.user_id != current_user.id
+      redirect_to main_path, flash: {danger: 'ご本人様ではないので編集できません。'}
+    end
   end
 
 end

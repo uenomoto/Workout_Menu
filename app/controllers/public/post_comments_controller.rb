@@ -1,6 +1,7 @@
 class Public::PostCommentsController < ApplicationController
 
-before_action :authenticate_user!
+before_action :authenticate_user!, except:[:destroy]
+before_action :current_user?, only: [:edit, :destroy]
 
     def create
       #binding.pry
@@ -20,11 +21,6 @@ before_action :authenticate_user!
     def edit
       @tweet = Tweet.find(params[:tweet_id])
       @post_comment = PostComment.find(params[:id])
-      if @post_comment.user_id == current_user.id
-        render :edit
-      else
-        redirect_to tweet_path(@tweet)
-      end
     end
 
     def update
@@ -51,6 +47,13 @@ before_action :authenticate_user!
 
   def post_comment_params
     params.require(:post_comment).permit(:user_id, :tweet_id, :comment)
+  end
+
+  def current_user?
+      @post_comment = PostComment.find(params[:id])
+    if @post_comment.user_id != current_user.id
+      redirect_to main_path, flash: {danger: 'ご本人様ではないので編集できません。'}
+    end
   end
 
 end

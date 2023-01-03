@@ -57,13 +57,14 @@ class User < ApplicationRecord
      end
     end
 
-# ゲストログイン
+# ゲストログインデーター作成保存
     def self.guest
       find_or_create_by!(nickname: 'guestuser' ,email: 'guest@example.com', prefecture: 22, introduction: 'ゲストですよ。') do |user|
        user.password = SecureRandom.urlsafe_base64
        user.nickname = "guestuser"
      end
     end
+
     # フォロー関係
     # 自分がフォローされる
     # foreign_key（FK）には、@user.reverse_of_relationshipsとした際に@user.idがfollowed_idを指定

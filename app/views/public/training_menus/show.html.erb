@@ -1,10 +1,10 @@
 <div class="container">
-  <div class="row m-5 text-center">
+  <div class="row my-5 text-center">
     <div class="col-sm-12">
       <h1><%= @menu.date %>日の<%= @menu.training_name.name %>詳細</h1>
     </div>
   </div>
-  <div class="row m-3">
+  <div class="row">
     <div class="col-sm-12">
       <table class="table table-bordered table-dark">
           <tr>
@@ -20,18 +20,32 @@
               <td><%= @menu.training_name.genre.name %></td>
             </tr>
             <tr>
-              <th>回数×セット</th>
+              <th>
+              <% if @menu.status == TrainingMenu.statuses.key(2) %>
+              周回xｲﾝﾀｰﾊﾞﾙ
+              <% else %>
+              回数xセット
+              <% end %>
+              </th>
               <td><%= @menu.count %>×<%= @menu.set %></td>
             </tr>
             <tr>
-              <th>種類</th>
+              <th>
+              <% if @menu.status == TrainingMenu.statuses.key(1) %>
+              重さ
+              <% elsif @menu.status == TrainingMenu.statuses.key(0)  %>
+              自重
+              <% else %>
+              距離
+              <% end %>
+              </th>
               <td>
               <% if @menu.status == TrainingMenu.statuses.key(1) %>
-              <p><%= @menu.weight %>kg</p>
+              <%= @menu.weight %>kg
               <% elsif @menu.status == TrainingMenu.statuses.key(0)  %>
-              <p>自重</p>
+              自重
               <% else %>
-              <p><%= @menu.distance %>km</p>
+              <%= @menu.distance %>km
               <% end %>
               </td>
            </tr>

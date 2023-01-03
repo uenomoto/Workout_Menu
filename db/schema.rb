@@ -108,6 +108,7 @@ ActiveRecord::Schema.define(version: 2022_12_22_145213) do
   create_table "training_menus", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "training_name_id", null: false
+    t.integer "genre_id", null: false
     t.date "date", null: false
     t.integer "count", null: false
     t.integer "set", null: false
