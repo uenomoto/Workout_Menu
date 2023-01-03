@@ -2,7 +2,7 @@
   <div class="row mt-5">
     <div class="col-sm-12">
       <%= form_with model: [@tweet, @post_comment], method: :patch do |f| %>
-
+       <%= render 'layouts/error', model: f.object %>
        <div class="form-group">
         <h2><%= f.label :"コメント編集"%></h2>
         <%= f.text_area :comment, class: "form-control", rows: 3 %>

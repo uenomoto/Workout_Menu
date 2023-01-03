@@ -2,7 +2,7 @@ ja:
   simple_calendar:
     previous: "先月"
     next: "来月"
-    week: Woche
+    week: "Woche"
   views:
     pagination:
       first: "一番最初へ"

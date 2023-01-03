@@ -7,10 +7,10 @@
   <div class="row my-3">
     <div class="col-lg-3"></div>
     <div class="col-sm-12 col-lg-6">
+      <div id="menuForm">
       <%= form_with model: @training_menu, url: training_menu_path, method: :patch do |f| %>
-
-
-      <div class="form-group">
+     　 <%= render 'layouts/error', model: f.object %>
+      <div class="form-group" id="menuGenre">
       <%= f.label :"部位" %>
       <%= f.collection_select :genre_id, @genres, :id, :name, {prompt: false}, class: "form-control" %>
       </div>
@@ -31,7 +31,7 @@
       <% @genres.each do |genre|  %>
         <template id="training_name_<%= genre.id %>"><!-- このidをもとに呼び出される-->
          <div id="selected_training_name">
-          <div class="form-group">
+          <div class="form-group" id="menuName">
           <%= f.label :"トレ名" %>
           <%= f.collection_select :training_name_id, genre.training_names, :id, :name, {include_blank: "---", prompt: false}, class: "form-control" %>
           </div>
@@ -39,15 +39,15 @@
         </template>
       <% end %>
 
-      <div class="form-group">
+      <div class="form-group" id="menuDate">
         <%= f.label :"日付" %>
         <%= f.date_field :date, class: "form-control" %>
       </div>
-      <div class="form-group">
+      <div class="form-group" id="menuCount">
         <%= f.label :"回数or周回" %>
         <%= f.number_field :count, min: 1, class: "form-control" %>
       </div>
-      <div class="form-group">
+      <div class="form-group" id="menuSet">
         <%= f.label :"セット数orインターバル" %>
         <%= f.number_field :set, min: 1, class: "form-control" %>
       </div>
@@ -74,8 +74,9 @@
         </div>
       </div>
       <div class="form-group">
-        <%= f.submit "メニューを編集する", class: "btn btn-info btn-sm float-right col-lg-5 col-sm-7" %>
+        <%= f.submit "メニューを編集する", class: "btn btn-info btn-sm float-right col-lg-5 col-sm-7", id: "menuSubmit" %>
       </div>
+     </div>
       <% end %>
     </div>
   </div>

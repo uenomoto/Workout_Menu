@@ -1,3 +1,4 @@
+//メニューのフォームバリデーション
 var menuForm = document.querySelector("#menuForm");
 
   var menuGenreField = document.querySelector("#menuGenre");
@@ -62,9 +63,16 @@ var menuForm = document.querySelector("#menuForm");
   });
 
   menuCount.addEventListener('input', ()=>{
-    if(menuCount.value === ""){
-      countPara.textContent = "回数or周回をお選びください";
+    var countRegex = /^[0-9]+$/;
+
+      if(menuCount.value === ""){
+      countPara.textContent = "半角数字で記入してください";
       countPara.style.color = "red";
+      menuCount.parentElement.style.border = "2px solid red";
+      activeCount = false;
+    }else if(!countRegex.test(menuCount.value)){
+      countPara.textContent = "半角数字で記入してください"
+      countPara.style.color = "red"
       menuCount.parentElement.style.border = "2px solid red";
       activeCount = false;
     }else{
@@ -78,7 +86,7 @@ var menuForm = document.querySelector("#menuForm");
 
   menuSet.addEventListener('input', ()=>{
     if(menuSet.value === ""){
-      setPara.textContent = "セット数orインターバルをお選びください";
+      setPara.textContent = "半角数字で入力してください";
       setPara.style.color = "red";
       menuSet.parentElement.style.border = "2px solid red";
       activeSet = false;

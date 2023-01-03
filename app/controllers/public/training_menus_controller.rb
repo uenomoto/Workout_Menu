@@ -16,7 +16,7 @@ before_action :current_user?, only: [:edit, :destroy]
     if @training_menu.save
       redirect_to training_menu_path(@training_menu.id), flash: {success: "メニュー作成しました。"}
     else
-      flash.now[:danger] = "メニュー作成失敗しました"
+      flash.now[:danger] = "トレ名を入力してください"
       @training_names = current_user.training_names
       @genres = current_user.genres
       render :new

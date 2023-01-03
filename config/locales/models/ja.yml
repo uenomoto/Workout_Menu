@@ -1,0 +1,28 @@
+ja:
+  activerecord:
+    models:
+      genre: 部位
+      user: 会員
+      training_name: トレ名
+      training_menu: メニュー
+      tweet: ツイート
+      post_comment: コメント
+    attributes:
+      genre:
+        name: 部位名
+      user:
+        nickname: ニックネーム
+        introduction: 自己紹介
+        prefecture: お住みの地域
+        email: メールアドレス
+      training_name:
+        name: トレ名
+      training_menu:
+        training_name_id: トレ名
+        date: 日付
+        count: 回数or周回
+        set: セットorインターバル
+      tweet:
+        text: 本文
+      post_comment:
+        comment: コメント
