@@ -11,12 +11,12 @@ class Tweet < ApplicationRecord
     validates :user_id, presence: true
 
 
-# ログイン中のユーザーがその投稿に対していいねしているか判断するメソッド
+# ログイン中のユーザーがその投稿に対していいねが存在しているか判断するメソッド
     def favorited?(user)
       favorites.where(user_id: user.id).exists?
     end
 
-    # 通報してるかしてないかの判断メソッド
+    # 通報データーが空かの判断メソッド
     def reported_by?(user)
      reports.where(user_id: user.id).empty?
     end
