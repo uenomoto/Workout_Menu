@@ -34,7 +34,7 @@ before_action :current_user?, only: [:edit, :destroy]
   def show
     @tweet = Tweet.find(params[:id])
     @post_comment = PostComment.new
-    # includes(:user)これはネストしたN＋１問題を解決してくれる
+    # includes(:モデル)これはネストしたN＋１問題を解決してくれる
     @post_comments = @tweet.post_comments.includes(:user)
   end
 
@@ -45,7 +45,7 @@ before_action :current_user?, only: [:edit, :destroy]
   def update
     @tweet = Tweet.find(params[:id])
     if @tweet.update(tweet_params)
-    redirect_to tweet_path(@tweet), flash: {success: "ツイート編集しました。"}
+    redirect_to tweet_path(@tweet), flash: {primary: "ツイート編集しました。"}
     else
       flash.now[:danger] = "編集に失敗しました"
       render :edit

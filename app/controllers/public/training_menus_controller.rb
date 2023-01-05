@@ -74,7 +74,7 @@ before_action :current_user?, only: [:edit, :destroy]
   def complete
     @training_menu = TrainingMenu.where(user:current_user, date: params[:id])
     @training_menu.update(completion: true)
-    redirect_to main_path, flash: {success: "トレーニングお疲れ様でした！"}
+    redirect_to training_menus_path, flash: {success: "トレーニングお疲れ様でした！"}
   end
 
   private

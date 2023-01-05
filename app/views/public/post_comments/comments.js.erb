@@ -1,0 +1,6 @@
+<!--コメントの非同期化通信-->
+$("#comments_area").html("<%= j(render 'public/post_comments/comment', tweet: @tweet, post_comments: @post_comments) %>");
+<!--フォームを送信したあとにページがリロードされない為フォームの値を空にする-->
+$("textarea").val('');
+<!--フラッシュメッセージの非同期化通信-->
+$('#flash-message').html("<%= j(render 'layouts/flash_message') %>");

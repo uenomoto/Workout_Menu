@@ -22,10 +22,13 @@
              </h3>
              </div>
             </div>
-            <%= render 'post_comments', post_comments: @post_comments %>
+            <div id="comments_area">
+             <%= render 'public/post_comments/comment', post_comments: @post_comments %>
+            </div>
+            <%= render 'public/post_comments/form', tweet: @tweet, post_comment: @post_comment %>
+            <%= render 'public/post_comments/share', tweet: @tweet %>
            </div>
         </div>
       </div>
   </div>
 </div>
-

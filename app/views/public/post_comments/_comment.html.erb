@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-sm-12">
+   <h1><i class="far fa-comments"></i>全<%= @tweet.post_comments.count %>コメント</h1>
+  <% post_comments.each do |c| %>
+   <table class="table">
+    <div class="border-bottom border-dark pb-3 mb-2">
+    <%= image_tag c.user.get_profile_image(50,50), class: "rounded-circle" %><br>
+    by:<%= c.user.nickname %><br>
+       <h2><%= c.comment %></h2><br>
+    <% if user_signed_in? %>
+     <% if current_user.id == c.user_id %>
+      <%= link_to "編集", edit_tweet_post_comment_path(@tweet, c.id), class: "text-info" %>
+      <%= link_to tweet_post_comment_path(@tweet, c.id), method: :delete, remote: true, data: {confirm: "削除してもよろしいですか？"} do %>
+      <i class="fas fa-trash" style="color: black;"></i>
+      <% end %>
+    </div>
+    <% end %>
+   <% end %>
+  <% end %>
+   </table>
+  </div>
+</div>
