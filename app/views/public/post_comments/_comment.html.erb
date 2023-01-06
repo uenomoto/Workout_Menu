@@ -11,7 +11,7 @@
      <% if current_user.id == c.user_id %>
       <%= link_to "編集", edit_tweet_post_comment_path(@tweet, c.id), class: "text-info" %>
       <%= link_to tweet_post_comment_path(@tweet, c.id), method: :delete, remote: true, data: {confirm: "削除してもよろしいですか？"} do %>
-      <i class="fas fa-trash" style="color: black;"></i>
+       <i class="fas fa-trash" style="color: black;"></i>
       <% end %>
     </div>
     <% end %>

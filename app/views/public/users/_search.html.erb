@@ -1,8 +1,10 @@
 <div class="search_form">
     <%= form_with url: search_path, method: :get, local: true do |f| %>
     <%= f.text_field :word, placeholder: "会員検索" %>
-    <%= f.select :model, options_for_select(['User']) %>
-    <%= f.select :method, options_for_select({"完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backword", "部分一致" => "patial"}) %>
+    <div style="display:none;">
+     <%= f.select :model, options_for_select(['User']) %>
+    </div>
+    <%= f.select :method, options_for_select({"部分一致" => "patial", "前方一致" => "forward", "後方一致" => "backword","完全一致" => "perfect" }) %>
     <%= f.submit "検索", class: "btn btn-info ml-2"%>
     <% end %>
 </div>
