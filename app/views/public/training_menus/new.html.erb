@@ -24,7 +24,7 @@
         <% if @training_names.blank? %>
             <%= f.select :training_name_id, [], {include_blank: "トレ名を登録してください"}, class: "form-control" %>
            <% else %>
-             <%= f.select :training_name_id,[], {include_blank: "すみません、ページ更新してください", prompt: false}, class: "form-control" %>
+             <%= f.select :training_name_id,[], {include_blank: "お先に部位をお選びください", prompt: false}, class: "form-control" %>
         <% end %>
        </div>
       </div>

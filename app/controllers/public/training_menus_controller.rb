@@ -53,9 +53,10 @@ before_action :current_user?, only: [:edit, :destroy]
     if @training_menu.update(training_menu_params)
       redirect_to training_menu_path(@training_menu.id), flash: {info: "メニュー編集しました。"}
     else
-      flash.now[:danger] = "編集に失敗しました"
+      flash.now[:danger] = "すいません最初からやり直してください"
       @training_names = current_user.training_names
       @genres = current_user.genres
+      @training_menu = TrainingMenu.find(params[:id])
       render :edit
     end
   end
