@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load',function() {
   //復活させるダミーの中カテゴリのセレクトボックス
-  let defaultTrainingNameSelect = `<div id="training_name"><div class="field"><div class="form-group"><label for="training_menu_トレ名">トレ名</label><select class="form-control", name="training_menu[training_name_id]>
+  let defaultTrainingNameSelect = `<div id="training_name"><div class="field"><div class="form-group"><label for="training_menu_トレ名">トレ名（必須）部位をお選びください</label><select name="training_menu[training_name_id]>
   <option value>---</option>
   </select></div></div></div>`;
 

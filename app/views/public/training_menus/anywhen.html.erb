@@ -19,7 +19,7 @@
           <% @training_menus.each do |menu| %>
           <tr>
             <td>
-              <%= link_to training_menu_path(menu.id) do %>
+              <%= link_to training_menu_path(menu.id),class: "btn btn-info btn-sm" do %>
               <%= menu.training_name.name %>
               <% end %>
             </td>
@@ -27,11 +27,11 @@
             <td><%= menu.count %>×<%= menu.set %></td>
             <td>
               <% if menu.status == TrainingMenu.statuses.key(1) %>
-              <%= menu.weight %>kg
+              加重
               <% elsif menu.status == TrainingMenu.statuses.key(0)  %>
-              <p>自重</p>
+              自重
               <% else %>
-              <%= menu.distance %>km
+              有酸素
               <% end %>
             </td>
           </tr>
@@ -42,7 +42,7 @@
   </div>
   <div class="row">
     <div class="col-md-12 text-center">
-      <%= link_to "開始！", check_path, class: "btn btn-success btn-sm col-lg-5 col-md-5" %>
+      <%= link_to "開始！", check_path, class: "btn btn-success btn-sm col-lg-5 col-md-5", data: {"turbolinks" => false} %>
     </div>
   </div>
 </div>

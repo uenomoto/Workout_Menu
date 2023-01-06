@@ -11,20 +11,16 @@
       <%= form_with model: @training_menu, url: training_menu_path, method: :patch do |f| %>
      　 <%= render 'layouts/error', model: f.object %>
       <div class="form-group" id="menuGenre">
-      <%= f.label :"部位" %>
-      <%= f.collection_select :genre_id, @genres, :id, :name, {prompt: false}, class: "form-control" %>
+      <%= f.label :"部位 (必須)"%>
+      <%= f.collection_select :genre_id, @genres, :id, :name, {include_blank: "---", prompt: false}, class: "form-control" %>
       </div>
 
       <div id="training_name_insert_point"></div>
 
       <div id="training_name">
        <div class="form-group">
-        <%= f.label :"トレ名" %>
-        <% if @training_names.blank? %>
-           <%= f.select :training_name_id, [], {include_blank: "部位登録してください"}, class: "form-control" %>
-           <% else %>
-            <%= f.collection_select :training_name_id, @training_names, :id, :name, {include_blank: "---", prompt: false}, class: "form-control" %>
-        <% end %>
+        <%= f.label :"トレ名 (必須)" %><br><span class="text-danger">※トレ名を変更でしたらお手数ですが,部位を選び直してください</span><br>
+          <%= @training_menu.training_name.name %>
        </div>
       </div>
 <!--  --------- training_nameのtamplateを作成----------------------  -->
@@ -32,7 +28,7 @@
         <template id="training_name_<%= genre.id %>"><!-- このidをもとに呼び出される-->
          <div id="selected_training_name">
           <div class="form-group" id="menuName">
-          <%= f.label :"トレ名" %>
+          <%= f.label :"トレ名 (必須)" %>
           <%= f.collection_select :training_name_id, genre.training_names, :id, :name, {include_blank: "---", prompt: false}, class: "form-control" %>
           </div>
          </div>
@@ -40,15 +36,15 @@
       <% end %>
 
       <div class="form-group" id="menuDate">
-        <%= f.label :"日付" %>
+        <%= f.label :"日付 (必須)" %>
         <%= f.date_field :date, class: "form-control" %>
       </div>
       <div class="form-group" id="menuCount">
-        <%= f.label :"回数or周回" %>
+        <%= f.label :"回数or周回 (必須)" %>
         <%= f.number_field :count, min: 1, class: "form-control" %>
       </div>
       <div class="form-group" id="menuSet">
-        <%= f.label :"セット数orインターバル" %>
+        <%= f.label :"セット数orインターバル (必須)" %>
         <%= f.number_field :set, min: 1, class: "form-control" %>
       </div>
       <div class="form-group">
