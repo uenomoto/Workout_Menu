@@ -40,7 +40,7 @@ before_action :current_user?, only: [:edit]
     def destroy
       @post_comment = PostComment.find(params[:id])
       @post_comment.destroy
-      flash.now[:danger] = '投稿を削除しました'
+      flash.now[:danger] = 'コメントを削除しました'
       #renderしたときに@tweetのデータがないので@tweetを定義
       @tweet = Tweet.find(params[:tweet_id])
       @post_comments = @tweet.post_comments

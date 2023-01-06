@@ -3,6 +3,7 @@
 /*メインページのCSS*/
 .jumbotron-extend {
   min-height: 300px;
+  height: 70vh;
   font-family: 'Playfair Display', serif;
 }
 
