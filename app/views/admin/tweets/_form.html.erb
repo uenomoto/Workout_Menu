@@ -1,13 +1,13 @@
 <h5><span class="h2"><i class="far fa-comments"></i></span>全<%= tweet.post_comments.count %>コメント</h5>
-<% post_comments.each do |c| %>
+ <% post_comments.each do |c| %>
 <table class="table">
   <%= image_tag c.user.get_profile_image(50,50), class: "rounded-circle" %><br>
   <div class="border-bottom border-dark pb-3 mb-2">
       by:<%= c.user.nickname %><br>
       <%= c.comment %><br>
-      <%= link_to tweet_post_comment_path(tweet_id: tweet.id, id: c.id), method: :delete, remote: true, "data-confirm" => "削除する？" do %>
+      <%= link_to tweet_post_comment_path(tweet_id: tweet.id, id: c.id), method: :delete, remote: true, data: {confirm: "削除する？"} do %>
        <i class="fas fa-trash" style="color: black;"></i>
       <% end %>
   </div>
- </table>
-<% end %>
+</table>
+ <% end %>

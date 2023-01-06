@@ -1,6 +1,6 @@
 <div class="col-sm-12 col-lg-4">
   <div id="training_name_form">
-   <%= form_with model: @training_name, url: "/training_names", method: :post do |f| %>
+   <%= form_with model: training_name, url: "/training_names", method: :post do |f| %>
    <%= render 'layouts/error', model: f.object %>
 
    <div class="form-group" id="trainingName">

@@ -6,13 +6,13 @@
 
 <div class="row mb-4">
   <div class="col-md-6 text-center">
-    <%= link_to user_followings_path(user_id: @user.id) do %>
-    <%= "#{@user.followings.count}人フォロー中" %>
+    <%= link_to user_followings_path(user_id: user.id) do %>
+    <%= "#{user.followings.count}人フォロー中" %>
     <% end %>
   </div>
   <div class="col-md-6 text-center">
-   <%= link_to user_followers_path(user_id: @user.id) do %>
-   <%= "#{@user.followers.count}人のフォロワー" %>
+   <%= link_to user_followers_path(user_id: user.id) do %>
+   <%= "#{user.followers.count}人のフォロワー" %>
    <% end %>
   </div>
 </div>

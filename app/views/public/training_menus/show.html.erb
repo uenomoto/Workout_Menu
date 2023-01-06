@@ -59,7 +59,7 @@
     </div>
     <div class="col-md-4"></div>
     <div class="col-md-4 col-sm-12">
-      <%= link_to "メニュー削除", training_menu_path(@menu.id), method: :delete, "data-confirm" => "削除してもよろしいですか？", class: "btn btn-danger col-lg-10" %>
+      <%= link_to "メニュー削除", training_menu_path(@menu.id), method: :delete, data: {confirm: "削除してもよろしいですか？"}, class: "btn btn-danger col-lg-10" %>
     </div>
     <% end %>
   </div>

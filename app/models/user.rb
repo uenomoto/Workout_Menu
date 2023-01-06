@@ -6,11 +6,11 @@ class User < ApplicationRecord
 
   has_many :training_names, dependent: :destroy
   has_many :training_menus, dependent: :destroy
-  has_many :tweets, dependent: :destroy
-  has_many :post_comments, dependent: :destroy
-  has_many :favorites, dependent: :destroy
-  has_many :genres, dependent: :destroy
-  has_many :reports, dependent: :destroy
+  has_many :tweets,         dependent: :destroy
+  has_many :post_comments,  dependent: :destroy
+  has_many :favorites,      dependent: :destroy
+  has_many :genres,         dependent: :destroy
+  has_many :reports,        dependent: :destroy
 
   validates :nickname,       uniqueness: true, presence: true
   validates :introduction,   length: { minimum: 5 }

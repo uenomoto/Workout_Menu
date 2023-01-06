@@ -26,7 +26,7 @@
              <%= link_to "コメントはこちらから", tweet_path(tweet.id), class: "btn btn-primary btn-sm col-lg-4 col-md-7"  %>
             <% if current_user.id == tweet.user_id %>
              <%= link_to "つぶやき編集", edit_tweet_path(tweet.id), class: "btn btn-info btn-sm col-lg-4 col-md-7"  %>
-             <%= link_to "呟き削除", tweet_path(tweet.id), method: :delete, "data-confirm" => "削除してもよろしいですか？",class: "btn btn-danger btn-sm col-lg-3 col-md-7" %>
+             <%= link_to "呟き削除", tweet_path(tweet.id), method: :delete, data: {confirm: "削除してもよろしいですか？"}, class: "btn btn-danger btn-sm col-lg-3 col-md-7" %>
             <% end %>
              <div class="font-weight-bold">
               投稿日:  <%= tweet.created_at.strftime('%Y/%m/%d') %>
