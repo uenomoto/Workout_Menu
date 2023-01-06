@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
       admin_root_path
       else
       flash[:success]="今日もレッツトレーニング！"
-      main_path
+      user_path(current_user)
       end
     end
 

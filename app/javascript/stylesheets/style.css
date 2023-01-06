@@ -1,8 +1,7 @@
 /*ここに独自のCSSを記述する*/
 
-/*トップページのCSS*/
+/*メインページのCSS*/
 .jumbotron-extend {
-  height: 70vh;
   min-height: 300px;
   font-family: 'Playfair Display', serif;
 }
@@ -18,14 +17,15 @@
   text-shadow: 0 0 10px #FFF;
 
 }
-
+/*トップページの部分*/
 .jumbotron-fluid {
   height: 100vh;
   width: 100%;
   min-height: 300px;
+  margin-bottom: -120px;
 }
 
-/*アバウトのタイトル*/
+/*メインのタイトル*/
 .title-top{
   font-family: 'Playfair Display', serif;
   font-size: 6rem;

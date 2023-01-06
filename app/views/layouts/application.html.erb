@@ -18,8 +18,10 @@
     <%= render 'layouts/header' %>
    <% end %>
 
-    <%= render 'layouts/flash_message' %>
     <%= yield %>
+    <div id="flash-message">
+     <%= render 'layouts/flash_message' %>
+    </div>
 
    <% unless current_page?(root_path) %>
     <%= render 'layouts/footer' %>
@@ -29,7 +31,7 @@
 
 <script>
   $(function(){
-    $(".alert").fadeOut(4000);
+    $(".alert").fadeOut(7000);
   });
 </script>
 

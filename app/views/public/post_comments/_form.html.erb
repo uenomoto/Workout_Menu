@@ -1,0 +1,8 @@
+<div class="col-sm-12">
+   <% if user_signed_in? %>
+   <%= form_with model: [tweet, post_comment], local: false do |f| %>
+   <%= f.text_area :comment ,placeholder: "コメントする", class: "form-control", rows: 2 %><br>
+   <%= f.submit "コメントする", class: "btn btn-success btn-sm float-right" %>
+   <% end %>
+  <% end %>
+</div>

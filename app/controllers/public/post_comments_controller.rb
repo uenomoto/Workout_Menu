@@ -1,7 +1,7 @@
 class Public::PostCommentsController < ApplicationController
 
 before_action :authenticate_user!, except:[:destroy]
-before_action :current_user?, only: [:edit, :destroy]
+before_action :current_user?, only: [:edit]
 
     def create
       #binding.pry
@@ -10,11 +10,14 @@ before_action :current_user?, only: [:edit, :destroy]
       @post_comment.tweet_id = @tweet.id
       if @post_comment.save
         @tweet.create_notification_post_comment!(current_user, @post_comment.id)
-        redirect_to request.referer, flash: {success: "コメント投稿しました。"}
+        flash.now[:success] = 'コメントを投稿しました'
+        #非同期通信,jsのファイル指定
+        @post_comments = @tweet.post_comments
+        render :comments
       else
-        flash[:danger] = "投稿に失敗しました"
-        # 遷移前のページに戻る↓
-        redirect_back(fallback_location: root_path)
+        flash.now[:danger] = "コメント入力してください"
+        @post_comments = @tweet.post_comments
+        render :comments
       end
     end
 
@@ -37,8 +40,15 @@ before_action :current_user?, only: [:edit, :destroy]
     def destroy
       @post_comment = PostComment.find(params[:id])
       @post_comment.destroy
-      flash[:danger] = "コメントを削除しました"
-      redirect_back(fallback_location: root_path)
+      flash.now[:danger] = '投稿を削除しました'
+      #renderしたときに@tweetのデータがないので@tweetを定義
+      @tweet = Tweet.find(params[:tweet_id])
+      @post_comments = @tweet.post_comments
+      if user_signed_in?
+        render :comments
+      elsif admin_signed_in?
+        render 'admin/tweets/destroy'
+      end
     end
 
 

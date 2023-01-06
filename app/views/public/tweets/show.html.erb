@@ -16,15 +16,19 @@
            <div class="row">
             <div class="col-sm-12">
              <h3>
-               <%= render "favorites", tweet: @tweet %> |
-               <%= @tweet.favorites.count %>いいね
+               <div id="favorite_btn_<%= @tweet.id %>">
+                 <%= render 'public/favorites/favorite', tweet: @tweet %>
+               </div>
              </h3>
              </div>
             </div>
-            <%= render 'post_comments', post_comments: @post_comments %>
+            <div id="comments_area">
+             <%= render 'public/post_comments/comment', post_comments: @post_comments %>
+            </div>
+            <%= render 'public/post_comments/form', tweet: @tweet, post_comment: @post_comment %>
+            <%= render 'public/post_comments/share', tweet: @tweet %>
            </div>
         </div>
       </div>
   </div>
 </div>
-
