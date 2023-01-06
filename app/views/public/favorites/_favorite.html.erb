@@ -1,13 +1,13 @@
-<% if @tweet.favorited?(current_user) %>
+<% if tweet.favorited?(current_user) %>
     <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ-->
     <%= link_to tweet_favorites_path(tweet.id), method: :delete, remote: true do %>
         <span><i class="fas fa-thumbs-up" style="color: orange;"></i>︎</span>
     <% end %>|
-    <%= @tweet.favorites.count %>いいね
+    <%= tweet.favorites.count %>いいね
 <% else %>
     <!--一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
     <%= link_to tweet_favorites_path(tweet.id), method: :post, remote: true do %>
         <span><i class="fas fa-thumbs-up" style="color: gray;"></i>︎</span>
     <% end %>|
-    <%= @tweet.favorites.count %>いいね
+    <%= tweet.favorites.count %>いいね
 <% end %>

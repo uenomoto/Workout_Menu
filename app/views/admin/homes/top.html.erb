@@ -20,7 +20,7 @@
           <tr>
             <td><%= user.id %></td>
             <td>
-              <%= link_to admin_user_path(user.id), class: "text-dark" do %>
+              <%= link_to admin_user_path(user.id), class: "text-dark", data: {"turbolinks" => false} do %>
               <%= user.nickname %>
               <% end %>
             </td>

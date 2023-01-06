@@ -3,7 +3,7 @@
    <h1 class="card-header text-center">
     <%= image_tag tweet.user.get_profile_image(50,50), class: "rounded-circle float-left" %>
     <%= tweet.user.nickname %>さんのつぶやき〜
-    <%= link_to "つぶやき削除", admin_tweet_path(tweet.id), method: :delete, "data-confirm" => "通報が多いので削除する？",class: "btn btn-danger btn-sm float-right" %>
+    <%= link_to "つぶやき削除", admin_tweet_path(tweet.id), method: :delete, data: {confirm: "通報が多いので削除する？"} ,class: "btn btn-danger btn-sm float-right" %>
    </h1>
    <div class="card-body">
     <h1 class="card-text text-center"><%= tweet.text %></h1>

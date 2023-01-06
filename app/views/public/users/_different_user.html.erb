@@ -6,13 +6,13 @@
 
 <div class="row mb-4">
   <div class="col-md-6 text-center">
-    <%= link_to user_followings_path(user_id: @user.id) do %>
-    <%= "#{@user.followings.count}人フォロー中" %>
+    <%= link_to user_followings_path(user_id: user.id) do %>
+    <%= "#{user.followings.count}人フォロー中" %>
     <% end %>
   </div>
   <div class="col-md-6 text-center">
-   <%= link_to user_followers_path(user_id: @user.id) do %>
-   <%= "#{@user.followers.count}人のフォロワー" %>
+   <%= link_to user_followers_path(user_id: user.id) do %>
+   <%= "#{user.followers.count}人のフォロワー" %>
    <% end %>
   </div>
 </div>
@@ -47,10 +47,10 @@
   <%= link_to "つぶやき一覧", tweet_permember_path(user), class: "btn btn-primary col-lg-6" %>
  </div>
  <div class="col-sm-12 col-lg-6 col-md-6 mb-3">
-   <% if current_user.following?(@user) %>
-   <%= link_to "フォロー解除", user_relationships_path(user_id: @user.id), method: :delete, class: "btn btn-danger col-lg-6" %>
+   <% if current_user.following?(user) %>
+   <%= link_to "フォロー解除", user_relationships_path(user_id: user.id), method: :delete, class: "btn btn-danger col-lg-6" %>
    <% else %>
-   <%= link_to "フォローする", user_relationships_path(user_id: @user.id), method: :post, class: "btn btn-success col-lg-6" %>
+   <%= link_to "フォローする", user_relationships_path(user_id: user.id), method: :post, class: "btn btn-success col-lg-6" %>
    <% end %>
  </div>
 </div>
