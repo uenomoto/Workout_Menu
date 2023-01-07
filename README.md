@@ -1,4 +1,4 @@
-# <WorkoutMenu>
+# <Workout_Menu>
 
 ## サイト概要
 ### サイトテーマ
