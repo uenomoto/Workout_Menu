@@ -5,13 +5,13 @@ before_action :authenticate_admin!
   def index
     # 通報があったツイートだけを多い順で並べる
     if params[:order] == 'desc'
-      @tweets = Tweet.joins(:reports).group(:tweet_id).order('count(tweet_id) desc').page(params[:page]).per(10)
+      @tweets = Tweet.joins(:reports).group(:tweet_id).order('count(tweet_id) desc').page(params[:page]).per(5)
     # 通報があったツイートだけを少ない順で並べる
     elsif params[:order] == 'asc'
-      @tweets = Tweet.joins(:reports).group(:tweet_id).order('count(tweet_id) asc').page(params[:page]).per(10)
+      @tweets = Tweet.joins(:reports).group(:tweet_id).order('count(tweet_id) asc').page(params[:page]).per(5)
     # すべての投稿を表示
     else
-      @tweets = Tweet.order(created_at: :desc).page(params[:page]).per(10)
+      @tweets = Tweet.order(created_at: :desc).page(params[:page]).per(5)
     end
   end
 
@@ -22,7 +22,7 @@ before_action :authenticate_admin!
 
   def permember
     @user = User.find(params[:id])
-    @tweets = @user.tweets.order(created_at: :desc).page(params[:page]).per(10)
+    @tweets = @user.tweets.order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def destroy

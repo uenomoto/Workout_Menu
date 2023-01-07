@@ -1,10 +1,13 @@
 <div class="container">
-  <div class="row m-3">
+  <div class="row my-3">
     <div class="col-sm-12 text-center">
       <h1>会員一覧</h1>
+      <%= link_to "会員中のみ", admin_root_path(is_deleted: :false), class: "text-success" %>|
+      <%= link_to "退会中のみ", admin_root_path(is_deleted: :true), class: "text-danger" %>|
+      <%= link_to "全て表示", admin_root_path, class: "text-primary" %>
     </div>
   </div>
-  <div class="row m-3">
+  <div class="row my-3">
     <div class="col-sm-12">
       <table class="table table-bordered">
         <thead class="thead-light">
