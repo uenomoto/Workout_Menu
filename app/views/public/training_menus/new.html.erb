@@ -34,7 +34,7 @@
          <div id="selected_training_name">
           <div class="form-group" id="menuName">
           <%= f.label :"トレ名(必須)" %>
-          <%= f.collection_select :training_name_id, genre.training_names, :id, :name, {include_blank: "---", prompt: false}, class: "form-control" %>
+          <%= f.collection_select :training_name_id, genre.training_names, :id, :name, { prompt: false }, class: "form-control" %>
           </div>
          </div>
         </template>
