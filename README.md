@@ -31,15 +31,13 @@ __一日5分〜10分でもいいのでぜひ体幹トレーニングをお勧め
 - [実装機能リスト](https://docs.google.com/spreadsheets/d/1AUAPTN04nns7Bjc515HlTkGqKKKndizYBcRg9PL4jFA/edit#gid=375590402)
 
 ![実装機能リスト](./実装機能リスト.png)
-
+- [テスト仕様書](https://docs.google.com/spreadsheets/d/1zRhu3yCDS8GUBJQqN_yDOFxgC1U5DrMp/edit#gid=1511467858)
 - ER図
 
 ![ER図](./ER図.png)
-
 - [テーブル定義書](https://docs.google.com/spreadsheets/d/1AZk1XgT5Xc2FxfKl6J8KFXE9Ry83AFYarRUiwmbrt5s/edit#gid=1243549839)
 
 ![テーブル定義書](./テーブル定義書.png)
-
 - [アプリ詳細設計](https://docs.google.com/spreadsheets/d/1npZOxlI0B2XuQbn5e5en5DpArRS9ojG-gHHTHZBI7sU/edit#gid=549108681)
 
 ![アプリ詳細設計](./アプリ詳細設計.png)
@@ -62,3 +60,4 @@ __一日5分〜10分でもいいのでぜひ体幹トレーニングをお勧め
 - [パクタソ](https://www.pakutaso.com/)
 - [ロゴ](https://www.designevo.com/)
 - [イラスト素材](https://www.ac-illust.com/)
+- [storyset](https://storyset.com/)
