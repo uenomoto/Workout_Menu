@@ -129,8 +129,7 @@ TrainingMenu.create!(
 
 Tweet.create!(
   [
-    {user_id: 4,text: "N+1問題を解決したい"},
-    {user_id: 4,text: "seedの書き方これだと重複しまくってる気がする"}
+    {user_id: 4,text: "N+1問題をもっと理解したい"},
   ]
 )
 
