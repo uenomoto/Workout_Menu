@@ -81,6 +81,32 @@ input[type=radio] {
   font-size: 15px;
   color: #3399FF
 }
+/*画像縦横比を保つ*/
+.profile-image{
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+.profile-image2{
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+.profile-image3{
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+.profile-image4{
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+}
+.profile-image5{
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
 
 /*ボタン押すと本当に押したようになるCSS*/
 .btn {

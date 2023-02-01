@@ -44,9 +44,9 @@
           <th>
             <%= form_with model: @user, url: admin_path, method: :patch do |f| %>
             <%= f.radio_button :is_deleted, false %>
-            <%= f.label :"会員" %><br>
+            <%= f.label :is_deleted, "会員", value: false %><br>
             <%= f.radio_button :is_deleted, true %>
-            <%= f.label :"退会" %>
+            <%= f.label :is_deleted, "退会", value: true %>
           </th>
           <td>
             <%= f.submit "退会ステータス変更", class: "btn btn-success btn-sm" %>

@@ -4,9 +4,10 @@
   <% post_comments.each do |c| %>
    <table class="table">
     <div class="border-bottom border-dark pb-3 mb-2">
-    <%= image_tag c.user.get_profile_image(50,50), class: "rounded-circle" %><br>
-    by:<%= c.user.nickname %><br>
-       <h2><%= c.comment %></h2><br>
+    <%= image_tag c.user.get_profile_image(50,50), class: "profile-image5 rounded-circle" %><br>
+       <h4>by:<%= c.user.nickname %></h4>
+       <h1><%= c.comment %></h1>
+       <h4><%= c.created_at.strftime('%Y/%m/%d') %></h4><br>
     <% if user_signed_in? %>
      <% if current_user.id == c.user_id %>
       <%= link_to "編集", edit_tweet_post_comment_path(@tweet, c.id), class: "text-info" %>
