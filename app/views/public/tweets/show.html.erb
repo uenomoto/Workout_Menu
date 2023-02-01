@@ -3,7 +3,7 @@
     <div class="col-sm-12">
       <div class="card shadow-lg">
         <h1 class="card-header text-center">
-          <%= image_tag @tweet.user.get_profile_image(50,50), class: "rounded-circle float-left" %>
+          <%= image_tag @tweet.user.get_profile_image(70,70), class: "profile-image4 rounded-circle float-left" %>
           <%= @tweet.user.nickname %>さんの呟き
           <% if @tweet.user_id != current_user.id %>
             <% if @tweet.reported_by?(current_user) %>

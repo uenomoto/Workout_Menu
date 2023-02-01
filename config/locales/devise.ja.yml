@@ -20,6 +20,7 @@ ja:
 #      locked: 'Your account is locked.'
       invalid: 'ニックネームかパスワードが違います。'
 #      invalid: 'Invalid email or password.'
+      not_found_in_database: "%{authentication_keys} もしくはパスワードが違います。"
       invalid_token: '認証キーが不正です。'
 #      invalid_token: 'Invalid authentication token.'
       timeout: 'セッションがタイムアウトしました。もう一度ログインしてください。'
@@ -63,4 +64,3 @@ ja:
       unlock_instructions:
         subject: 'アカウントの凍結解除'
 #        subject: 'Unlock Instructions'
-

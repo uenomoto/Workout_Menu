@@ -61,11 +61,11 @@
       <div class="form-group">
        <div class="radio_button">
         <%= f.radio_button :status, TrainingMenu.statuses.key(0),onchange: "myfunc(this.value)", checked: true %>
-        <%= f.label :status, "自重" %>
+        <%= f.label :status, "自重", value: TrainingMenu.statuses.key(0) %>
         <%= f.radio_button :status, TrainingMenu.statuses.key(1), onchange: "myfunc(this.value)" %>
-        <%= f.label :status, "加重" %>
+        <%= f.label :status, "加重", value: TrainingMenu.statuses.key(1) %>
         <%= f.radio_button :status, TrainingMenu.statuses.key(2),onchange: "myfunc(this.value)" %>
-        <%= f.label :status, "有酸素" %>
+        <%= f.label :status, "有酸素", value: TrainingMenu.statuses.key(2) %>
        </div>
       </div>
       <div class="form-group">
