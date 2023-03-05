@@ -97,26 +97,17 @@
 <%= javascript_pack_tag 'menu_form.js', 'data-turbolinks-track': 'reload'  %>
 
 <script>
-// ラジオボタンが加重だったら重さ、有酸素だったら距離フォームを出す。
-  document.getElementById("hidden1").style.display ="none";
-  document.getElementById("hidden2").style.display ="none";
+document.querySelector("#hidden1").style.display ="none";
+document.querySelector("#hidden2").style.display ="none";
 
-  function myfunc(value) {
-  var check1 = document.getElementById("training_menu_status_加重").checked;
-  var check2 = document.getElementById("training_menu_status_有酸素").checked;
-  var hidden1 = document.getElementById("hidden1");
-  var hidden2 = document.getElementById("hidden2");
-  if(check1 == true){
-     hidden1.style.display ="block";
-     }
-  else{
-    hidden1.style.display ="none";
-  }
-  if(check2 == true){
-    hidden2.style.display ="block";
-     }
-  else{
-    hidden2.style.display ="none";
-  }
+const hidden1 = document.querySelector("#hidden1");
+const hidden2 = document.querySelector("#hidden2");
+
+const myfunc = () => {
+const check1 = document.querySelector("#training_menu_status_加重").checked;
+const check2 = document.querySelector("#training_menu_status_有酸素").checked;
+
+  hidden1.style.display = check1 ? "block" : "none";
+  hidden2.style.display = check2 ? "block" : "none";
 }
 </script>

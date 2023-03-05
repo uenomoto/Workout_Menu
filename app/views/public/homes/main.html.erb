@@ -31,13 +31,5 @@
    </div>
   </div>
 
-<script>
-  $(document).on('turbolinks:load', function() {
-  $('#page-top').on('click',function(event){
-  $('body, html').animate({
-    scrollTop:0
-  }, 900);
-  event.preventDefault();
-  });
-});
-</script>
+
+<%= javascript_pack_tag 'top_scroll.js', 'data-turbolinks-track': 'reload'  %>

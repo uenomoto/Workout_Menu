@@ -1,56 +1,60 @@
-var trainingForm =document.querySelector("#training_name_form");
+const trainingForm = document.querySelector("#training_name_form");
 
-  var trainingNameField = document.querySelector("#trainingName");
-  var trainingGenreField = document.querySelector("#trainingGenre");
+const trainingNameField = document.querySelector("#trainingName");
+const trainingGenreField = document.querySelector("#trainingGenre");
 
-  var trainingName = document.querySelector("#training_name_name");
-  var trainingGenre = document.querySelector("#training_name_genre_id");
+const trainingName = document.querySelector("#training_name_name");
+const trainingGenre = document.querySelector("#training_name_genre_id");
 
-  var trainingSubmitBtn = document.querySelector("#trainingSubmit");
+const trainingSubmitBtn = document.querySelector("#trainingSubmit");
 
-  var namePara = document.createElement('p');
-  var genrePara = document.createElement('p');
+const namePara = document.createElement("p");
+const genrePara = document.createElement("p");
 
-  var activeName;
-  var activeGenre;
+let activeName = false;
+let activeGenre = false;
 
-  trainingSubmitBtn.disabled = true; // デフォルトでSubmitボタンを無効化
-  trainingForm.addEventListener('input', ()=>{
-    if(activeName === true && activeGenre === true){
-      trainingSubmitBtn.disabled = false;
-    }else{
-      trainingSubmitBtn.disabled = true;
-    }
-  });
+trainingSubmitBtn.disabled = true;
 
-   trainingName.addEventListener('input', ()=>{
-    if(trainingName.value === ""){ // 入力フォームが空の場合
-      namePara.textContent = "トレ名を入力してください";
-      namePara.style.color = "red";
-      trainingName.parentElement.style.border = "2px solid red";
-      activeName = false;
-      }else{ // バリデーションチェック完了時（OK時）の処理
-      trainingName.parentElement.style.border = "2px solid lightgreen";
-      namePara.textContent = "OK!";
-      namePara.style.color = "green";
-      activeName = true;
-    }
-    // ：nickname用のバリデーションエラーメッセージを表示
-    trainingNameField.appendChild(namePara);
-  });
+// 入力があるたびにバリデーションを行う
+trainingForm.addEventListener("input", () => {
+  if (activeName && activeGenre) {
+    trainingSubmitBtn.disabled = false;
+  } else {
+    trainingSubmitBtn.disabled = true;
+  }
+});
 
-   trainingGenre.addEventListener('input', ()=>{
-    if(trainingGenre.value === ""){ // 入力フォームが空の場合
-      genrePara.textContent = "部位を選んでください";
-      genrePara.style.color = "red";
-      trainingGenre.parentElement.style.border = "2px solid red";
-      activeGenre = false;
-      }else{ // バリデーションチェック完了時（OK時）の処理
-      trainingGenre.parentElement.style.border = "2px solid lightgreen";
-      genrePara.textContent = "OK!";
-      genrePara.style.color = "green";
-      activeGenre = true;
-    }
-    // ：nickname用のバリデーションエラーメッセージを表示
-    trainingGenreField.appendChild(genrePara);
-  });
+// トレーニング名フィールドのバリデーション
+trainingName.addEventListener("input", () => {
+  if (trainingName.value === "") {
+    namePara.textContent = "トレ名を入力してください";
+    namePara.style.color = "red";
+    trainingName.parentElement.style.border = "2px solid red";
+    activeName = false;
+  } else {
+    trainingName.parentElement.style.border = "2px solid lightgreen";
+    namePara.textContent = "OK!";
+    namePara.style.color = "green";
+    activeName = true;
+  }
+  // バリデーションエラーメッセージを表示
+  trainingNameField.appendChild(namePara);
+});
+
+// トレーニングジャンルフィールドのバリデーション
+trainingGenre.addEventListener("input", () => {
+  if (trainingGenre.value === "") {
+    genrePara.textContent = "部位を選んでください";
+    genrePara.style.color = "red";
+    trainingGenre.parentElement.style.border = "2px solid red";
+    activeGenre = false;
+  } else {
+    trainingGenre.parentElement.style.border = "2px solid lightgreen";
+    genrePara.textContent = "OK!";
+    genrePara.style.color = "green";
+    activeGenre = true;
+  }
+  // バリデーションエラーメッセージを表示
+  trainingGenreField.appendChild(genrePara);
+});
