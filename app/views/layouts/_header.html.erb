@@ -135,15 +135,18 @@
 </header>
 
 <script>
-  $(function() {
-    $('.hamburger').click(function() {
-        $(this).toggleClass('active');
+ document.addEventListener('DOMContentLoaded', function() {
+  const hamburger = document.querySelector('.hamburger');
+  const globalMenuSp = document.querySelector('.globalMenuSp');
 
-        if ($(this).hasClass('active')) {
-            $('.globalMenuSp').addClass('active');
-        } else {
-            $('.globalMenuSp').removeClass('active');
-        }
-    });
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('active');
+
+    if (hamburger.classList.contains('active')) {
+      globalMenuSp.classList.add('active');
+    } else {
+      globalMenuSp.classList.remove('active');
+    }
+  });
 });
 </script>

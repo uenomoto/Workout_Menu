@@ -26,37 +26,4 @@
   </div>
 </div>
 
-<script>
-  var tweetForm =document.querySelector("#tweetForm");
-  var tweetTextField = document.querySelector("#tweetText");
-  var tweettext = document.querySelector("#tweet_text");
-  var tweetSubmitBtn = document.querySelector("#tweetSubmit");
-  var textPara = document.createElement('p');
-
-  var activeTweet;
-
-  tweetSubmitBtn.disabled = true; // デフォルトでSubmitボタンを無効化
-  tweetForm.addEventListener('input', ()=>{
-    if(activeTweet === true){
-      tweetSubmitBtn.disabled = false;
-    }else{
-      tweetSubmitBtn.disabled = true;
-    }
-  });
-
-  tweettext.addEventListener('input', ()=>{
-    if(tweettext.value === ""){ // 入力フォームが空の場合
-      textPara.textContent = "つぶやきを入力してください";
-      textPara.style.color = "red";
-      tweettext.parentElement.style.border = "2px solid red";
-      activeTweet = false;
-      }else{ // バリデーションチェック完了時（OK時）の処理
-      tweettext.parentElement.style.border = "2px solid lightgreen";
-      textPara.textContent = "OK!";
-      textPara.style.color = "green";
-      activeTweet = true;
-    }
-    // ：nickname用のバリデーションエラーメッセージを表示
-    tweetTextField.appendChild(textPara);
-  });
-</script>
+<%= javascript_pack_tag 'tweet_form.js', 'data-turbolinks-track': 'reload'  %>
