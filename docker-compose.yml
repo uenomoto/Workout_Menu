@@ -1,0 +1,28 @@
+version: '3.8'
+
+volumes:
+  db-data:
+
+services:
+  web:
+    container_name: rails-docker
+    build: .
+    ports:
+      - '3000:3000'
+    volumes:
+      - '.:/workout-meun-docker'
+    environment:
+      - 'DATABASE_PASSWORD=postgres'
+    tty: true
+    stdin_open: true
+    depends_on:
+      - db
+
+  db:
+    container_name: postgres-v12
+    image: postgres:12
+    environment:
+    - 'POSTGRES_USER=postgres'
+    - 'POSTGRES_PASSWORD=postgres'
+    volumes:
+      - 'db-data:/var/lib/postgresql/data'
